@@ -1,0 +1,1553 @@
+[A/**
+ * ╔══════════════════════════════════════════════════════════════╗
+ * ║  hysteria.cpp — SN PLUS v2.0                                ║
+ * ║  Administrador Hysteria UDP — Estilo SN-Manager             ║
+ * ║  Autor original: @SIN_NOMBRE22                              ║
+ * ╚══════════════════════════════════════════════════════════════╝
+ *
+ * COMPILAR (DESARROLLO):
+ *   g++ -std=c++17 -O2 -Wall -Wextra -pthread -o hysteria hysteria.cpp -I./Sistema -I../Sistema
+ *
+ * COMPILAR (PRODUCCIÓN - con libsn_global.so):
+ *   g++ -O3 -s -DNDEBUG -o hysteria hysteria.cpp -I/etc/SNPLUS/Sistema -I/root/SNPLUS/Sistema -L/etc/SNPLUS/Sistema/global -L/root/SNPLUS/Sistema/global -lsn_global -Wl,-rpath=/etc/SNPLUS/Sistema/global -Wl,-rpath=/root/SNPLUS/Sistema/global && strip hysteria && upx --best hysteria && chmod 700 hysteria && chown root:root hysteria
+ *
+ * Compatible: Ubuntu 22.04 / 24.04 / Debian 12+
+ */
+
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <vector>
+#include <map>
+#include <algorithm>
+#include <set>
+#include <functional>
+#include <csignal>
+#include <cstdlib>
+#include <filesystem>
+#include <chrono>
+#include <thread>
+#include <iomanip>
+#include <cerrno>
+#include <cstring>
+#include <random>
+
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <sys/wait.h>
+#include <fcntl.h>
+
+#include "global/sn_lines.h"
+
+namespace fs = std::filesystem;
+
+// =========================================================
+//  COLORES ANSI
+// =========================================================
+namespace Color {
+    constexpr const char* R    = "\033[0;31m";
+    constexpr const char* G    = "\033[0;32m";
+    constexpr const char* Y    = "\033[1;33m";
+    constexpr const char* C    = "\033[0;36m";
+    constexpr const char* W    = "\033[1;37m";
+    constexpr const char* N    = "\033[0m";
+    constexpr const char* D    = "\033[2m";
+    constexpr const char* M    = "\033[0;35m";
+    constexpr const char* BOLD = "\033[1m";
+}
+using namespace Color;
+
+// =========================================================
+//  CONFIGURACIÓN — paths SN PLUS
+// =========================================================
+namespace Cfg {
+    // Hysteria v1
+    constexpr const char* H1_BIN     = "/usr/local/bin/hysteria";
+    constexpr const char* H1_DIR     = "/etc/SNPLUS/hysteria";
+    constexpr const char* H1_CONF    = "/etc/SNPLUS/hysteria/config.json";
+    constexpr const char* H1_CERT_D  = "/etc/SNPLUS/certificados/local";
+    constexpr const char* H1_CERT    = "/etc/SNPLUS/certificados/local/local.crt";
+    constexpr const char* H1_KEY     = "/etc/SNPLUS/certificados/local/local.key";
+    constexpr const char* H1_AUTOSSH = "/etc/SNPLUS/hysteria/autSSH";
+    constexpr const char* H1_SVC     = "/etc/systemd/system/udp-hysteria.service";
+    constexpr const char* H1_SVC_NM  = "udp-hysteria";
+    constexpr const char* H1_LOG     = "/var/log/udp-hysteria.log";
+
+    // Hysteria v2
+    constexpr const char* H2_BIN     = "/usr/local/bin/hysteria2";
+    constexpr const char* H2_DIR     = "/etc/SNPLUS/hysteria2";
+    constexpr const char* H2_CONF    = "/etc/SNPLUS/hysteria2/config.yaml";
+    constexpr const char* H2_CERT    = "/etc/SNPLUS/certificados/local/local.crt";
+    constexpr const char* H2_KEY     = "/etc/SNPLUS/certificados/local/local.key";
+    constexpr const char* H2_SVC     = "/etc/systemd/system/udp-hysteria2.service";
+    constexpr const char* H2_SVC_NM  = "udp-hysteria2";
+    constexpr const char* H2_LOG     = "/var/log/udp-hysteria2.log";
+
+    constexpr const char* VERSION    = "v2.0";
+}
+
+// =========================================================
+//  UTILIDADES BÁSICAS
+// =========================================================
+static int sysrun(const std::string& cmd) {
+    int r = ::system(cmd.c_str());
+    if (r == -1) return 1;
+    return WIFEXITED(r) ? WEXITSTATUS(r) : 1;
+}
+
+static std::string runCapture(const std::string& cmd) {
+    FILE* pipe = popen((cmd + " 2>/dev/null").c_str(), "r");
+    if (!pipe) return "";
+    std::string out;
+    char buf[512];
+    while (fgets(buf, sizeof(buf), pipe)) out += buf;
+    pclose(pipe);
+    while (!out.empty() && (out.back() == '\n' || out.back() == '\r' || out.back() == ' '))
+        out.pop_back();
+    return out;
+}
+
+// =========================================================
+//  UI PRIMITIVAS (con sn_lines)
+// =========================================================
+inline void hr()   { sn_print_linea(); }
+inline void sep()  { sn_print_sep(); }
+inline void sep3() { std::cout << R << "- - - - - - - - - - - - - - - - - - - - - - - - - - - - -" << N << "\n"; }
+
+inline void clearScreen() {
+    std::cout << "\033[2J\033[3J\033[1;1H" << std::flush;
+}
+inline void hideCursor()  { std::cout << "\033[?25l" << std::flush; }
+inline void showCursor()  { std::cout << "\033[?25h" << std::flush; }
+
+inline void pauseUi() {
+    std::cout << "\n" << Y << "            ►► Presiona ENTER para continuar ◄◄" << N << "\n";
+    std::string dummy;
+    std::getline(std::cin, dummy);
+}
+
+static void showTitle(const std::string& text, bool /*unused*/ = false) {
+    clearScreen();
+    hr();
+    int pad = (54 - static_cast<int>(text.size())) / 2;
+    if (pad < 0) pad = 0;
+    std::cout << W << BOLD << std::string(static_cast<size_t>(pad), ' ') << text << N << "\n";
+    hr();
+}
+
+static void printCenter(const std::string& color, const std::string& text) {
+    int pad = (54 - static_cast<int>(text.size())) / 2;
+    if (pad < 0) pad = 0;
+    std::cout << color << std::string(static_cast<size_t>(pad), ' ') << text << N << "\n";
+}
+
+// Margen izquierdo de 4 espacios como exige la regla
+static void printItem(const std::string& num, const std::string& label) {
+    std::cout << "    " << R << "[" << Y << num << R << "]"
+              << N   << "  " << C << label << N << "\n";
+}
+
+static std::string menuPrompt() {
+    std::cout << "\n" << W << "┌─[" << G << BOLD << "Seleccione una opción" << W << "]" << N << "\n";
+    std::cout << "╰─> : " << G;
+    std::string op;
+    if (!std::getline(std::cin, op)) op.clear();
+    std::cout << N;
+    return op;
+}
+
+static std::string fieldPrompt(const std::string& label, const std::string& def = "") {
+    std::cout << "\n" << W << "┌─[" << G << BOLD << label;
+    if (!def.empty()) std::cout << W << " — default: " << Y << def;
+    std::cout << W << "]" << N << "\n";
+    std::cout << "╰─> : " << G;
+    std::string v;
+    if (!std::getline(std::cin, v)) v.clear();
+    std::cout << N;
+    if (v.empty() && !def.empty()) return def;
+    return v;
+}
+
+// =========================================================
+//  SPINNER / FORK (con execl y redirección silenciosa)
+// =========================================================
+static int spinnerWait(pid_t pid, const std::string& msg) {
+    const char* fr[] = {"⠋","⠙","⠹","⠸","⠼","⠴","⠦","⠧","⠇","⠏"};
+    int idx = 0, status = 0;
+    hideCursor();
+    while (true) {
+        pid_t ret = waitpid(pid, &status, WNOHANG);
+        if (ret < 0 && errno != EINTR) break;
+        if (ret > 0) break;
+        std::cout << "\r    " << C << fr[idx] << N << " " << W << msg << N;
+        std::cout.flush();
+        idx = (idx + 1) % 10;
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
+    int ec = WIFEXITED(status) ? WEXITSTATUS(status) : 1;
+    const char* ico = (ec == 0) ? G : R;
+    const char* chk = (ec == 0) ? "✓" : "✗";
+    std::cout << "\r    " << ico << chk << N << " " << W
+              << std::left << std::setw(50) << msg << N << "\n";
+    showCursor();
+    return ec;
+}
+
+static int forkCmd(const std::string& shellCmd, const std::string& msg) {
+    pid_t pid = fork();
+    if (pid < 0) {
+        std::cerr << R << "fork() falló: " << strerror(errno) << N << "\n";
+        return 1;
+    }
+    if (pid == 0) {
+        int dn = open("/dev/null", O_WRONLY);
+        if (dn >= 0) { dup2(dn, STDOUT_FILENO); dup2(dn, STDERR_FILENO); close(dn); }
+        ::system(shellCmd.c_str());
+        std::exit(0);
+    }
+    return spinnerWait(pid, msg);
+}
+
+// =========================================================
+//  SISTEMA
+// =========================================================
+static void requireRoot() {
+    if (geteuid() != 0) {
+        hr();
+        std::cout << "    " << R << "✗" << N << " " << W << "Ejecuta como root: sudo ./hysteria" << N << "\n";
+        hr();
+        std::exit(1);
+    }
+}
+
+static std::string getPublicIp() {
+    std::string ip = runCapture("curl -fsS --max-time 4 https://api.ipify.org");
+    if (ip.empty()) ip = runCapture("curl -fsS --max-time 4 ifconfig.me");
+    if (ip.empty()) ip = runCapture("hostname -I | awk '{print $1}'");
+    return ip;
+}
+
+static std::string getArch() {
+    std::string a = runCapture("uname -m");
+    if (a == "x86_64")  return "amd64";
+    if (a == "aarch64") return "arm64";
+    return "amd64";
+}
+
+// =========================================================
+//  GENERADOR DE OBFS ALEATORIO
+// =========================================================
+static std::string genObfs(int len = 8) {
+    const std::string chars =
+        "abcdefghijklmnopqrstuvwxyz"
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        "0123456789";
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(0, static_cast<int>(chars.size()) - 1);
+    std::string s;
+    for (int i = 0; i < len; ++i) s += chars[dis(gen)];
+    return s;
+}
+
+// =========================================================
+//  TLS — certificado autofirmado estilo Rufu
+// =========================================================
+static bool genCert(const std::string& certPath, const std::string& keyPath,
+                    const std::string& cn) {
+    std::string certDir = std::string(Cfg::H1_CERT_D);
+    ::system(("mkdir -p " + certDir + " && chmod 755 " + certDir).c_str());
+
+    std::string tmp = "/tmp/hy_cert_" + std::to_string(getpid());
+    std::string cmd =
+        "mkdir -p " + tmp + " && "
+        "openssl genrsa -out " + tmp + "/key.pem 2048 >/dev/null 2>&1 && "
+        "openssl req -new -x509 -days 3650"
+        " -key " + tmp + "/key.pem"
+        " -out " + tmp + "/cert.pem"
+        " -subj '/C=US/ST=State/L=City/O=SNPLUS/CN=" + cn + "' >/dev/null 2>&1 && "
+        "cp " + tmp + "/key.pem  " + keyPath  + " && "
+        "cp " + tmp + "/cert.pem " + certPath + " && "
+        "chmod 600 " + keyPath + " " + certPath + " && "
+        "rm -rf " + tmp;
+
+    int rc = forkCmd(cmd, "Generando certificado TLS (2048 bits)...");
+
+    std::error_code ec;
+    fs::remove_all(tmp, ec);
+
+    bool ok = (rc == 0) && fs::exists(certPath, ec) && fs::exists(keyPath, ec);
+    if (!ok)
+        std::cout << "    " << R << "✗" << N << " " << W << "Error generando certificado TLS" << N << "\n";
+    return ok;
+}
+
+// =========================================================
+//  chooseCert — detecta o genera certificado
+// =========================================================
+static bool chooseCert(const std::string& certPath, const std::string& keyPath,
+                       const std::string& cn) {
+    const std::string certDir = std::string(Cfg::H1_CERT_D);
+    std::error_code ec;
+
+    if (fs::is_directory(certDir, ec)) {
+        std::map<std::string, std::pair<std::string,std::string>> pairs;
+        for (const auto& e : fs::directory_iterator(certDir, ec)) {
+            std::string stem = e.path().stem().string();
+            std::string ext  = e.path().extension().string();
+            if (ext == ".crt") pairs[stem].first  = e.path().string();
+            if (ext == ".key") pairs[stem].second = e.path().string();
+        }
+        for (const auto& [stem, p] : pairs) {
+            if (!p.first.empty() && !p.second.empty()) {
+                std::cout << "\n"; sep();
+                printCenter(std::string(Y) + BOLD, "CERTIFICADO TLS ENCONTRADO");
+                sep3();
+                std::cout << "    " << C << "CERT : " << N << Y << p.first  << N << "\n"
+                          << "    " << C << "KEY  : " << N << Y << p.second << N << "\n";
+                sep();
+                std::cout << "    " << W << "¿Usar este certificado? (s/n): " << G;
+                std::string op;
+                if (!std::getline(std::cin, op)) op.clear();
+                std::cout << N;
+                if (!op.empty() && (op[0] == 's' || op[0] == 'S')) {
+                    ::system(("mkdir -p " + certDir + " && chmod 755 " + certDir).c_str());
+                    ::system(("cp '" + p.first  + "' " + certPath + " && chmod 600 " + certPath).c_str());
+                    ::system(("cp '" + p.second + "' " + keyPath  + " && chmod 600 " + keyPath).c_str());
+                    bool ok = fs::exists(certPath, ec) && fs::exists(keyPath, ec);
+                    if (ok) {
+                        std::cout << "    " << G << "✓" << N << " " << W << "Certificado copiado" << N << "\n";
+                        return true;
+                    }
+                }
+                break;
+            }
+        }
+    }
+    return genCert(certPath, keyPath, cn);
+}
+
+// =========================================================
+//  autSSH — script bash que valida contra /etc/SNPLUS/passwd
+// =========================================================
+static const char* SNPLUS_PASSWD = "/etc/SNPLUS/passwd";
+
+static bool buildAutSSH() {
+    std::ofstream f(Cfg::H1_AUTOSSH);
+    if (!f.is_open()) {
+        std::cout << "    " << R << "✗" << N << " "
+                  << W << "No se pudo crear autSSH en " << Cfg::H1_AUTOSSH << N << "\n";
+        return false;
+    }
+
+    f << "#!/bin/bash\n"
+      << "# autSSH — SN PLUS v2.0\n"
+      << "PASSWD_DB=\"" << SNPLUS_PASSWD << "\"\n"
+      << "AUTH=\"$2\"\n"
+      << "if [ -z \"$AUTH\" ]; then\n"
+      << "    echo '{\"ok\":false}'\n"
+      << "    exit 1\n"
+      << "fi\n"
+      << "USER=$(echo \"$AUTH\" | cut -d: -f1)\n"
+      << "PASS=$(echo \"$AUTH\" | cut -d: -f2-)\n"
+      << "if [ -z \"$USER\" ] || [ -z \"$PASS\" ]; then\n"
+      << "    echo '{\"ok\":false}'\n"
+      << "    exit 1\n"
+      << "fi\n"
+      << "if [ ! -f \"$PASSWD_DB\" ]; then\n"
+      << "    echo '{\"ok\":false}'\n"
+      << "    exit 1\n"
+      << "fi\n"
+      << "if grep -qF \"${USER}|${PASS}\" \"$PASSWD_DB\" 2>/dev/null; then\n"
+      << "    echo \"{\\\"ok\\\":true,\\\"id\\\":\\\"${USER}\\\"}\"\n"
+      << "    exit 0\n"
+      << "fi\n"
+      << "echo '{\"ok\":false}'\n"
+      << "exit 1\n";
+    f.close();
+
+    ::system(("chmod +x " + std::string(Cfg::H1_AUTOSSH)).c_str());
+    std::cout << "    " << G << "✓" << N << " "
+              << W << "autSSH creado — valida contra " << SNPLUS_PASSWD << N << "\n";
+    return true;
+}
+
+// =========================================================
+//  RANGO EXCLUSIVO DE HYSTERIA (20000-39999)
+// =========================================================
+static const std::string HY_REDIR_START = "20000";
+static const std::string HY_REDIR_END   = "39999";
+
+static std::string hyRange() {
+    return HY_REDIR_START + ":" + HY_REDIR_END;
+}
+
+static void applyIptablesRedirect(const std::string& port) {
+    for (int i = 0; i < 20; ++i) {
+        std::string lineNum = runCapture(
+            "iptables -t nat -L PREROUTING -n --line-numbers 2>/dev/null"
+            " | awk '/REDIRECT/ && /dpts:20000:39999/{print $1; exit}'");
+        if (lineNum.empty()) break;
+        sysrun("iptables -t nat -D PREROUTING " + lineNum + " 2>/dev/null || true");
+    }
+    sysrun("iptables -t nat -D PREROUTING -p udp --dport 1:65535 -j REDIRECT --to-ports "
+           + port + " 2>/dev/null || true");
+    sysrun("iptables -t nat -A PREROUTING -p udp --dport " + hyRange()
+           + " -j REDIRECT --to-ports " + port);
+    sysrun("mkdir -p /etc/iptables 2>/dev/null || true");
+    sysrun("iptables-save > /etc/iptables/rules.v4 2>/dev/null || true");
+    sysrun("command -v netfilter-persistent >/dev/null 2>&1 && "
+           "netfilter-persistent save 2>/dev/null || true");
+    sysrun("command -v service >/dev/null 2>&1 && "
+           "service iptables save 2>/dev/null || true");
+}
+
+static void removeIptablesRedirect(const std::string& port) {
+    sysrun("iptables -t nat -D PREROUTING -p udp --dport " + hyRange()
+           + " -j REDIRECT --to-ports " + port + " 2>/dev/null || true");
+    sysrun("iptables -t nat -D PREROUTING -p udp --dport 1:65535 -j REDIRECT --to-ports "
+           + port + " 2>/dev/null || true");
+}
+
+static bool isPortInUse(const std::string& port) {
+    std::string out = runCapture(
+        "ss -tulpn 2>/dev/null | awk '{print $5}' | grep -E ':" + port + "$'");
+    return !out.empty();
+}
+
+static std::string promptPortSafe(const std::string& label, const std::string& defPort) {
+    while (true) {
+        std::string port = fieldPrompt(label, defPort);
+        if (port.empty()) port = defPort;
+        bool numeric = !port.empty() &&
+            std::all_of(port.begin(), port.end(), ::isdigit);
+        int pnum = numeric ? std::stoi(port) : 0;
+        if (!numeric || pnum < 1 || pnum > 65535) {
+            std::cout << "    " << R << "✗ Puerto inválido (1-65535)" << N << "\n";
+            continue;
+        }
+        if (isPortInUse(port)) {
+            std::cout << "    " << Y << "⚠  Puerto " << port
+                      << " ya está en uso. Elige otro." << N << "\n";
+            continue;
+        }
+        return port;
+    }
+}
+
+// =========================================================
+//  ESTADO — Hysteria v1
+// =========================================================
+static bool h1IsInstalled() {
+    std::error_code ec;
+    if (!fs::exists(Cfg::H1_BIN, ec)) return false;
+    std::string ft = runCapture("file " + std::string(Cfg::H1_BIN) + " 2>/dev/null");
+    if (ft.find("ELF") == std::string::npos) return false;
+    std::string ver = runCapture(std::string(Cfg::H1_BIN) + " --version 2>&1 | head -1");
+    if (ver.find("v2") != std::string::npos || ver.find("apernet") != std::string::npos)
+        return false;
+    return true;
+}
+
+static bool h1IsOn() {
+    std::string out = runCapture(
+        "systemctl is-active " + std::string(Cfg::H1_SVC_NM) + " 2>/dev/null");
+    if (out == "active") return true;
+    if (out == "inactive" || out == "failed" || out == "deactivating") return false;
+    std::string myPid = std::to_string(getpid());
+    std::string procs = runCapture(
+        "pgrep -f 'hysteria.*server' 2>/dev/null | grep -v '^" + myPid + "$'");
+    return !procs.empty();
+}
+
+static std::string h1Version() {
+    std::string v = runCapture(std::string(Cfg::H1_BIN) + " --version 2>/dev/null | head -1");
+    if (v.empty()) v = "1.x";
+    return v;
+}
+
+static std::string h1Port() {
+    if (!fs::exists(Cfg::H1_CONF)) return "—";
+    std::string p = runCapture(
+        "grep -oP '\"listen\":\\s*\":\\K[0-9]+' " + std::string(Cfg::H1_CONF));
+    return p.empty() ? "—" : p;
+}
+
+static std::string h1Obfs() {
+    if (!fs::exists(Cfg::H1_CONF)) return "—";
+    std::string o = runCapture(
+        "grep -oP '\"obfs\":\\s*\"\\K[^\"]+' " + std::string(Cfg::H1_CONF));
+    return o.empty() ? "—" : o;
+}
+
+static std::string h1ReadJson(const std::string& key) {
+    if (!fs::exists(Cfg::H1_CONF)) return "";
+    return runCapture(
+        "grep -oP '\"" + key + "\":\\s*\"\\K[^\"]+' " + std::string(Cfg::H1_CONF));
+}
+
+// =========================================================
+//  ESTADO — Hysteria v2
+// =========================================================
+static bool h2IsInstalled() {
+    std::error_code ec;
+    if (!fs::exists(Cfg::H2_BIN, ec)) return false;
+    std::string ft = runCapture("file " + std::string(Cfg::H2_BIN) + " 2>/dev/null");
+    return ft.find("ELF") != std::string::npos;
+}
+
+static bool h2IsOn() {
+    std::string out = runCapture(
+        "systemctl is-active " + std::string(Cfg::H2_SVC_NM) + " 2>/dev/null");
+    if (out == "active") return true;
+    if (out == "inactive" || out == "failed" || out == "deactivating") return false;
+    std::string myPid = std::to_string(getpid());
+    std::string procs = runCapture(
+        "pgrep -f 'hysteria2.*server' 2>/dev/null | grep -v '^" + myPid + "$'");
+    return !procs.empty();
+}
+
+static std::string h2Version() {
+    std::string v = runCapture(std::string(Cfg::H2_BIN) + " version 2>/dev/null | head -1");
+    if (v.empty()) v = "2.x";
+    return v;
+}
+
+static std::string h2Port() {
+    if (!fs::exists(Cfg::H2_CONF)) return "—";
+    std::string p = runCapture(
+        "grep -oP '^listen:\\s*:\\K[0-9]+' " + std::string(Cfg::H2_CONF));
+    return p.empty() ? "—" : p;
+}
+
+static std::string h2ReadYaml(const std::string& key) {
+    if (!fs::exists(Cfg::H2_CONF)) return "";
+    return runCapture(
+        "grep -oP '^\\s*" + key + ":\\s*\\K.+' " + std::string(Cfg::H2_CONF)
+        + " | head -1 | sed 's/^[[:space:]]*//' | sed 's/[[:space:]]*$//'");
+}
+
+// =========================================================
+//  HYSTERIA v1 — INSTALAR
+// =========================================================
+static void h1Install() {
+    showTitle("INSTALADOR UDP-HYSTERIA v1");
+
+    if (h1IsInstalled()) {
+        std::cout << "\n    " << Y << "⚠" << N << " "
+                  << W << "Hysteria v1 ya está instalado" << N << "\n";
+        pauseUi(); return;
+    }
+
+    std::string arch = getArch();
+    std::string url  = "https://github.com/HyNetwork/hysteria/releases/download/v1.3.5/hysteria-linux-" + arch;
+    std::string pubIp = getPublicIp();
+    const std::string defObfs   = genObfs(8);
+    const std::string defUp     = "100";
+    const std::string defDown   = "100";
+
+    clearScreen(); hr();
+    printCenter(std::string(W) + BOLD, "INSTALADOR UDP-HYSTERIA v1");
+    hr();
+    std::cout << "    " << C << "Versión      : " << W << "v1.3.5" << N << "\n";
+    std::cout << "    " << C << "Arquitectura : " << W << arch      << N << "\n";
+    std::cout << "    " << C << "IP pública   : " << W << pubIp     << N << "\n";
+    sep3();
+    std::cout << "    " << D << "Configura los parámetros (ENTER = usar valor sugerido)" << N << "\n\n";
+
+    std::string port   = promptPortSafe("Puerto UDP de escucha", "36725");
+    std::string obfs   = fieldPrompt("OBFS (ofuscación)", defObfs);
+    std::string upMb   = fieldPrompt("Ancho de banda UP (Mbps)", defUp);
+    std::string downMb = fieldPrompt("Ancho de banda DOWN (Mbps)", defDown);
+    if (obfs.empty())   obfs   = defObfs;
+    if (upMb.empty())   upMb   = defUp;
+    if (downMb.empty()) downMb = defDown;
+
+    sep3();
+    std::cout << "    " << C << "Puerto UDP   : " << Y << port   << N << "\n";
+    std::cout << "    " << C << "OBFS         : " << Y << obfs   << N << "\n";
+    std::cout << "    " << C << "UP / DOWN    : " << Y << upMb << " / " << downMb << " Mbps" << N << "\n";
+    std::cout << "    " << C << "Auth         : " << Y << "external (autSSH)" << N << "\n";
+    std::cout << "    " << C << "Redirect UDP : " << Y << hyRange() << " → " << port
+              << N << "    " << D << "(rango exclusivo Hysteria)" << N << "\n";
+    sep3();
+    std::cout << "\n    " << W << "¿Continuar? (s/n): " << G;
+    std::string confirm;
+    if (!std::getline(std::cin, confirm)) confirm.clear();
+    std::cout << N;
+    if (confirm.empty() || (confirm[0] != 's' && confirm[0] != 'S')) {
+        printCenter(Y, "Cancelado."); pauseUi(); return;
+    }
+
+    std::cout << "\n"; sep();
+
+    forkCmd(
+        "curl -fsSL -o " + std::string(Cfg::H1_BIN) + " '" + url + "' && "
+        "chmod +x " + std::string(Cfg::H1_BIN),
+        "Descargando hysteria v1.3.5..."
+    );
+    {
+        std::string ft = runCapture("file " + std::string(Cfg::H1_BIN) + " 2>/dev/null");
+        if (ft.find("ELF") == std::string::npos) {
+            ::system(("rm -f " + std::string(Cfg::H1_BIN)).c_str());
+            std::cout << "\n"; hr();
+            printCenter(std::string(R) + BOLD, "✗  Error en la descarga — sin internet?");
+            hr(); pauseUi(); return;
+        }
+    }
+
+    forkCmd(
+        "mkdir -p " + std::string(Cfg::H1_DIR) + " && chmod 755 " + std::string(Cfg::H1_DIR),
+        "Creando directorios SN PLUS..."
+    );
+    buildAutSSH();
+
+    std::string certPath = Cfg::H1_CERT;
+    std::string keyPath  = Cfg::H1_KEY;
+    if (!chooseCert(certPath, keyPath, "local")) {
+        std::cout << "    " << R << "✗" << N << " " << W << "No se pudo obtener certificado TLS" << N << "\n";
+        pauseUi(); return;
+    }
+
+    {
+        fs::create_directories(Cfg::H1_DIR);
+        std::ofstream cfg(Cfg::H1_CONF);
+        cfg << "{\n"
+            << "  \"listen\": \":" << port << "\",\n"
+            << "  \"protocol\": \"udp\",\n"
+            << "  \"cert\": \"" << certPath << "\",\n"
+            << "  \"key\": \"" << keyPath   << "\",\n"
+            << "  \"up_mbps\": "   << upMb   << ",\n"
+            << "  \"down_mbps\": " << downMb << ",\n"
+            << "  \"disable_udp\": false,\n"
+            << "  \"obfs\": \"" << obfs << "\",\n"
+            << "  \"auth\": {\n"
+            << "    \"mode\": \"external\",\n"
+            << "    \"config\": {\n"
+            << "      \"cmd\": \"" << Cfg::H1_AUTOSSH << "\"\n"
+            << "    }\n"
+            << "  }\n"
+            << "}\n";
+        cfg.close();
+        ::system(("chmod 600 " + std::string(Cfg::H1_CONF)).c_str());
+    }
+    std::cout << "    " << G << "✓" << N << " " << W << "config.json generado" << N << "\n";
+
+    {
+        std::ofstream svc(Cfg::H1_SVC);
+        svc << "[Unit]\nDescription=udp-hysteria by @SIN_NOMBRE22\nAfter=network.target nss-lookup.target\nWants=network-online.target\n\n"
+            << "[Service]\nType=simple\nUser=root\nExecStart=" << Cfg::H1_BIN << " server --config " << Cfg::H1_CONF << "\n"
+            << "StandardOutput=append:" << Cfg::H1_LOG << "\nStandardError=append:" << Cfg::H1_LOG << "\n"
+            << "Restart=always\nRestartSec=5\nLimitNOFILE=1048576\n\n"
+            << "[Install]\nWantedBy=multi-user.target\n";
+        svc.close();
+    }
+    forkCmd("systemctl daemon-reload", "Registrando servicio systemd...");
+
+    applyIptablesRedirect(port);
+    std::cout << "    " << G << "✓" << N << " "
+              << W << "iptables REDIRECT " << hyRange() << " → " << port << N << "\n";
+
+    forkCmd(
+        "systemctl enable " + std::string(Cfg::H1_SVC_NM) + " 2>/dev/null || true; "
+        "systemctl restart " + std::string(Cfg::H1_SVC_NM) + " 2>/dev/null || true; "
+        "sleep 2",
+        "Iniciando servicio udp-hysteria..."
+    );
+
+    bool ok = h1IsOn();
+    clearScreen(); hr();
+    printCenter(std::string(W) + BOLD, "INSTALADOR UDP-HYSTERIA v1");
+    hr();
+    printf("    \033[1;37m%-16s\033[0m  \033[1;33m%s\033[0m\n", "IP pública:",   pubIp.c_str());
+    printf("    \033[1;37m%-16s\033[0m  \033[0;36m%s\033[0m\n",  "Puerto UDP:",   port.c_str());
+    printf("    \033[1;37m%-16s\033[0m  \033[0;36m%s\033[0m\n",  "OBFS:",         obfs.c_str());
+    printf("    \033[1;37m%-16s\033[0m  \033[0;36m%s / %s Mbps\033[0m\n", "UP/DOWN:", upMb.c_str(), downMb.c_str());
+    sep3();
+    if (ok) {
+        std::cout << "           " << G << "✓ systemctl enable udp-hysteria....... OK" << N << "\n";
+        std::cout << "           " << G << "✓ systemctl start  udp-hysteria....... OK" << N << "\n";
+    } else {
+        std::cout << "           " << R << "✗ El servicio no arrancó" << N << "\n";
+        std::cout << "           " << Y << "  Revisa: journalctl -u udp-hysteria -n 30" << N << "\n";
+    }
+    sep3();
+    std::cout << "    " << D << "Usa RECONFIGURAR para cambiar puerto, OBFS o credenciales." << N << "\n";
+    hr(); pauseUi();
+}
+
+// =========================================================
+//  HYSTERIA v1 — CONFIGURAR
+// =========================================================
+static void h1Configure() {
+    showTitle("CONFIGURAR UDP-HYSTERIA v1");
+
+    if (!h1IsInstalled()) {
+        std::cout << "\n    " << R << "✗" << N << " " << W << "Hysteria v1 no está instalado" << N << "\n";
+        pauseUi(); return;
+    }
+
+    std::string pubIp = getPublicIp();
+    std::cout << "\n"; sep();
+    std::cout << "    " << C << "IP pública detectada: " << W << pubIp << N << "\n";
+    sep(); std::cout << "\n";
+
+    std::string port   = promptPortSafe("Puerto UDP de escucha", "36725");
+    std::string obfs   = fieldPrompt("OBFS (ofuscación)", genObfs(8));
+    std::string upMb   = fieldPrompt("Ancho de banda UP (Mbps)", "100");
+    std::string downMb = fieldPrompt("Ancho de banda DOWN (Mbps)", "100");
+
+    if (!fs::exists(Cfg::H1_AUTOSSH)) {
+        std::cout << "\n    " << Y << "⚠ autSSH no encontrado — recompilando..." << N << "\n";
+        if (!buildAutSSH()) { pauseUi(); return; }
+    }
+
+    std::string certPath = Cfg::H1_CERT;
+    std::string keyPath  = Cfg::H1_KEY;
+    std::cout << "\n";
+    if (!chooseCert(certPath, keyPath, "local")) {
+        std::cout << "    " << R << "✗" << N << " " << W << "No se pudo obtener certificado TLS" << N << "\n";
+        pauseUi(); return;
+    }
+
+    {
+        fs::create_directories(Cfg::H1_DIR);
+        std::ofstream cfg(Cfg::H1_CONF);
+        cfg << "{\n"
+            << "  \"listen\": \":" << port << "\",\n"
+            << "  \"protocol\": \"udp\",\n"
+            << "  \"cert\": \"" << certPath << "\",\n"
+            << "  \"key\": \"" << keyPath   << "\",\n"
+            << "  \"up_mbps\": "   << upMb   << ",\n"
+            << "  \"down_mbps\": " << downMb << ",\n"
+            << "  \"disable_udp\": false,\n"
+            << "  \"obfs\": \""    << obfs   << "\",\n"
+            << "  \"auth\": {\n"
+            << "    \"mode\": \"external\",\n"
+            << "    \"config\": {\n"
+            << "      \"cmd\": \"" << Cfg::H1_AUTOSSH << "\"\n"
+            << "    }\n"
+            << "  }\n"
+            << "}\n";
+        cfg.close();
+        ::system(("chmod 600 " + std::string(Cfg::H1_CONF)).c_str());
+    }
+    std::cout << "    " << G << "✓" << N << " " << W << "config.json escrito" << N << "\n";
+
+    applyIptablesRedirect(port);
+    std::cout << "    " << G << "✓" << N << " "
+              << W << "iptables REDIRECT " << hyRange() << " → " << port << N << "\n";
+
+    forkCmd(
+        "systemctl enable " + std::string(Cfg::H1_SVC_NM) + " 2>/dev/null || true; "
+        "systemctl restart " + std::string(Cfg::H1_SVC_NM) + " 2>/dev/null || true; "
+        "sleep 2",
+        "Iniciando udp-hysteria..."
+    );
+
+    clearScreen(); hr();
+    printCenter(std::string(W) + BOLD, "INSTALADOR UDP-HYSTERIA");
+    hr();
+    std::cout << " " << C << "HYSTERIA VERSION: " << W << "1" << N << "\n";
+    sep();
+    std::cout << " " << C << "PUERTO UDP: " << W << port << N << "\n";
+    sep();
+    std::cout << " " << C << "RANGOS IPTABLES: " << W << hyRange()
+              << "  " << D << "(exclusivo Hysteria)" << N << "\n";
+    hr();
+    if (h1IsOn()) {
+        std::cout << "           " << G << "systemctl daemon-reload............" << W << "OK" << N << "\n";
+        std::cout << "           " << G << "systemctl start udp-hysteria......." << W << "OK" << N << "\n";
+        std::cout << "           " << G << "systemctl enable udp-hysteria......" << W << "OK" << N << "\n";
+    } else {
+        std::cout << "           " << R << "systemctl start udp-hysteria....... FALLÓ" << N << "\n";
+        std::cout << "           " << Y << "  Revisa: journalctl -u udp-hysteria -n 30" << N << "\n";
+    }
+    hr();
+
+    sep();
+    printf("    \033[1;37m%-18s\033[0m  \033[1;33m%s\033[0m\n", "IP pública:",  pubIp.c_str());
+    printf("    \033[1;37m%-18s\033[0m  \033[0;36m%s\033[0m\n",  "Puerto UDP:", port.c_str());
+    printf("    \033[1;37m%-18s\033[0m  \033[0;36m%s\033[0m\n",  "OBFS:",       obfs.c_str());
+    printf("    \033[1;37m%-18s\033[0m  \033[0;36m%s Mbps\033[0m\n", "UP:",    upMb.c_str());
+    printf("    \033[1;37m%-18s\033[0m  \033[0;36m%s Mbps\033[0m\n", "DOWN:",  downMb.c_str());
+    hr(); pauseUi();
+}
+
+// =========================================================
+//  HYSTERIA v1 — MODIFICAR OBFS
+// =========================================================
+static void h1ModifyObfs() {
+    showTitle("MODIFICAR OBFS — UDP-HYSTERIA");
+
+    if (!fs::exists(Cfg::H1_CONF)) {
+        std::cout << "\n    " << R << "✗" << N << " " << W << "No hay configuración. Configura primero." << N << "\n";
+        hr(); pauseUi(); return;
+    }
+
+    std::string current = h1Obfs();
+    std::cout << "\n";
+    printf("    \033[1;37m%-14s\033[0m  \033[0;36m%s\033[0m\n", "OBFS actual:", current.c_str());
+    sep();
+
+    std::string newObfs = fieldPrompt("Nuevo OBFS (ENTER = generar aleatorio)", "");
+    if (newObfs.empty()) newObfs = genObfs(8);
+
+    int rc = sysrun(
+        "sed -i 's/\"obfs\":\\s*\"[^\"]*\"/\"obfs\": \"" + newObfs + "\"/' "
+        + std::string(Cfg::H1_CONF));
+
+    if (rc == 0) {
+        std::cout << "    " << G << "✓" << N << " " << W << "OBFS actualizado: " << Y << newObfs << N << "\n";
+        forkCmd(
+            "systemctl restart " + std::string(Cfg::H1_SVC_NM) + " 2>/dev/null || true; sleep 1",
+            "Reiniciando servicio..."
+        );
+    } else {
+        std::cout << "    " << R << "✗" << N << " " << W << "Error actualizando OBFS" << N << "\n";
+    }
+    hr(); pauseUi();
+}
+
+// =========================================================
+//  HYSTERIA v1 — DESINSTALAR
+// =========================================================
+static void h1Uninstall() {
+    showTitle("DESINSTALAR UDP-HYSTERIA");
+
+    std::cout << "\n"
+              << "    " << Y << "⚠  Se eliminará completamente:" << N << "\n"
+              << "    " << D
+              << "   • Binario " << Cfg::H1_BIN << "\n"
+                 "   • Configuración /etc/SNPLUS/hysteria/\n"
+                 "   • Servicio systemd udp-hysteria\n"
+                 "   • Reglas iptables de redirect\n" << N << "\n"
+              << "    " << W << "¿Estás seguro? (s/n): " << G;
+    std::string confirm;
+    if (!std::getline(std::cin, confirm)) confirm.clear();
+    std::cout << N;
+
+    if (confirm.empty() || (confirm[0] != 's' && confirm[0] != 'S')) {
+        printCenter(Y, "Cancelado."); pauseUi(); return;
+    }
+
+    std::string port = h1Port();
+
+    forkCmd(
+        "systemctl stop "    + std::string(Cfg::H1_SVC_NM) + " 2>/dev/null || true; "
+        "systemctl disable " + std::string(Cfg::H1_SVC_NM) + " 2>/dev/null || true; "
+        "pkill -9 -f 'hysteria.*server' 2>/dev/null || true; sleep 1",
+        "Deteniendo servicio udp-hysteria..."
+    );
+
+    if (!port.empty() && port != "—")
+        removeIptablesRedirect(port);
+
+    forkCmd(
+        "rm -f " + std::string(Cfg::H1_BIN) + " "
+                 + std::string(Cfg::H1_SVC) + " "
+                 + std::string(Cfg::H1_LOG) + " && "
+        "rm -rf " + std::string(Cfg::H1_DIR) + " && "
+        "systemctl daemon-reload 2>/dev/null || true && "
+        "systemctl reset-failed 2>/dev/null || true",
+        "Eliminando binario, configs y unit files..."
+    );
+
+    std::cout << "\n"; hr();
+    if (!h1IsInstalled())
+        printCenter(std::string(G) + BOLD, "✓  UDP-Hysteria desinstalado completamente");
+    else
+        printCenter(std::string(Y) + BOLD, "⚠  Desinstalación con advertencias");
+    hr(); pauseUi();
+}
+
+// =========================================================
+//  HYSTERIA v1 — START/STOP
+// =========================================================
+static void h1StartStop() {
+    clearScreen(); hr();
+    if (!h1IsOn()) {
+        forkCmd(
+            "systemctl start " + std::string(Cfg::H1_SVC_NM) + " 2>/dev/null || true; sleep 2",
+            "Iniciando udp-hysteria..."
+        );
+        if (h1IsOn())
+            printCenter(std::string(G) + BOLD, "✓  Servicio udp-hysteria iniciado");
+        else {
+            printCenter(std::string(R) + BOLD, "✗  Falla al iniciar");
+            std::cout << "    " << Y << "  Revisa: journalctl -u udp-hysteria -n 30" << N << "\n";
+        }
+    } else {
+        forkCmd(
+            "systemctl stop " + std::string(Cfg::H1_SVC_NM) + " 2>/dev/null || true; "
+            "pkill -9 -f 'hysteria.*server' 2>/dev/null || true; sleep 1",
+            "Deteniendo udp-hysteria..."
+        );
+        printCenter(!h1IsOn() ? std::string(Y) + BOLD : std::string(R) + BOLD,
+                    !h1IsOn() ? "■  Servicio detenido" : "✗  Falla al detener");
+    }
+    hr(); pauseUi();
+}
+
+static void h1Restart() {
+    clearScreen(); hr();
+    forkCmd(
+        "systemctl restart " + std::string(Cfg::H1_SVC_NM) + " 2>/dev/null || true; sleep 2",
+        "Reiniciando udp-hysteria..."
+    );
+    if (h1IsOn())
+        printCenter(std::string(G) + BOLD, "✓  Servicio reiniciado");
+    else {
+        printCenter(std::string(R) + BOLD, "✗  Falla al reiniciar");
+        std::cout << "    " << Y << "  Revisa: journalctl -u udp-hysteria -n 30" << N << "\n";
+    }
+    hr(); pauseUi();
+}
+
+static void h1Logs() {
+    clearScreen(); hr();
+    printCenter(std::string(W) + BOLD, "LOG UDP-HYSTERIA");
+    hr();
+    std::cout << "\n    " << D << "(q para salir)" << N << "\n\n";
+    sysrun("journalctl -u " + std::string(Cfg::H1_SVC_NM)
+           + " -n 50 --no-pager -o short 2>/dev/null || "
+           "tail -n 50 " + std::string(Cfg::H1_LOG) + " 2>/dev/null || "
+           "echo '  Sin logs disponibles'");
+    hr(); pauseUi();
+}
+
+static void h1LogsLive() {
+    clearScreen(); hr();
+    printCenter(std::string(W) + BOLD, "LOG UDP-HYSTERIA EN TIEMPO REAL");
+    hr();
+    std::cout << "\n    " << D << "(Ctrl+C para salir)" << N << "\n\n";
+    sysrun("journalctl -u " + std::string(Cfg::H1_SVC_NM)
+           + " -f --no-pager -o short 2>/dev/null || "
+           "tail -f " + std::string(Cfg::H1_LOG) + " 2>/dev/null");
+    hr(); pauseUi();
+}
+
+static void h1Status() {
+    clearScreen(); hr();
+    printCenter(std::string(W) + BOLD, "ESTADO — UDP-HYSTERIA");
+    hr();
+    sysrun("systemctl status " + std::string(Cfg::H1_SVC_NM) + " --no-pager 2>/dev/null || "
+           "echo '  Servicio no registrado en systemd'");
+    sep();
+    std::string port = h1Port();
+    if (port != "—") {
+        std::cout << "\n    " << C << "Conexiones UDP activas en :" << port << N << "\n";
+        sysrun("ss -unp | grep ':" + port + "' 2>/dev/null | head -20 || true");
+    }
+    sep();
+    std::cout << "    " << C << "Reglas iptables REDIRECT:" << N << "\n";
+    sysrun("iptables -t nat -L PREROUTING -n --line-numbers 2>/dev/null | grep REDIRECT | head -5 || echo '  (ninguna)'");
+    hr(); pauseUi();
+}
+
+static void h1ShowAdminPanel() {
+    clearScreen(); hr();
+    printCenter(std::string(W) + BOLD, "ADMINISTRADOR UDP-HYSTERIA");
+    hr();
+
+    bool on  = h1IsOn();
+    std::string port = h1Port();
+    std::string obfs = h1Obfs();
+    std::string cert = h1ReadJson("cert");
+
+    std::string stStr = on ? (std::string(G) + BOLD + "[ON]"  + N) : (std::string(R) + BOLD + "[OFF]" + N);
+
+    std::cout << " " << C << "VERSION: " << W << "HYSTERIA V1" << N << "\n";
+    std::cout << " " << C << "PORT: "    << W << (port == "—" ? "(sin config)" : port) << N << "\n";
+    std::cout << " " << C << "REDIRECT: " << W << hyRange() << " > "
+              << (port == "—" ? "?" : port) << "  " << D << "(excl.Hysteria)" << N << "\n";
+    std::cout << " " << C << "OBFS: "    << W << (obfs == "—" ? "(sin config)" : obfs) << N << "\n";
+    std::cout << " " << C << "AUTH: "    << W << "external (autSSH)" << N << "\n";
+    std::cout << " " << C << "ESTADO: "  << stStr << "\n";
+    hr();
+}
+
+// =========================================================
+//  SUBMENÚ — HYSTERIA v1
+// =========================================================
+static void menuH1() {
+    while (true) {
+        h1ShowAdminPanel();
+
+        bool on        = h1IsOn();
+        bool installed = h1IsInstalled();
+
+        sep();
+        if (installed) {
+            printItem("1", "RECONFIGURAR UDP-HYSTERIA");
+            printItem("2", "MODIFICAR OBFS");
+        } else {
+            printItem("1", "INSTALAR HYSTERIA v1");
+        }
+        sep();
+        if (installed) {
+            printItem("3", "ESTADO DEL SERVICIO");
+            printItem("4", "REINICIAR SERVICIO");
+            std::string onoff = on ? "[ON]" : "[OFF]";
+            printItem("5", "INICIAR/PARAR SERVICIO " + onoff);
+            sep();
+            printItem("6", "LOG UDP-HYSTERIA");
+            printItem("7", "LOG UDP-HYSTERIA EN TIEMPO REAL");
+        }
+        hr();
+        std::cout << " " << Y << "[0]" << N << " Volver";
+        if (installed) {
+            std::cout << "   " << Y << "[8]" << N << " REINSTALAR";
+            std::cout << "   " << Y << "[9]" << N << " DESINSTALAR";
+        }
+        std::cout << "\n";
+        hr();
+
+        std::string op = menuPrompt();
+        if (std::cin.eof()) break;
+
+        auto notInstalled = [&]() {
+            std::cout << "    " << R << "✗ Hysteria v1 no instalado" << N << "\n";
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+        };
+
+        if      (op == "1") { installed ? h1Configure()  : h1Install(); }
+        else if (op == "2") { installed ? h1ModifyObfs() : notInstalled(); }
+        else if (op == "3") { installed ? h1Status()     : notInstalled(); }
+        else if (op == "4") { installed ? h1Restart()    : notInstalled(); }
+        else if (op == "5") { installed ? h1StartStop()  : notInstalled(); }
+        else if (op == "6") { installed ? h1Logs()       : notInstalled(); }
+        else if (op == "7") { installed ? h1LogsLive()   : notInstalled(); }
+        else if (op == "8") { h1Uninstall(); h1Install(); }
+        else if (op == "9") { installed ? h1Uninstall()  : notInstalled(); }
+        else if (op == "0") { break; }
+        else {
+            std::cout << "    " << R << "Opción inválida" << N << "\n";
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+        }
+    }
+}
+
+// =========================================================
+//  HYSTERIA v2 — INSTALAR (con get.hy2.sh)
+// =========================================================
+static void h2Install() {
+    showTitle("INSTALAR HYSTERIA v2");
+
+    if (h2IsInstalled()) {
+        std::cout << "\n    " << Y << "⚠" << N << " " << W << "Hysteria v2 ya instalado" << N << "\n";
+        pauseUi(); return;
+    }
+
+    std::string arch  = getArch();
+    std::string urlV2 = "https://github.com/apernet/hysteria/releases/latest/download/hysteria-linux-" + arch;
+    std::string pubIp = getPublicIp();
+
+    const std::string defPassGen = genObfs(16);
+    const std::string defUp     = "200";
+    const std::string defDown   = "500";
+
+    clearScreen(); hr();
+    printCenter(std::string(W) + BOLD, "INSTALADOR HYSTERIA v2 (QUIC)");
+    hr();
+    std::cout << "    " << C << "Arquitectura : " << W << arch   << N << "\n";
+    std::cout << "    " << C << "IP pública   : " << W << pubIp  << N << "\n";
+    sep3();
+    std::cout << "    " << D << "Configura los parámetros (ENTER = usar valor sugerido)" << N << "\n\n";
+
+    std::string port   = promptPortSafe("Puerto UDP", "443");
+    std::string pass   = fieldPrompt("Password de conexión", defPassGen);
+    std::string upMb   = fieldPrompt("UP Mbps", defUp);
+    std::string downMb = fieldPrompt("DOWN Mbps", defDown);
+    std::string domain = fieldPrompt("Dominio/SNI (vacío=IP)", pubIp);
+    if (pass.empty())   pass   = defPassGen;
+    if (upMb.empty())   upMb   = defUp;
+    if (downMb.empty()) downMb = defDown;
+    if (domain.empty()) domain = pubIp;
+
+    sep3();
+    std::cout << "    " << C << "Puerto UDP   : " << Y << port    << N << "\n";
+    std::cout << "    " << C << "Password     : " << Y << pass    << N << "\n";
+    std::cout << "    " << C << "UP / DOWN    : " << Y << upMb << " / " << downMb << " Mbps" << N << "\n";
+    std::cout << "    " << C << "SNI/Dominio  : " << Y << domain  << N << "\n";
+    sep3();
+    std::cout << "\n    " << W << "¿Continuar? (s/n): " << G;
+    std::string confirm;
+    if (!std::getline(std::cin, confirm)) confirm.clear();
+    std::cout << N;
+    if (confirm.empty() || (confirm[0] != 's' && confirm[0] != 'S')) {
+        printCenter(Y, "Cancelado."); pauseUi(); return;
+    }
+
+    std::cout << "\n"; sep();
+
+    forkCmd(
+        "H1_BACKUP=''; "
+        "if [ -f " + std::string(Cfg::H1_BIN) + " ]; then "
+        "  H1_BACKUP=$(mktemp /tmp/hy1_bak_XXXX); "
+        "  cp " + std::string(Cfg::H1_BIN) + " \"$H1_BACKUP\"; "
+        "fi; "
+        "curl -fsSL -o /tmp/_get_hy2.sh https://get.hy2.sh/ && "
+        "chmod +x /tmp/_get_hy2.sh && "
+        "bash /tmp/_get_hy2.sh >/dev/null 2>&1; "
+        "SCRIPT_RC=$?; "
+        "rm -f /tmp/_get_hy2.sh; "
+        "if [ -f /usr/local/bin/hysteria ]; then "
+        "  cp /usr/local/bin/hysteria " + std::string(Cfg::H2_BIN) + " && "
+        "  chmod +x " + std::string(Cfg::H2_BIN) + "; "
+        "fi; "
+        "if [ -n \"$H1_BACKUP\" ] && [ -f \"$H1_BACKUP\" ]; then "
+        "  cp \"$H1_BACKUP\" " + std::string(Cfg::H1_BIN) + " && "
+        "  chmod +x " + std::string(Cfg::H1_BIN) + "; "
+        "  rm -f \"$H1_BACKUP\"; "
+        "fi; "
+        "exit $SCRIPT_RC",
+        "Instalando via get.hy2.sh..."
+    );
+    if (!h2IsInstalled()) {
+        forkCmd(
+            "curl -fsSL -o " + std::string(Cfg::H2_BIN) + " '" + urlV2 + "' && "
+            "chmod +x " + std::string(Cfg::H2_BIN),
+            "Descarga directa apernet/hysteria..."
+        );
+    }
+    {
+        std::string ft = runCapture("file " + std::string(Cfg::H2_BIN) + " 2>/dev/null");
+        if (ft.find("ELF") == std::string::npos) {
+            ::system(("rm -f " + std::string(Cfg::H2_BIN)).c_str());
+            std::cout << "\n"; hr();
+            printCenter(std::string(R) + BOLD, "✗  Binario inválido — sin internet?");
+            hr(); pauseUi(); return;
+        }
+    }
+
+    forkCmd(
+        "mkdir -p " + std::string(Cfg::H2_DIR) + " && chmod 755 " + std::string(Cfg::H2_DIR),
+        "Creando directorios SN PLUS v2..."
+    );
+
+    std::string certPath = Cfg::H2_CERT;
+    std::string keyPath  = Cfg::H2_KEY;
+    if (!chooseCert(certPath, keyPath, domain)) {
+        std::cout << "    " << R << "✗" << N << " " << W << "No se pudo obtener certificado TLS" << N << "\n";
+        pauseUi(); return;
+    }
+
+    {
+        fs::create_directories(Cfg::H2_DIR);
+        std::ofstream cfg(Cfg::H2_CONF);
+        cfg << "# Hysteria v2 — SN PLUS\n"
+            << "listen: :" << port << "\n\n"
+            << "tls:\n"
+            << "  cert: " << certPath << "\n"
+            << "  key:  " << keyPath  << "\n\n"
+            << "auth:\n"
+            << "  type: password\n"
+            << "  password: " << pass << "\n\n"
+            << "bandwidth:\n"
+            << "  up:   " << upMb   << " mbps\n"
+            << "  down: " << downMb << " mbps\n\n"
+            << "quic:\n"
+            << "  initStreamReceiveWindow:   8388608\n"
+            << "  maxStreamReceiveWindow:    8388608\n"
+            << "  initConnReceiveWindow:    20971520\n"
+            << "  maxConnReceiveWindow:     20971520\n"
+            << "  maxIdleTimeout:           30s\n"
+            << "  maxIncomingStreams:        1024\n"
+            << "  disablePathMTUDiscovery:  false\n\n"
+            << "udpIdleTimeout: 60s\n";
+        cfg.close();
+        ::system(("chmod 600 " + std::string(Cfg::H2_CONF)).c_str());
+    }
+    std::cout << "    " << G << "✓" << N << " " << W << "config.yaml generado" << N << "\n";
+
+    {
+        std::ofstream svc(Cfg::H2_SVC);
+        svc << "[Unit]\nDescription=udp-hysteria2 by @SIN_NOMBRE22\nAfter=network.target nss-lookup.target\nWants=network-online.target\n\n"
+            << "[Service]\nType=simple\nUser=root\nExecStart=" << Cfg::H2_BIN << " server --config " << Cfg::H2_CONF << "\n"
+            << "StandardOutput=append:" << Cfg::H2_LOG << "\nStandardError=append:" << Cfg::H2_LOG << "\n"
+            << "Restart=always\nRestartSec=5\nLimitNOFILE=1048576\n\n"
+            << "[Install]\nWantedBy=multi-user.target\n";
+        svc.close();
+    }
+    forkCmd("systemctl daemon-reload", "Registrando servicio systemd...");
+
+    forkCmd(
+        "systemctl enable " + std::string(Cfg::H2_SVC_NM) + " 2>/dev/null || true; "
+        "systemctl restart " + std::string(Cfg::H2_SVC_NM) + " 2>/dev/null || true; "
+        "sleep 2",
+        "Iniciando servicio udp-hysteria2..."
+    );
+
+    bool ok  = h2IsOn();
+    std::string uri = "hysteria2://" + pass + "@" + domain + ":" + port
+                    + "/?insecure=1&sni=" + domain;
+
+    clearScreen(); hr();
+    printCenter(std::string(W) + BOLD, "INSTALADOR HYSTERIA v2 (QUIC)");
+    hr();
+    printf("    \033[1;37m%-16s\033[0m  \033[1;33m%s\033[0m\n", "IP pública:",  pubIp.c_str());
+    printf("    \033[1;37m%-16s\033[0m  \033[0;36m%s\033[0m\n",  "Puerto UDP:",  port.c_str());
+    printf("    \033[1;37m%-16s\033[0m  \033[0;36m%s / %s Mbps\033[0m\n", "UP/DOWN:", upMb.c_str(), downMb.c_str());
+    sep3();
+    if (ok) {
+        std::cout << "           " << G << "✓ systemctl enable udp-hysteria2...... OK" << N << "\n";
+        std::cout << "           " << G << "✓ systemctl start  udp-hysteria2...... OK" << N << "\n";
+    } else {
+        std::cout << "           " << R << "✗ El servicio no arrancó" << N << "\n";
+        std::cout << "           " << Y << "  Revisa: journalctl -u udp-hysteria2 -n 30" << N << "\n";
+    }
+    sep3();
+    std::cout << "    " << W << BOLD << "URI cliente:" << N << "\n";
+    std::cout << "    " << Y << uri << N << "\n";
+    sep3();
+    std::cout << "    " << D << "Usa CONFIGURAR SERVIDOR para cambiar puerto, password, etc." << N << "\n";
+    hr(); pauseUi();
+}
+
+static void h2Configure() {
+    showTitle("CONFIGURAR HYSTERIA v2");
+
+    if (!h2IsInstalled()) {
+        std::cout << "\n    " << R << "✗" << N << " " << W << "Hysteria v2 no instalado" << N << "\n";
+        pauseUi(); return;
+    }
+
+    std::string pubIp  = getPublicIp();
+    std::string port   = promptPortSafe("Puerto UDP", "443");
+    std::string pass   = fieldPrompt("Password de conexión", genObfs(16));
+    std::string upMb   = fieldPrompt("UP Mbps", "200");
+    std::string downMb = fieldPrompt("DOWN Mbps", "500");
+    std::string domain = fieldPrompt("Dominio/SNI (vacío=IP)", pubIp);
+    if (domain.empty()) domain = pubIp;
+
+    std::string certPath = Cfg::H2_CERT;
+    std::string keyPath  = Cfg::H2_KEY;
+    std::cout << "\n";
+    if (!chooseCert(certPath, keyPath, domain)) {
+        std::cout << "    " << R << "✗" << N << " " << W << "No se pudo obtener certificado TLS" << N << "\n";
+        pauseUi(); return;
+    }
+
+    {
+        fs::create_directories(Cfg::H2_DIR);
+        std::ofstream cfg(Cfg::H2_CONF);
+        cfg << "# Hysteria v2 — SN PLUS\n"
+            << "listen: :" << port << "\n\n"
+            << "tls:\n"
+            << "  cert: " << certPath << "\n"
+            << "  key:  " << keyPath  << "\n\n"
+            << "auth:\n"
+            << "  type: password\n"
+            << "  password: " << pass << "\n\n"
+            << "bandwidth:\n"
+            << "  up:   " << upMb   << " mbps\n"
+            << "  down: " << downMb << " mbps\n\n"
+            << "quic:\n"
+            << "  initStreamReceiveWindow:   8388608\n"
+            << "  maxStreamReceiveWindow:    8388608\n"
+            << "  initConnReceiveWindow:    20971520\n"
+            << "  maxConnReceiveWindow:     20971520\n"
+            << "  maxIdleTimeout:           30s\n"
+            << "  maxIncomingStreams:        1024\n"
+            << "  disablePathMTUDiscovery:  false\n\n"
+            << "udpIdleTimeout: 60s\n";
+        cfg.close();
+        ::system(("chmod 600 " + std::string(Cfg::H2_CONF)).c_str());
+    }
+
+    forkCmd(
+        "systemctl enable " + std::string(Cfg::H2_SVC_NM) + " 2>/dev/null || true; "
+        "systemctl restart " + std::string(Cfg::H2_SVC_NM) + " 2>/dev/null || true; "
+        "sleep 2",
+        "Iniciando hysteria v2..."
+    );
+
+    std::string uri = "hysteria2://" + pass + "@" + domain + ":" + port
+                    + "/?insecure=1&sni=" + domain;
+
+    std::cout << "\n"; hr();
+    if (h2IsOn())
+        printCenter(std::string(G) + BOLD, "✓  Hysteria v2 configurado y activo");
+    else {
+        printCenter(std::string(R) + BOLD, "✗  El servicio no arrancó");
+        std::cout << "    " << Y << "  Revisa: journalctl -u udp-hysteria2 -n 30" << N << "\n";
+    }
+    sep();
+    printf("    \033[1;37m%-14s\033[0m  \033[0;36m%s\033[0m\n", "Puerto UDP:", port.c_str());
+    printf("    \033[1;37m%-14s\033[0m  \033[0;36m%s\033[0m\n", "Password:",   pass.c_str());
+    sep3();
+    std::cout << "    " << W << BOLD << "URI cliente:" << N << "\n";
+    std::cout << "    " << Y << uri << N << "\n";
+    hr(); pauseUi();
+}
+
+static void h2Uninstall() {
+    showTitle("DESINSTALAR HYSTERIA v2");
+
+    std::cout << "\n    " << W << "¿Estás seguro? (s/n): " << G;
+    std::string confirm;
+    if (!std::getline(std::cin, confirm)) confirm.clear();
+    std::cout << N;
+
+    if (confirm.empty() || (confirm[0] != 's' && confirm[0] != 'S')) {
+        printCenter(Y, "Cancelado."); pauseUi(); return;
+    }
+
+    forkCmd(
+        "systemctl stop "    + std::string(Cfg::H2_SVC_NM) + " 2>/dev/null || true; "
+        "systemctl disable " + std::string(Cfg::H2_SVC_NM) + " 2>/dev/null || true; "
+        "pkill -9 -f 'hysteria2.*server' 2>/dev/null || true; sleep 1",
+        "Deteniendo hysteria v2..."
+    );
+
+    forkCmd(
+        "rm -f " + std::string(Cfg::H2_BIN) + " "
+                 + std::string(Cfg::H2_SVC) + " "
+                 + std::string(Cfg::H2_LOG) + " && "
+        "rm -rf " + std::string(Cfg::H2_DIR) + " && "
+        "systemctl daemon-reload 2>/dev/null || true",
+        "Eliminando archivos..."
+    );
+
+    std::cout << "\n"; hr();
+    if (!h2IsInstalled())
+        printCenter(std::string(G) + BOLD, "✓  Hysteria v2 desinstalado");
+    else
+        printCenter(std::string(Y) + BOLD, "⚠  Desinstalación con advertencias");
+    hr(); pauseUi();
+}
+
+// =========================================================
+//  SUBMENÚ — HYSTERIA v2
+// =========================================================
+static void menuH2() {
+    while (true) {
+        clearScreen();
+
+        bool on        = h2IsOn();
+        bool installed = h2IsInstalled();
+
+        std::string stStr = on ? (std::string(G) + BOLD + "● ACTIVO"   + N)
+                               : (std::string(R) + BOLD + "● INACTIVO" + N);
+
+        hr();
+        printCenter(std::string(W) + BOLD, "HYSTERIA v2 — UDP PROXY (QUIC)");
+        hr();
+
+        if (installed) {
+            printf("    \033[1;37m%-14s\033[0m  ", "Estado:");
+            std::cout << stStr << "\n";
+            printf("    \033[1;37m%-14s\033[0m  \033[1;33m%s\033[0m\n", "Puerto UDP:", h2Port().c_str());
+            printf("    \033[1;37m%-14s\033[0m  \033[2m%s\033[0m\n",   "Versión:",   h2Version().c_str());
+        } else {
+            printCenter(std::string(D), "Hysteria v2 no instalado");
+        }
+
+        sep();
+        printItem("1", installed ? std::string(R) + "DESINSTALAR HYSTERIA v2" : "INSTALAR HYSTERIA v2");
+
+        if (installed) {
+            sep3();
+            printItem("2", "CONFIGURAR SERVIDOR");
+            printItem("3", on ? "DETENER SERVICIO" : "INICIAR SERVICIO");
+            printItem("4", "REINICIAR SERVICIO");
+            sep3();
+            printItem("5", "VER LOGS");
+            printItem("6", "ESTADO DETALLADO");
+        }
+
+        sep();
+        printItem("0", "VOLVER");
+        hr();
+
+        std::string op = menuPrompt();
+        if (std::cin.eof()) break;
+
+        auto notInstalled = [&]() {
+            std::cout << "    " << R << "✗ Hysteria v2 no instalado" << N << "\n";
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+        };
+
+        if      (op == "1") { installed ? h2Uninstall() : h2Install(); }
+        else if (op == "2") { installed ? h2Configure() : notInstalled(); }
+        else if (op == "3") {
+            if (!installed) { notInstalled(); continue; }
+            forkCmd("systemctl " + std::string(on ? "stop" : "start") + " " +
+                    Cfg::H2_SVC_NM + " 2>/dev/null; sleep 1", on ? "Deteniendo..." : "Iniciando...");
+        }
+        else if (op == "4") { installed ? [&](){
+            forkCmd("systemctl restart " + std::string(Cfg::H2_SVC_NM) + " 2>/dev/null; sleep 1", "Reiniciando...");
+        }() : notInstalled(); }
+        else if (op == "5") { installed ? [&](){
+            clearScreen(); hr();
+            sysrun("journalctl -u " + std::string(Cfg::H2_SVC_NM) + " -n 50 --no-pager 2>/dev/null");
+            hr(); pauseUi();
+        }() : notInstalled(); }
+        else if (op == "6") { installed ? [&](){
+            clearScreen(); hr();
+            sysrun("systemctl status " + std::string(Cfg::H2_SVC_NM) + " --no-pager 2>/dev/null");
+            hr(); pauseUi();
+        }() : notInstalled(); }
+        else if (op == "0") { break; }
+        else {
+            std::cout << "    " << R << "Opción inválida" << N << "\n";
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+        }
+    }
+}
+
+// =========================================================
+//  PANEL DE INFORMACIÓN DEL SISTEMA
+// =========================================================
+static void infoPanel() {
+    clearScreen(); hr();
+    printCenter(std::string(W) + BOLD, "INFORMACIÓN DEL SISTEMA — SN PLUS");
+    hr();
+
+    std::string ip      = getPublicIp();
+    std::string distro  = runCapture("lsb_release -ds 2>/dev/null || cat /etc/os-release | grep PRETTY | cut -d= -f2 | tr -d '\"'");
+    std::string kernel  = runCapture("uname -r 2>/dev/null");
+    std::string uptime  = runCapture("uptime -p 2>/dev/null | sed 's/up //'");
+    std::string memtot  = runCapture("free -m | awk '/^Mem/{print $2}' 2>/dev/null");
+    std::string memuse  = runCapture("free -m | awk '/^Mem/{print $3}' 2>/dev/null");
+
+    bool h1on = h1IsOn();
+    bool h2on = h2IsOn();
+    std::string h1port = h1Port();
+    std::string h2port = h2Port();
+    std::string h1obfs = h1Obfs();
+
+    sep();
+    printf("    \033[1;37m%-18s\033[0m  \033[1;33m%s\033[0m\n", "IP pública:",  ip.c_str());
+    printf("    \033[1;37m%-18s\033[0m  \033[0;36m%s\033[0m\n",  "Sistema:",    distro.c_str());
+    printf("    \033[1;37m%-18s\033[0m  \033[0;36m%s\033[0m\n",  "Kernel:",     kernel.c_str());
+    printf("    \033[1;37m%-18s\033[0m  \033[0;36m%s\033[0m\n",  "Uptime:",     uptime.c_str());
+    printf("    \033[1;37m%-18s\033[0m  \033[0;36m%s / %s MB\033[0m\n", "RAM:", memuse.c_str(), memtot.c_str());
+    sep();
+    printf("    \033[1;37m%-18s\033[0m  ", "Hysteria v1:");
+    if (h1IsInstalled()) {
+        std::cout << (h1on ? std::string(G) + BOLD + "● ACTIVO" + N
+                           : std::string(R) + BOLD + "● INACTIVO" + N);
+        if (!h1port.empty() && h1port != "—")
+            std::cout << "   " << D << ":" << h1port << N;
+    } else {
+        std::cout << D << "✗ no instalado" << N;
+    }
+    std::cout << "\n";
+
+    printf("    \033[1;37m%-18s\033[0m  ", "Hysteria v2:");
+    if (h2IsInstalled()) {
+        std::cout << (h2on ? std::string(G) + BOLD + "● ACTIVO" + N
+                           : std::string(R) + BOLD + "● INACTIVO" + N);
+        if (!h2port.empty() && h2port != "—")
+            std::cout << "   " << D << ":" << h2port << N;
+    } else {
+        std::cout << D << "✗ no instalado" << N;
+    }
+    std::cout << "\n";
+
+    if (h1IsInstalled() && h1obfs != "—") {
+        sep3();
+        printf("    \033[1;37m%-18s\033[0m  \033[0;36m%s\033[0m\n", "OBFS actual:", h1obfs.c_str());
+        printf("    \033[1;37m%-18s\033[0m  \033[0;36m%s\033[0m\n", "Auth:", "external (autSSH)");
+        printf("    \033[1;37m%-18s\033[0m  \033[0;36m%s\033[0m  \033[2m(excl. Hysteria)\033[0m\n",
+               "Redirect UDP:", hyRange().c_str());
+    }
+    hr(); pauseUi();
+}
+
+// =========================================================
+//  MENÚ PRINCIPAL
+// =========================================================
+static void mainMenu() {
+    requireRoot();
+
+    while (true) {
+        clearScreen();
+
+        bool h1on  = h1IsOn();
+        bool h2on  = h2IsOn();
+        bool h1ins = h1IsInstalled();
+        bool h2ins = h2IsInstalled();
+
+        auto stTag = [](bool installed, bool on) -> std::string {
+            if (!installed) return std::string(D) + "✗ no instalado" + N;
+            return on ? (std::string(G) + BOLD + "● ACTIVO" + N)
+                      : (std::string(R) + BOLD + "● INACTIVO" + N);
+        };
+
+        hr();
+        printCenter(std::string(W) + BOLD, "ADMINISTRADOR HYSTERIA UDP");
+        printCenter(std::string(D), std::string("SIN_NOMBRE22  ") + Cfg::VERSION);
+        hr();
+
+        printf("    \033[1;37m%-18s\033[0m  ", "Hysteria v1:");
+        std::cout << stTag(h1ins, h1on);
+        if (h1ins && h1Port() != "—") std::cout << "   " << D << ":" << h1Port() << N;
+        std::cout << "\n";
+
+        printf("    \033[1;37m%-18s\033[0m  ", "Hysteria v2:");
+        std::cout << stTag(h2ins, h2on);
+        if (h2ins && h2Port() != "—") std::cout << "   " << D << ":" << h2Port() << N;
+        std::cout << "\n";
+
+        sep();
+        printItem("1", "HYSTERIA v1 — Gestión completa (UDP + autSSH)");
+        printItem("2", "HYSTERIA v2 — Gestión completa (QUIC)");
+        sep3();
+        printItem("3", "INFORMACIÓN DEL SISTEMA");
+        sep();
+        printItem("0", "SALIR");
+        hr();
+
+        std::string op = menuPrompt();
+        if (std::cin.eof()) break;
+
+        if      (op == "1") { menuH1(); }
+        else if (op == "2") { menuH2(); }
+        else if (op == "3") { infoPanel(); }
+        else if (op == "0") {
+            clearScreen(); hr();
+            printCenter(std::string(W) + BOLD, "SIN_NOMBRE22 — Hasta pronto");
+            hr();
+            std::cout << "\n";
+            break;
+        }
+        else {
+            std::cout << "    " << R << "Opción inválida" << N << "\n";
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+        }
+    }
+}
+
+// =========================================================
+//  SEÑALES
+// =========================================================
+static void signalHandler(int) {
+    std::cout << N;
+    showCursor();
+    std::cout << "\n";
+    std::exit(0);
+}
+
+// =========================================================
+//  ENTRY POINT
+// =========================================================
+int main() {
+    hideCursor();
+    struct sigaction sa;
+    sa.sa_handler = signalHandler;
+    sigemptyset(&sa.sa_mask);
+    sa.sa_flags = 0;
+    sigaction(SIGINT,  &sa, nullptr);
+    sigaction(SIGTERM, &sa, nullptr);
+    sigaction(SIGHUP,  &sa, nullptr);
+
+    mainMenu();
+
+    showCursor();
+    return 0;
+}
