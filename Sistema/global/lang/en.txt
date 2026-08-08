@@ -1,0 +1,5431 @@
+# SN PLUS - English (en)
+# :texto original en espanol
+# =traduccion
+#
+# Menus, titulos, prompts y mensajes del panel.
+# Lo que no aparece se muestra en espanol, sin errores.
+
+:LICENCIA NO VÁLIDA / NO ENCONTRADA
+=LICENSE INVALID / NOT FOUND
+
+:Este servidor no está activado.
+=This server is not activated.
+
+:Ejecuta el instalador e ingresa una key válida.
+=Run the installer and enter a valid key.
+
+:Este panel debe ejecutarse como root.
+=This panel must run as root.
+
+:Usa: 
+=Use: 
+
+:Módulo no disponible: 
+=Module unavailable: 
+
+:Ruta esperada: 
+=Expected path: 
+
+:Estado: 
+=Status: 
+
+:Error al ejecutar: 
+=Error running: 
+
+:SERVICIOS ACTIVOS
+=ACTIVE SERVICES
+
+:Host: 
+=Host: 
+
+:Zona: 
+=Zone: 
+
+:RAM: 
+=RAM: 
+
+:Swap: 
+=Swap: 
+
+:Disco: 
+=Disk: 
+
+:CPU: 
+=CPU: 
+
+:Top: 
+=Top: 
+
+:MENU PRINCIPAL
+=MAIN MENU
+
+:USUARIOS SSH
+=SSH USERS
+
+:BANNER SSH
+=SSH BANNER
+
+:USUARIOS V2RAY
+=V2RAY USERS
+
+:ADMINISTRAR PUERTOS
+=MANAGE PORTS
+
+:INSTALADORES
+=INSTALLERS
+
+:SPEEDTEST
+=SPEEDTEST
+
+:HERRAMIENTAS
+=TOOLS
+
+:BOTS
+=BOTS
+
+:REBOOT VPS
+=VPS REBOOT
+
+:DESINSTALAR SCRIPT
+=UNINSTALL SCRIPT
+
+:ACTUALIZAR SCRIPT
+=UPDATE SCRIPT
+
+:SALIR DE LA VPS
+=VPS EXIT
+
+:SALIR
+=EXIT
+
+:USUARIOS XRAY MOD
+=XRAY USERS MOD
+
+:                    REINICIAR VPS
+=                     RESTART VPS
+
+:                  DESINSTALAR COMPLETAMENTE
+=                    UNINSTALL COMPLETELY
+
+:¡ATENCION! Esto eliminará:
+=WARNING! This will delete:
+
+:¿Estás seguro de continuar? (s/n): 
+=Are you sure you want to continue? (y/n): 
+
+:Cancelado.
+=Cancelled.
+
+:                ACTUALIZAR SCRIPT
+=                  UPDATE SCRIPT
+
+:Seleccione una opción
+=Select an option
+
+:                      SN - PLUS
+=                      SN - PLUS
+
+:BANNER ESTÁTICO
+=STATIC BANNER
+
+:BANNER DINÁMICO
+=DYNAMIC BANNER
+
+:[USER]
+=[USER]
+
+:[EXP]
+=[EXP]
+
+:[DAYS]
+=[DAYS]
+
+:[TRAFIC]
+=[TRAFIC]
+
+:[CONSUMO]
+=[DATA USAGE]
+
+:[CONNECTIONS]
+=[CONNECTIONS]
+
+:⚠️  ELIMINAR BANNERS
+=⚠️ DELETE BANNERS
+
+:[S/N]
+=[Y/N]
+
+:GESTOR DE BANNER SSH
+=BANNER SSH GESTOR
+
+:BANNER ESTÁTICO  
+=STATIC BANNER  
+
+:BANNER DINÁMICO  
+=DYNAMIC BANNER  
+
+:DESACTIVAR AMBOS
+=DISABLE AMBOS
+
+:ELIMINAR BANNERS
+=DELETE BANNERS
+
+:Opción: 
+=Option: 
+
+:    Opción inválida.
+=    Invalid option.
+
+:Opción inválida.
+=Invalid option.
+
+:GESTIONAR: 
+=MANAGE: 
+
+:PUERTOS:  
+=PORTS:  
+
+:ARCHIVO:  
+=FILE:  
+
+:PAQUETE:  
+=PAQUETE:  
+
+:VOLVER
+=BACK
+
+:BUSCADOR DE PUERTOS / NOMBRES
+=PORT / NAME SEARCH
+
+:Ingrese término (número o nombre): 
+=Enter term (number or name): 
+
+:ADMINISTRADOR DE RED SN-PLUS
+=NETWORK MANAGER SN-PLUS
+
+:VER TODOS LOS PUERTOS
+=VIEW ALL PORTS
+
+:BUSCAR PUERTO O SERVICIO
+=SEARCH PORT OR SERVICE
+
+:Selecciona: 
+=Select: 
+
+:Uso     :
+=Usage   :
+
+:MEMORIA
+=MEMORY
+
+:RAM     :
+=RAM:
+
+:SWAP    :
+=SWAP:
+
+:DISCO
+=DISK
+
+:UPTIME
+=UPTIME
+
+:CARGA DEL SISTEMA
+=SYSTEM CARGA
+
+:Estado  :
+=Status  :
+
+:@SINNOMBRE22
+=@SINNOMBRE22
+
+:── USUARIOS VMESS ──
+=── VMESS USERS ──
+
+:Expira
+=Expires
+
+:V2RAY VMESS
+=V2RAY VMESS
+
+:LINK VMESS:
+=VMESS LINK:
+
+:CREAR NUEVO USUARIO VMESS
+=CREATE NEW VMESS USER
+
+:UUID:   
+=UUID:   
+
+:ELIMINAR USUARIO VMESS
+=DELETE VMESS USER
+
+:Eliminar 
+=Delete
+
+:VER DATOS / LINK VMESS
+=VIEW DATA / VMESS LINK
+
+:RENOVAR USUARIO VMESS
+=RENEW VMESS USER
+
+:BLOQUEAR / DESBLOQUEAR USUARIO VMESS
+=BLOCK / UNBLOCK VMESS USER
+
+:COPIAS DE SEGURIDAD VMESS
+=SECURITY VMESS COPIAS
+
+:TODOS LOS USUARIOS VMESS
+=ALL VMESS USERS
+
+:GESTION DE USUARIOS VMESS
+=USER MANAGEMENT VMESS
+
+:PUERTO:
+=PORT:
+
+:VMESS:
+=VMESS:
+
+:SERVICIO:
+=SERVICE:
+
+:    Opcion invalida
+=    Invalid option
+
+:ESTADÍSTICAS DE TRÁFICO
+=TRAFFIC STATISTICS
+
+:── USUARIOS 
+=── USERS 
+
+:[BLOQ]
+=[BLOCK]
+
+:XRAY VMESS
+=XRAY VMESS
+
+:XRAY VLESS
+=XRAY VLESS
+
+:LINK VLESS:
+=VLESS LINK:
+
+:CREAR USUARIO
+=CREATE USER
+
+:UUID
+=UUID
+
+:RESUMEN:
+=SUMMARY:
+
+:Cancelado
+=Cancelled
+
+:ELIMINAR USUARIO
+=DELETE USER
+
+:BLOQ
+=BLOCK
+
+:Usuario 
+=User
+
+:VER LINKS
+=VIEW LINKS
+
+:BLOQUEAR / DESBLOQUEAR USUARIO
+=BLOCK / UNBLOCK USER
+
+:Estado
+=Status
+
+:Confirmar 
+=Confirm
+
+:COPIAS DE SEGURIDAD
+=SECURITY COPIAS
+
+:TODOS LOS USUARIOS XRAY
+=ALL XRAY USERS
+
+:GESTION DE USUARIOS XRAY
+=USER MANAGEMENT XRAY
+
+:PROTOCOLO:
+=PROTOCOL:
+
+:USUARIOS:
+=USERS:
+
+:DOMINIO:
+=DOMAIN:
+
+:    Este servidor no está activado.
+=    This server is not activated.
+
+:    Ejecuta el instalador e ingresa una key válida.
+=    Run the installer and enter a valid key.
+
+:INSTALADOR SNPLUS — @SIN_NOMBRE22
+=SNPLUS INSTALADOR — @NO_NOMBRE22
+
+:DESINSTALAR BOT — @SIN_NOMBRE22
+=UNINSTALL BOT — @NO_NOMBRE22
+
+:INICIANDO BOT SNPLUS
+=STARTING SNPLUS BOT
+
+:DETENIENDO BOT SNPLUS
+=STOPPING SNPLUS BOT
+
+:RECONFIGURAR BOT SNPLUS
+=RECONFIGURE SNPLUS BOT
+
+:REINICIANDO BOT SNPLUS
+=RESTARTING SNPLUS BOT
+
+:BOT TELEGRAM — @SIN_NOMBRE22
+=BOT TELEGRAM — @NO_NOMBRE22
+
+:INICIAR BOT
+=START BOT
+
+:REINICIAR BOT
+=RESTART BOT
+
+:DETENER BOT
+=STOP BOT
+
+:ESTADO DEL SERVICIO
+=SERVICE STATUS
+
+:RECONFIGURAR
+=RECONFIGURE
+
+:CONFIGURAR BOT — @SIN_NOMBRE22
+=CONFIGURE BOT — @NO_NOMBRE22
+
+:PRIMERA CONFIGURACIÓN
+=PRIMERA SETTINGS
+
+:ADMINISTRADOR BOT TELEGRAM
+=BOT TELEGRAM MANAGER
+
+:BOT TELEGRAM
+=BOT TELEGRAM
+
+:DESINSTALAR BOT
+=UNINSTALL BOT
+
+:LICENCIA NO VALIDA / NO ENCONTRADA
+=LICENSE INVALID / NOT FOUND
+
+:ADMINISTRADOR DE BOTS
+=BOTS MANAGER
+
+:@SIN_NOMBRE22
+=@NO_NOMBRE22
+
+:BOT WHATSAPP
+=BOT WHATSAPP
+
+:Opcion invalida
+=Invalid option
+
+:  INICIALIZANDO PROCEDIMIENTOS (SCAN)
+=    INITIALIZING PROCEDURES (SCAN)
+
+:          INSTALAR CLOUDFRONT + VPS
+=          INSTALL CLOUDFRONT + VPS
+
+:  ✓ INSTALACIÓN COMPLETADA
+=  ✓ COMPLETED INSTALLATION
+
+:VPS IP:         
+=VPS IP:         
+
+:          CLOUDFRONT + VPS STATUS
+=          CLOUDFRONT + VPS STATUS
+
+:          ORIGIN SECRET
+=          ORIGIN SECRET
+
+:          DESINSTALAR CLOUDFRONT + VPS
+=           UNINSTALL CLOUDFRONT + VPS
+
+:  ✓ DESINSTALADO COMPLETAMENTE
+=    ✓ UNINSTALLED COMPLETELY
+
+:          CLOUDFRONT + VPS ORIGIN
+=          CLOUDFRONT + VPS ORIGIN
+
+:Estado:  
+=Status:  
+
+:Opción inválida
+=Invalid option
+
+:ESTADO ACTUAL
+=CURRENT STATUS
+
+:Servidor
+=Server
+
+:DNS — SERVIDORES CONOCIDOS
+=DNS — SERVERS CONOCIDOS
+
+:Cancelar
+=Cancel
+
+:DNS — PERSONALIZADO
+=DNS — CUSTOM
+
+:DNS — RESTAURAR BACKUP
+=DNS — RESTORE BACKUP
+
+:DNS — TEST DE CONECTIVIDAD
+=DNS — CONNECTIVITY TEST
+
+:DNS — PROTECCIÓN DE CONFIGURACIÓN
+=DNS — SETTINGS PROTECTION
+
+:PROTEGIDO
+=PROTEGIDO
+
+:SIN PROTECCIÓN
+=NO PROTECTION
+
+:GESTIÓN DE DNS
+=DNS MANAGEMENT
+
+:DNS: 
+=DNS: 
+
+:Presiona ENTER para continuar
+=Press ENTER to continue
+
+:IDIOMA / LANGUAGE
+=LANGUAGE / LANGUAGE
+
+:Idioma actual
+=Current language
+
+:activo
+=active
+
+:no instalado
+=not installed
+
+:textos
+=texts
+
+:Idioma cambiado a
+=Language changed to
+
+:El panel se cerrara para aplicar el cambio.
+=The panel will close to apply the change.
+
+:Este modulo requiere root.
+=This module requires root.
+
+:INFORMACIÓN DE IP
+=IP INFORMATION
+
+:RED / BLOQUE CIDR
+=NETWORK / BLOQUE CIDR
+
+:SISTEMA AUTÓNOMO (ASN)
+=AUTONOMOUS SYSTEM (ASN)
+
+:UBICACIÓN GEOGRÁFICA
+=GEOGRAPHIC LOCATION
+
+:Módulo no encontrado
+=Module not found
+
+:MÓDULO OPTIMIZADOR NO ENCONTRADO
+=OPTIMIZER MODULE NOT FOUND
+
+:LIMPIAR CACHÉ
+=CLEAN CACHE
+
+:REINICIAR SERVICIOS
+=RESTART SERVICES
+
+:ACTUALIZAR SISTEMA
+=UPDATE SYSTEM
+
+:CAMBIAR CONTRASEÑA ROOT
+=CHANGE PASSWORD ROOT
+
+:CONFIGURAR DOMINIO
+=CONFIGURE DOMAIN
+
+:Dominio
+=Domain
+
+:LIMPIAR CACHE
+=CLEAN CACHE
+
+:ZONA HORARIA
+=TIME ZONE
+
+:GESTION SWAP
+=SWAP MANAGEMENT
+
+:SPEED NET
+=SPEED NET
+
+:CLOUDFRONT + VPS
+=CLOUDFRONT + VPS
+
+:SUBSCAN (DOMINIOS)
+=SUBSCAN (DOMAINS)
+
+:CAMBIAR PASS ROOT
+=CHANGE PASS ROOT
+
+:IP INFO
+=IP INFO
+
+:GESTION DNS
+=DNS MANAGEMENT
+
+:OPTIMIZADOR VPS
+=VPS OPTIMIZER
+
+:[AUTO 
+=[AUTO 
+
+:Hasta luego.
+=Goodbye.
+
+:Presiona Enter para continuar...
+=Press Enter to continue...
+
+:  01. LIBERAR RAM
+=  01. RAM LIBERAR
+
+:  02. LIMPIAR LOGS / ARCHIVOS BASURA
+=    02. CLEAN LOGS / FILES BASURA
+
+:  03. OPTIMIZAR CPU / KERNEL VM
+=  03. OPTIMIZE CPU / KERNEL VM
+
+:  04. LIMPIEZA TOTAL VPS
+=   04. FULL CLEANUP VPS
+
+:  05. STATUS DEL VPS
+=    05. VPS STATUS
+
+:  INSTALAR SERVICIO SYSTEMD
+=   INSTALL SERVICE SYSTEMD
+
+:  DESINSTALAR SERVICIO SYSTEMD
+=   UNINSTALL SERVICE SYSTEMD
+
+:RAM : 
+=RAM: 
+
+:  APLICANDO: 
+=  APPLYING: 
+
+:★ ULTRA APLICADO
+=★ APPLIED ULTRA
+
+:✓ PERFIL APLICADO
+=✓ APPLIED PERFIL
+
+:  ESTADO DEL SISTEMA
+=    SYSTEM STATUS
+
+:TCP / UDP ACTUAL
+=TCP / CURRENT UDP
+
+:  AUTO-DETECCION
+=  AUTO-DETECTION
+
+:RECOMENDADO: 
+=RECOMMENDED: 
+
+:  REVERTIR OPTIMIZACIONES
+=   REVERT OPTIMIZATIONS
+
+:  LOG DE CAMBIOS
+=   LOG CAMBIOS
+
+:[TCP+UDP+ULTRA]
+=[TCP+UDP+ULTRA]
+
+:AUTO-DETECTAR Y APLICAR
+=AUTO-DETECTAR AND APPLY
+
+:Uso: 
+=Usage: 
+
+:               GESTION DE MEMORIA SWAP
+=               MEMORY MANAGEMENT SWAP
+
+:SWAP
+=SWAP
+
+:[ACTIVA]
+=[ACTIVE]
+
+:[INACTIVA]
+=[INACTIVA]
+
+:          ELIMINAR SWAPFILE
+=           DELETE SWAPFILE
+
+:          CREAR SWAPFILE
+=         CREATE SWAPFILE
+
+:CANCELAR
+=CANCEL
+
+:           INFORMACIÓN DETALLADA DE MEMORIA
+=             INFORMATION MEMORY DETALLADA
+
+:CREAR / ELIMINAR SWAPFILE
+=CREATE / DELETE SWAPFILE
+
+:AJUSTAR SWAPPINESS
+=AJUSTAR SWAPPINESS
+
+:VER INFO DETALLADA
+=VIEW INFO DETALLADA
+
+:               CONFIGURAR ZONA HORARIA
+=                 CONFIGURE TIME ZONE
+
+:ZONA ACTUAL:
+=CURRENT ZONE:
+
+:       ZONAS DISPONIBLES EN: 
+=        AVAILABLE ZONAS IN: 
+
+:INSTALAR BADVPN-UDPGW
+=INSTALL BADVPN-UDPGW
+
+:✓ BADVPN INSTALADO CORRECTAMENTE
+=✓ BADVPN INSTALLED SUCCESSFULLY
+
+:CONFIGURAR BADVPN-UDPGW
+=CONFIGURE BADVPN-UDPGW
+
+:✓ BADVPN CONFIGURADO Y ACTIVO
+=✓ BADVPN CONFIGURADO ACTIVE AND
+
+:Estado:   
+=Status:   
+
+:LOGS BADVPN
+=BADVPN LOGS
+
+:DESINSTALAR BADVPN
+=UNINSTALL BADVPN
+
+:✓ BADVPN DESINSTALADO COMPLETAMENTE
+=✓ BADVPN UNINSTALLED COMPLETELY
+
+:BADVPN-UDPGW
+=BADVPN-UDPGW
+
+:BINARIO:
+=BINARIO:
+
+:ESTADO: 
+=STATUS: 
+
+:ESCUCHA:
+=ESCUCHA:
+
+:Reiniciar
+=Restart
+
+:Desinstalar
+=Uninstall
+
+:ADMINISTRADOR DROPBEAR SSH
+=DROPBEAR SSH MANAGER
+
+:✓ DROPBEAR INSTALADO CON ÉXITO
+=✓ DROPBEAR INSTALLED WITH SUCCESS
+
+:INSTALAR DROPBEAR
+=INSTALL DROPBEAR
+
+:CONFIGURAR PUERTO DROPBEAR
+=CONFIGURE DROPBEAR PORT
+
+:REINICIAR SERVICIO
+=RESTART SERVICE
+
+:DESINSTALAR DROPBEAR
+=UNINSTALL DROPBEAR
+
+:✓ DROPBEAR DESINSTALADO COMPLETAMENTE
+=✓ DROPBEAR UNINSTALLED COMPLETELY
+
+:PUERTOS ACTIVOS
+=ACTIVE PORTS
+
+: Puerto 
+= Port
+
+:Estado:
+=Status:
+
+:LOGS DEL SISTEMA
+=SYSTEM LOGS
+
+:● NO INSTALADO
+=● NOT INSTALLED
+
+:ESTADO:
+=STATUS:
+
+:PUERTOS:
+=PORTS:
+
+:INSTALAR HAPROXY MUX
+=INSTALL HAPROXY MUX
+
+:✓ INSTALACIÓN COMPLETADA
+=✓ COMPLETED INSTALLATION
+
+:DESINSTALAR HAPROXY MUX
+=UNINSTALL HAPROXY MUX
+
+: Servicio 
+= Service
+
+:✓ DESINSTALACIÓN COMPLETADA
+=✓ UNINSTALL COMPLETED
+
+:DETECTAR PUERTOS
+=DETECTAR PORTS
+
+:CONFIGURACIÓN ACTUAL
+=CURRENT SETTINGS
+
+:AGREGAR SNI (MAPPING)
+=ADD SNI (MAPPING)
+
+:QUITAR SNI (MAPPING)
+=SNI REMOVE (MAPPING)
+
+:SETEAR PUERTO STUNNEL
+=SETEAR STUNNEL PORT
+
+:SETEAR PUERTO DE ESCUCHA (HAPROXY)
+=SETEAR ESCUCHA PORT (HAPROXY)
+
+:┌─ OBJETIVO ─────────────────────────────────────────┐
+=┌─ OBJETIVO ─────────────────────────────────────────┐
+
+:┌─ FLUJO RECOMENDADO ────────────────────────────────┐
+=┌─ RECOMMENDED FLOW ────────────────────────────────┐
+
+:┌─ VERIFICACIÓN ─────────────────────────────────────┐
+=┌─ VERIFICATION ─────────────────────────────────────┐
+
+:┌─ NOTAS IMPORTANTES ────────────────────────────────┐
+=┌─ NOTAS IMPORTANTES ────────────────────────────────┐
+
+:CERT : 
+=CERT: 
+
+:KEY  : 
+=KEY: 
+
+:OBFS         : 
+=OBFS: 
+
+:UP / DOWN    : 
+=UP / DOWN: 
+
+:HYSTERIA VERSION: 
+=HYSTERIA VERSION: 
+
+:PUERTO UDP: 
+=UDP PORT: 
+
+:RANGOS IPTABLES: 
+=RANGOS IPTABLES: 
+
+:MODIFICAR OBFS — UDP-HYSTERIA
+=OBFS MODIFICAR — UDP-HYSTERIA
+
+:DESINSTALAR UDP-HYSTERIA
+=UNINSTALL UDP-HYSTERIA
+
+:VERSION: 
+=VERSION: 
+
+:HYSTERIA V1
+=HYSTERIA V1
+
+:PORT: 
+=PORT: 
+
+:REDIRECT: 
+=REDIRECT: 
+
+:OBFS: 
+=OBFS: 
+
+:AUTH: 
+=AUTH: 
+
+: Volver
+= Back
+
+: REINSTALAR
+= REINSTALL
+
+: DESINSTALAR
+=  UNINSTALL
+
+:Sin servicios activos
+=No active services
+
+:INSTALADORES & PROTOCOLOS
+=INSTALLERS & PROTOCOLS
+
+:GESTIÓN CERT SSL
+=SSL CERT MANAGEMENT
+
+:  Puerto 
+=  Port
+
+:TLS     :
+=TLS:
+
+:Puerto 
+=Port
+
+:Estado : 
+=Status : 
+
+:● CORRIENDO  
+=● RUNNING  
+
+:● DETENIDO   
+=● DETENIDO   
+
+:CONFIGURAR PSIPHON
+=CONFIGURE PSIPHON
+
+:Puerto invalido.
+=Invalid port.
+
+:✓ PSIPHON ACTIVO
+=✓ ACTIVE PSIPHON
+
+:⚠ REVISAR SERVICIO
+=⚠ REVISAR SERVICE
+
+:SERVER ENTRY (HEX)
+=SERVER ENTRY (HEX)
+
+:IMPORTAR HEX
+=HEX IMPORTAR
+
+:JSON
+=JSON
+
+:EDITAR JSON
+=EDIT JSON
+
+:SERVER ENTRY
+=SERVER ENTRY
+
+:CONFIGURAR CDN / DOMINIO
+=CONFIGURE CDN / DOMAIN
+
+:Dominio invalido.
+=Invalid domain.
+
+:CAMPOS APLICADOS
+=APPLIED FIELDS
+
+:SERVER ENTRY NUEVO
+=SERVER NEW ENTRY
+
+:DIAGNOSTICO PSIPHON
+=PSIPHON DIAGNOSTICS
+
+:ARCHIVOS
+=FILES
+
+:SERVICIO
+=SERVICE
+
+:PUERTOS
+=PORTS
+
+:ULTIMOS ERRORES
+=ULTIMOS ERRORES
+
+:Sin errores recientes.
+=No recent errors.
+
+:LOG DE PSIPHOND
+=LOG PSIPHOND
+
+:Sin registros.
+=No records.
+
+:REINICIAR PSIPHON
+=RESTART PSIPHON
+
+:DESINSTALAR PSIPHON
+=UNINSTALL PSIPHON
+
+:PSIPHON (TUNNEL-CORE)
+=PSIPHON (TUNNEL-CORE)
+
+:INSTALAR PSIPHON
+=INSTALL PSIPHON
+
+:VER SERVER ENTRY (HEX)
+=VIEW SERVER ENTRY (HEX)
+
+:DIAGNOSTICO
+=DIAGNOSTICS
+
+:VER LOG
+=VIEW LOG
+
+:DESINSTALAR
+=UNINSTALL
+
+:[FAIL]
+=[FAIL]
+
+:INSTALAR SHADOWSOCKS
+=INSTALL SHADOWSOCKS
+
+:CAMBIAR PASSWORD
+=CHANGE PASSWORD
+
+:CONFIGURACIÓN SHADOWSOCKS
+=SHADOWSOCKS SETTINGS
+
+:DESINSTALAR SHADOWSOCKS
+=UNINSTALL SHADOWSOCKS
+
+:INSTALAR SLOWDNS
+=INSTALL SLOWDNS
+
+:No puede quedar vacio.
+=It cannot be empty.
+
+:VERIFICACION
+=VERIFICATION
+
+:✓ SLOWDNS LISTO Y CONECTANDO
+=✓ READY SLOWDNS CONNECTING AND
+
+:⚠ INSTALADO — FALTA UN PASO
+=⚠ INSTALLED — FALTA A PASO
+
+:PUB KEY   
+=PUB KEY   
+
+:DATOS DE CONEXION
+=CONNECTION DATA
+
+:IP DEL SERVIDOR
+=IP SERVER
+
+:DOMINIO NS
+=NS DOMAIN
+
+:PUBLIC KEY
+=PUBLIC KEY
+
+:CAMBIAR DOMINIO NS
+=CHANGE NS DOMAIN
+
+:PUERTO SSH DESTINO
+=SSH PORT DESTINO
+
+:REINICIAR SLOWDNS
+=RESTART SLOWDNS
+
+:DIAGNOSTICO SLOWDNS
+=SLOWDNS DIAGNOSTICS
+
+:CONFIGURACION
+=SETTINGS
+
+:SERVICIOS
+=SERVICES
+
+:REDIRECCION
+=REDIRECT
+
+:PRUEBA DE CONEXION
+=CONNECTION TRIAL
+
+:LOG DEL SERVIDOR
+=LOG SERVER
+
+:REGENERAR LLAVES
+=REGENERATE KEYS
+
+:✓ LLAVES REGENERADAS
+=✓ REGENERATED KEYS
+
+:DESINSTALAR SLOWDNS
+=UNINSTALL SLOWDNS
+
+:SLOWDNS (TUNEL DNS)
+=SLOWDNS (DNS TUNNEL)
+
+:SSH:
+=SSH:
+
+:UDP:
+=UDP:
+
+:VER PUBLIC KEY
+=VIEW PUBLIC KEY
+
+:CAMBIAR PUERTO SSH
+=CHANGE SSH PORT
+
+:REINSTALAR
+=REINSTALL
+
+:INSTALACIÓN DE PYTHON 2
+=PYTHON INSTALLATION 2
+
+:PYTHON 2 NO INSTALADO
+=PYTHON 2 NOT INSTALLED
+
+:CREAR PUERTO SOCKS
+=CREATE SOCKS PORT
+
+:INICIAR / PARAR PUERTO
+=START / STOP PORT
+
+:ELIMINAR PUERTO SOCKS
+=DELETE SOCKS PORT
+
+:REPARAR SOCKS
+=SOCKS REPARAR
+
+:DESINSTALAR SOCKS COMPLETO
+=UNINSTALL COMPLETE SOCKS
+
+:✓ SOCKS DESINSTALADO COMPLETAMENTE
+=✓ SOCKS UNINSTALLED COMPLETELY
+
+:INSTALADOR SQUID PROXY
+=SQUID INSTALADOR PROXY
+
+:✓ SQUID INSTALADO Y CONFIGURADO
+=✓ SQUID INSTALLED AND CONFIGURADO
+
+:DESINSTALAR SQUID
+=UNINSTALL SQUID
+
+:✓ SQUID DESINSTALADO COMPLETAMENTE
+=✓ SQUID UNINSTALLED COMPLETELY
+
+:AGREGAR PUERTOS SQUID
+=ADD SQUID PORTS
+
+:QUITAR PUERTO SQUID
+=REMOVE SQUID PORT
+
+:BLOQUEAR HOST
+=BLOCK HOST
+
+:DESBLOQUEAR HOST
+=UNBLOCK HOST
+
+:BLOQUEAR EXPRESIÓN
+=BLOCK EXPRESSION
+
+:DESBLOQUEAR EXPRESIÓN
+=UNBLOCK EXPRESSION
+
+:ADMINISTRADOR SQUID PROXY
+=SQUID PROXY MANAGER
+
+:MODIFICAR PUERTO SSH (PRINCIPAL)
+=MODIFICAR SSH PORT (MAIN)
+
+:AGREGAR PUERTO(S) SSH ADICIONALES
+=ADD PORT(S) ADDITIONAL SSH
+
+:ADMINISTRADOR SSH
+=SSH MANAGER
+
+:PUERTOS ACTIVOS:
+=ACTIVE PORTS:
+
+:AGREGAR PUERTO(S) SSH
+=ADD SSH PORT(S)
+
+:INICIAR / DETENER SSH
+=START / STOP SSH
+
+:REINICIAR SERVIDOR SSH
+=RESTART SSH SERVER
+
+:VOLVER AL MENÚ PRINCIPAL
+=BACK TO MAIN MENU
+
+:INSTALADOR DE CERTIFICADO EXTERNO
+=CERTIFICATE INSTALADOR EXTERNO
+
+:INSTALACIÓN COMPLETA
+=COMPLETE INSTALLATION
+
+:ELIMINAR CERTIFICADO SSL
+=DELETE SSL CERTIFICATE
+
+:SUB-DOMINIO Y CERTIFICADO SSL
+=SUB-DOMAIN AND SSL CERTIFICATE
+
+:● ACTIVO
+=● ACTIVE
+
+:● SIN CERTIFICADO
+=● NO CERTIFICATE
+
+:INGRESAR CERT SSL EXTERNO
+=INGRESAR SSL CERT EXTERNO
+
+:CERTIFICADO SSL ENCONTRADO
+=SSL FOUND CERTIFICATE
+
+:CERT: 
+=CERT: 
+
+:KEY:  
+=KEY:  
+
+:DESINSTALAR STUNNEL SSL
+=UNINSTALL STUNNEL SSL
+
+:AGREGAR PUERTO SSL
+=ADD SSL PORT
+
+:QUITAR PUERTO SSL
+=REMOVE SSL PORT
+
+:EDITAR PUERTO DE REDIRECCIÓN
+=EDIT REDIRECT PORT
+
+:ADMINISTRADOR STUNNEL SSL
+=STUNNEL SSL MANAGER
+
+:DESINSTALAR STUNNEL
+=UNINSTALL STUNNEL
+
+:EDITAR MANUAL (NANO)
+=EDIT MANUAL (NANO)
+
+:INICIAR / DETENER SERVICIO
+=START / STOP SERVICE
+
+:INSTALAR STUNNEL
+=INSTALL STUNNEL
+
+:✓ DNAT 
+=✓ DNAT 
+
+:✓ UDP-CUSTOM INSTALADO Y ACTIVO
+=✓ UDP-CUSTOM INSTALLED ACTIVE AND
+
+:DIAGNÓSTICO Y REPARACIÓN
+=DIAGNOSTICS AND REPAIR
+
+:MODIFICAR CONFIGURACIÓN
+=MODIFICAR SETTINGS
+
+:LOGS UDP-CUSTOM
+=UDP LOGS-CUSTOM
+
+:DESINSTALAR UDP-CUSTOM
+=UNINSTALL UDP-CUSTOM
+
+:✓ UDP-CUSTOM DESINSTALADO COMPLETAMENTE
+=✓ UDP-CUSTOM UNINSTALLED COMPLETELY
+
+:PID:
+=PID:
+
+:RAM:
+=RAM:
+
+:PORT: 443 | UUID: 
+=PORT: 443 | UUID: 
+
+:INSTALANDO DEPENDENCIAS V2RAY
+=INSTALLING V2RAY DEPENDENCIES
+
+:INFORMACIÓN DE V2RAY:
+=INFORMATION OF V2RAY:
+
+:✓ INSTALACIÓN FINALIZADA
+=✓ INSTALLATION FINALIZADA
+
+:INSTALAR V2RAY
+=INSTALL V2RAY
+
+:DESINSTALAR V2RAY
+=UNINSTALL V2RAY
+
+:✓ V2RAY DESINSTALADO COMPLETAMENTE
+=✓ V2RAY UNINSTALLED COMPLETELY
+
+:CONFIGURAR PUERTO V2RAY
+=CONFIGURE V2RAY PORT
+
+:CONFIGURAR ALTERID
+=CONFIGURE ALTERID
+
+:CONFIGURAR ADDRESS
+=CONFIGURE ADDRESS
+
+:CONFIGURAR HOST
+=CONFIGURE HOST
+
+:CONFIGURAR PATH
+=CONFIGURE PATH
+
+:CERTIFICADO SSL/TLS
+=SSL CERTIFICATE/TLS
+
+:CERT:
+=CERT:
+
+:KEY:
+=KEY:
+
+:PROTOCOLOS V2RAY
+=V2RAY PROTOCOLS
+
+:CONFIGURACIÓN NATIVA V2RAY
+=SETTINGS V2RAY NATIVA
+
+:RESTABLECER AJUSTES V2RAY
+=RESTABLECER V2RAY AJUSTES
+
+:V2RAY MANAGER BY @SIN_NOMBRE22
+=V2RAY MANAGER BY @NO_NOMBRE22
+
+:NETWORK:
+=NETWORK:
+
+:TLS:
+=TLS:
+
+:INSTALACIÓN
+=INSTALLATION
+
+:CONFIGURACIÓN BÁSICA
+=BASIC SETTINGS
+
+:CONFIGURACIÓN AVANZADA
+=SETTINGS AVANZADA
+
+:          INSTALANDO DEPENDENCIAS
+=          INSTALLING DEPENDENCIES
+
+:Puerto
+=Port
+
+:TLS / SSL
+=TLS / SSL
+
+:TLS:       
+=TLS:       
+
+:TLS → 
+=TLS → 
+
+:ESTADO:    
+=STATUS:    
+
+:PROTOCOLO: 
+=PROTOCOL: 
+
+:PUERTO:    
+=PORT:    
+
+:NETWORK:   
+=NETWORK:   
+
+:DOMINIO:   
+=DOMAIN:   
+
+:USUARIOS:  
+=USERS:  
+
+:INSTALACION
+=INSTALLATION
+
+:CONFIGURACION BASICA
+=BASIC SETTINGS
+
+:CONFIGURACION AVANZADA
+=SETTINGS AVANZADA
+
+:CREAR BRIDGE WEBSOCKET
+=CREATE WEBSOCKET BRIDGE
+
+:DETENER UN BRIDGE
+=STOP A BRIDGE
+
+:PROXY WEBSOCKET (TCP TUNNEL)
+=PROXY WEBSOCKET (TCP TUNNEL)
+
+:INICIAR/AGREGAR PROXY WS
+=START/ADD PROXY WS
+
+:DETENER TODOS LOS BRIDGES
+=STOP ALL BRIDGES
+
+:DETENER UN PUERTO
+=STOP A PORT
+
+:ZIV:   
+=ZIV:   
+
+:UFW:
+=UFW:
+
+:            ►► Presiona ENTER para continuar ◄◄
+=              ►► Press ENTER to continue ◄◄
+
+:Volver
+=Back
+
+:  ✗ No se pudo crear el lock 
+=  ✗ Could not create the lock 
+
+:  ✗ Falta: 
+=  ✗ Missing: 
+
+:  Instala las dependencias faltantes y reinicia.
+=  Install the missing dependencies and restart.
+
+:Ejecuta como root
+=Run as root
+
+:Límite de velocidad 
+=Speed limit 
+
+:(KB/s)
+=(KB/s)
+
+: — ENTER = sin límite: 
+= — ENTER = unlimited: 
+
+:Límite de consumo  
+=Data limit  
+
+:(GB)
+=(GB)
+
+:── //【 ☬ Gen v9.3 ☬ 】// ───
+=── //【 ☬ Gen v9.3 ☬ 】// ───
+
+:【 ☬ ACCESO VPS ☬ 】
+=【 ☬ VPS ACCESS ☬ 】
+
+:➫ Usuario    : 
+=➫ User       : 
+
+:➫ Contraseña : 
+=➫ Password   : 
+
+:➫ Límite     : 
+=➫ Limit      : 
+
+:➫ Velocidad  : 
+=➫ Speed      : 
+
+:➫ Consumo    : 
+=➫ Data       : 
+
+:➫ Expira     : 
+=➫ Expires    : 
+
+:➫ Archivo    : 
+=➫ File       : 
+
+:────── DATOS DEL SERVIDOR ──────
+=────── SERVER DETAILS ──────
+
+:➫ IP         : 
+=➫ IP         : 
+
+:➫ Dominio    : 
+=➫ Domain     : 
+
+:➫ Sistema    : 
+=➫ System     : 
+
+:➫ Zona       : 
+=➫ Zone       : 
+
+:────── METODOS DE CONEXION ──────
+=────── CONNECTION METHODS ──────
+
+:────── HYSTERIA v1 UDP ──────
+=────── HYSTERIA v1 UDP ──────
+
+:➫ Puerto UDP : 
+=➫ UDP Port   : 
+
+:➫ Rango      : 
+=➫ Range      : 
+
+:➫ OBFS       : 
+=➫ OBFS       : 
+
+:➫ Auth       : 
+=➫ Auth       : 
+
+:➫ URI        : 
+=➫ URI        : 
+
+:────── HYSTERIA v2 QUIC ──────
+=────── HYSTERIA v2 QUIC ──────
+
+:➫ Password   : 
+=➫ Password   : 
+
+:  (NekoBox / v2rayNG / Clash Meta)
+=  (NekoBox / v2rayNG / Clash Meta)
+
+:────── SLOWDNS ──────
+=────── SLOWDNS ──────
+
+:➫ NS  : 
+=➫ NS  : 
+
+:➫ KEY : 
+=➫ KEY : 
+
+:────── UDP CUSTOM ──────
+=────── UDP CUSTOM ──────
+
+:────── ZIV VPN (UDP) ──────
+=────── ZIV VPN (UDP) ──────
+
+:NO HAY USUARIOS SSH REGISTRADOS
+=NO SSH USERS REGISTERED
+
+:Usuario
+=User
+
+:Contrasena
+=Password
+
+:Seleccione una opción: 
+=Select an option: 
+
+:CREAR NUEVO USUARIO SSH ✏️
+=CREATE NEW SSH USER ✏️
+
+:Nombre Del Nuevo Usuario: 
+=New Username: 
+
+:Contraseña Del Nuevo Usuario: 
+=New User Password: 
+
+:Tiempo de Duración (días): 
+=Duration (days): 
+
+:Límite de Conexión: 
+=Connection Limit: 
+
+:Límite de Velocidad : 
+=Speed Limit : 
+
+:Límite de Consumo   : 
+=Data Limit   : 
+
+:Crear Archivo OpenVPN? [S/N]: 
+=Create OpenVPN file? [Y/N]: 
+
+:Autenticación en el archivo? [S/N]: 
+=Authentication in the file? [Y/N]: 
+
+:Nombre del usuario: 
+=Username: 
+
+:Contraseña: 
+=Password: 
+
+:Duración en minutos: 
+=Duration in minutes: 
+
+:Aplicar a conf Default [S/N]: 
+=Apply to Default config [Y/N]: 
+
+:        【 ☬ USUARIO TEMPORAL CREADO ☬ 】
+=        【 ☬ TEMPORARY USER CREATED ☬ 】
+
+:❍ 👤 Usuario:    
+=❍ 👤 User:        
+
+:❍ 🔐 Contraseña: 
+=❍ 🔐 Password:    
+
+:❍ ⏱  Duración:   
+=❍ ⏱  Duration:    
+
+:──────INFORMACION DEL VPS ──────
+=────── VPS INFORMATION ──────
+
+:› ip vps: 
+=› vps ip: 
+
+:USUARIO TEMPORAL ⏱
+=TEMPORARY USER ⏱
+
+:Usuario Default
+=Default User
+
+:Usuario:    
+=User:       
+
+:Duración:   
+=Duration:   
+
+:REMOVER USUARIO 🗑
+=REMOVE USER 🗑
+
+:RENOVAR USUARIO ♻️
+=RENEW USER ♻️
+
+:Nuevo Tiempo de Duración de 
+=New Duration for 
+
+:EDITAR USUARIO 📝
+=EDIT USER 📝
+
+:Nueva Contraseña de 
+=New Password for 
+
+:Días de Duración de 
+=Duration in Days for 
+
+:Nuevo Límite de Conexión de 
+=New Connection Limit for 
+
+:BLOQUEAR / DESBLOQUEAR USUARIO 🔒
+=BLOCK / UNBLOCK USER 🔒
+
+:Usuario: 
+=User: 
+
+:Bloqueado 🔒
+=Blocked 🔒
+
+:Desbloqueado 🔓
+=Unblocked 🔓
+
+:Vel KB/s
+=Spd KB/s
+
+:Ningún usuario registrado
+=No users registered
+
+:DETALLES DE USUARIOS 🔎
+=USER DETAILS 🔎
+
+:Selecciona # para ver detalles: 
+=Select # to view details: 
+
+:MONITOR DE USUARIOS CONECTADOS
+=CONNECTED USERS MONITOR
+
+:USUARIO
+=USER
+
+:ESTADO
+=STATUS
+
+:REMOVER USUARIOS VENCIDOS
+=REMOVE EXPIRED USERS
+
+:Continuar [S/N]: 
+=Continue [Y/N]: 
+
+:⚠️ ELIMINAR TODOS LOS USUARIOS ⚠️
+=⚠️ DELETE ALL USERS ⚠️
+
+:¿Está seguro? [S/N]: 
+=Are you sure? [Y/N]: 
+
+:¿Desea detenerlo? [S/N]: 
+=Do you want to stop it? [Y/N]: 
+
+:Ejecutar limitador cada (minutos): 
+=Run limiter every (minutes): 
+
+:Ejecutar limitador cada: 
+=Run limiter every: 
+
+:Desbloquear user cada (minutos, 0=manual): 
+=Unblock user every (minutes, 0=manual): 
+
+:Desbloquear user cada: 
+=Unblock user every: 
+
+:►► ENTER para continuar | 0 para limpiar ◄◄
+=►► ENTER to continue | 0 to clear ◄◄
+
+:🔒 LIMITADOR DE CUENTAS 🔒
+=🔒 ACCOUNT LIMITER 🔒
+
+:LIMITADOR DE CONEXIONES 
+=CONNECTION LIMITER 
+
+:LIMITADOR DE EXPIRADOS 
+=EXPIRY LIMITER 
+
+:ADMINISTRACIÓN DE USUARIOS SSH
+=SSH USER MANAGEMENT
+
+:NUEVO USUARIO SSH ✏️
+=NEW SSH USER ✏️
+
+:CREAR USUARIO TEMPORAL ⏱
+=CREATE TEMPORARY USER ⏱
+
+:REMOVER USUARIO
+=REMOVE USER
+
+:RENOVAR USUARIO
+=RENEW USER
+
+:BLOQ/DESBLOQ USUARIO 🔒
+=BLOCK/UNBLOCK USER 🔒
+
+:DETALLES DE USUARIOS
+=USER DETAILS
+
+:MONITOR DE USUARIOS 📡
+=USER MONITOR 📡
+
+:LIMITADOR DE CUENTAS
+=ACCOUNT LIMITER
+
+:ELIMINAR USUARIOS VENCIDOS
+=DELETE EXPIRED USERS
+
+:ELIMINAR TODOS LOS USUARIOS
+=DELETE ALL USERS
+
+:Opción:
+=Option:
+
+:    Opción inválida
+=    Invalid option
+
+:Binario menu actualizado.
+=Binary menu updated.
+
+:Error al copiar el nuevo binario.
+=Error while copying the new binary.
+
+:Presiona Enter para volver...
+=Press ENTER to return...
+
+:Deteniendo servicio...
+=Stopping service...
+
+:Puerto no encontrado.
+=Port not found.
+
+:Puerto encontrado!
+=Port found!
+
+:(sin usuarios)
+=(no users)
+
+:Nombre de usuario
+=Username
+
+:No puede estar vacío
+=Cannot be empty
+
+:Usuario ya existe
+=User already exists
+
+:Número válido
+=Valid Number
+
+:Error al escribir config
+=Error while writing config
+
+:Sin usuarios
+=No users
+
+:Copia creada
+=Copy created
+
+:Servicio xray no encontrado
+=Service xray not found
+
+:Servicio activo
+=Active Service
+
+:Nombre de usuario (0=cancelar)
+=Username (0=cancel)
+
+:UUID generado
+=UUID generated
+
+: eliminado
+= deleted
+
+:Sin usuarios activos
+=No active users
+
+:Opción
+=Option
+
+:Opcion
+=Option
+
+:►► Presiona ENTER para continuar ◄◄
+=►► press ENTER to continue ◄◄
+
+:Este servidor no esta activado.
+=This server is not enabled.
+
+:  ERROR: Se requiere root
+= ERROR: requires root
+
+:Instalar CloudFront + VPS
+=Install CloudFront + VPS
+
+:Desinstalar todo
+=Uninstall all
+
+:Sin DNS configurado
+=No DNS configured
+
+:Aplicar 
+=Apply 
+
+:Error al aplicar DNS
+=Error while applying DNS
+
+:DNS personalizado aplicado
+=DNS custom applied
+
+:No se pudo guardar la configuracion.
+=Could not save the configuration.
+
+:  ✖ No se pudo detectar IP pública.
+= ✖ could not detect IP public.
+
+:El binario optimizar no está instalado.
+=The binary optimize is not installed.
+
+:reiniciado
+=restarted
+
+:Sistema actualizado.
+=System updated.
+
+:Contraseña actualizada correctamente.
+=Password updated successfully.
+
+:No se pudo cambiar la contraseña.
+=Could not change the password.
+
+:No se pudo crear el directorio.
+=Could not create the directory.
+
+:Dominio configurado
+=Domain configured
+
+:No se pudo guardar el dominio.
+=Could not save the domain.
+
+:Instalando servicio...
+=Installing service...
+
+:Servicio eliminado.
+=Service deleted.
+
+:Ver detalles y aplicar
+=View details and apply
+
+:Sin registros aun
+=No registros still
+
+:Revertir todo
+=Revert all
+
+:(ninguna swap activa)
+=(none swap active)
+
+:¿Confirmar? 
+=¿Confirm? 
+
+: creado y activado.
+= created and enabled.
+
+:  (ningún swap activo)
+= (no swap active)
+
+:✖ Error al descargar
+=✖ Error while downloading
+
+:✖ No pudo iniciar
+=✖ Not could start
+
+:✖ Error al reiniciar
+=✖ Error while restarting
+
+:✖ Opción inválida
+=✖ invalid Option
+
+: (sin red o dependencias no disponibles)
+= (no red or dependencies not available)
+
+:No está instalado. Instala primero.
+=Is not installed. Install first.
+
+:Puerto [
+=Port [
+
+:Puerto inválido (1-65535)
+=Invalid Port (1-65535)
+
+:■ Servicio detenido
+=■ Service stopped
+
+:BadVPN no está instalado
+=BadVPN is not installed
+
+: Binario 
+= Binary 
+
+: Servicio systemd 
+= Service systemd 
+
+:Instalar BadVPN
+=Install BadVPN
+
+:Configurar + Iniciar
+=Configure + Start
+
+:Iniciar / Parar  
+=Start / Stop 
+
+:No se pudo instalar 
+=Could not install 
+
+:Servicio iniciado correctamente
+=Service started successfully
+
+:No se pudo iniciar el servicio
+=Could not start the service
+
+:Dropbear ya está instalado
+=Dropbear already is installed
+
+:Ejemplo: 80 90 443 2222
+=Example: 80 90 443 2222
+
+:Error al instalar dropbear
+=Error while installing dropbear
+
+:Ejemplo: 80 90 443
+=Example: 80 90 443
+
+:Dropbear no está instalado
+=Dropbear is not installed
+
+: Claves SSH 
+= Keys SSH 
+
+: Configuración 
+= Configuration 
+
+:No hay puertos Dropbear activos
+=There are no ports Dropbear active
+
+:● Detenido
+=● Stopped
+
+:Instalar Dropbear
+=Install Dropbear
+
+:Reiniciar servicio
+=Restart service
+
+:Configurar puerto
+=Configure port
+
+:Ver puertos activos
+=View active ports
+
+:Instalar / Reinstalar
+=Install / Reinstall
+
+:Desinstalar Dropbear
+=Uninstall Dropbear
+
+:No se pudo escribir 
+=Could not write 
+
+:Instala Stunnel en puerto 4443
+=Install Stunnel in port 4443
+
+:(Detectado)
+=(Detected)
+
+:No detectado
+=Not detected
+
+:¿Guardar puerto Stunnel 
+=¿Save port Stunnel 
+
+:Guardado
+=Saved
+
+:(ninguno)
+=(none)
+
+:Dominio inválido
+=Invalid Domain
+
+:El dominio 
+=The domain 
+
+: ya existe
+= already exists
+
+:Es el mismo puerto actual
+=Is the same current port
+
+:El puerto 
+=The port 
+
+: ya está en uso
+= already is in use
+
+:Instalar / Activar
+=Install / Enable
+
+:Desinstalar / Desactivar
+=Uninstall / Disable
+
+:Servicio reiniciado
+=Service restarted
+
+:Servicio no está activo
+=Service is not active
+
+:Error generando certificado TLS
+=Error generating certificate TLS
+
+:Certificado copiado
+=Certificate copied
+
+:Error actualizando OBFS
+=Error updating OBFS
+
+:   • Binario 
+= • Binary 
+
+:(sin resultados)
+=(no resultados)
+
+:Ya existe una configuracion.
+=Already exists a configuration.
+
+:Regenerar la configuracion?
+=Regenerate the configuration?
+
+:Protocolos
+=Protocols
+
+:Configuracion generada.
+=Configuration generated.
+
+:No hay server entry.
+=There are no server entry.
+
+:Aplicar este server entry?
+=Apply this server entry?
+
+:SNI invalido.
+=SNI invalid.
+
+:Server entry generado.
+=Server entry generated.
+
+:El servicio no existe
+=The service does not exist
+
+:Vacio
+=Empty
+
+:Desinstalar Psiphon?
+=Uninstall Psiphon?
+
+:Psiphon desinstalado.
+=Psiphon uninstalled.
+
+:Configuración
+=Configuration
+
+:Opción [
+=Option [
+
+:Shadowsocks no está instalado
+=Shadowsocks is not installed
+
+:Escuchando en UDP 
+=Listening in UDP 
+
+:Dominio NS
+=Domain NS
+
+:Puerto SSH destino
+=Port SSH target
+
+:Nuevo dominio NS
+=New domain NS
+
+:Dominio NS actualizado a 
+=Domain NS updated to 
+
+:Nuevo puerto destino
+=New port target
+
+:Puerto destino actualizado a 
+=Port target updated to 
+
+:Servidor activo.
+=Active Server.
+
+:Binario servidor
+=Binary server
+
+:Falta dns-server
+=Missing dns-server
+
+:Binario cliente
+=Binary client
+
+:Llave privada
+=Private Key
+
+:Falta server.key
+=Missing server.key
+
+:Llave publica
+=Public Key
+
+:Falta server.pub
+=Missing server.pub
+
+:Dominio NS sin configurar
+=Domain NS no configurar
+
+:Falta la regla 53 -> 
+=Missing the rule 53 -> 
+
+:PUB actual
+=PUB current
+
+:SlowDNS desinstalado.
+=SlowDNS uninstalled.
+
+:Python 2 instalado
+=Python 2 installed
+
+:No se pudo instalar Python 2
+=Could not install Python 2
+
+:Configuración del nuevo puerto SOCKS
+=Configuration of the new port SOCKS
+
+:Ya existe un servicio en el puerto 
+=Already exists a service in the port 
+
+: disponible
+= available
+
+:Puerto inválido
+=Invalid Port
+
+:Opción inválida (1, 2 o 3)
+=Invalid Option (1, 2 or 3)
+
+:¿Cambiar banner?
+=¿Change banner?
+
+:■ Puerto 
+=■ Port 
+
+:Crear puerto SOCKS
+=Create port SOCKS
+
+:Iniciar / Parar puerto
+=Start / Stop port
+
+:Eliminar puerto
+=Delete port
+
+:Reparar (fix)
+=Repair (fix)
+
+:Ejemplo: 80 8080 8799 3128
+=Example: 80 8080 8799 3128
+
+: inválido
+= invalid
+
+: inválido (1-65535)
+= invalid (1-65535)
+
+:Ningún puerto válido
+=No valid port
+
+:Paquete 
+=Package 
+
+: instalado correctamente
+= installed successfully
+
+:Squid no está instalado
+=Squid is not installed
+
+:Squid no instalado
+=Squid not installed
+
+:Solo hay un puerto (
+=Only there is a port (
+
+:Nuevo host 
+=New host 
+
+:El host ya existe
+=The host already exists
+
+: bloqueado
+= blocked
+
+: desbloqueado
+= unblocked
+
+: bloqueada
+= blocked
+
+:Bloquear host
+=Block host
+
+:Desbloquear host
+=Unblock host
+
+:Agregar puertos
+=Add ports
+
+:Quitar puerto
+=Remove port
+
+:Desinstalar Squid
+=Uninstall Squid
+
+:No hay puertos nuevos para agregar.
+=There are no new ports to add.
+
+:Deteniendo SSH...
+=Stopping SSH...
+
+:Iniciando SSH...
+=Starting SSH...
+
+:Reiniciando SSH...
+=Restarting SSH...
+
+:Verificando 
+=Checking 
+
+:Aplicando servidor 
+=Applying server 
+
+:Error generando certificado
+=Error generating certificate
+
+:Puerto destino
+=Port target
+
+:No hay puertos disponibles
+=There are no available ports
+
+:Destino
+=Target
+
+: ya en uso
+= already in use
+
+:No hay puertos SSL activos
+=There are no ports SSL active
+
+:Puerto a eliminar
+=Port to delete
+
+:Puerto SSL
+=Port SSL
+
+:No se encontró la entrada en la config
+=Not found the input in the config
+
+:No hay otros puertos disponibles
+=There are no others available ports
+
+:Nuevo destino
+=New target
+
+:No existe 
+=Does not exist 
+
+:systemd disponible
+=systemd available
+
+:Puerto UDP [
+=Port UDP [
+
+:Rango de puertos [
+=Range of ports [
+
+:Binario ya existe y es válido
+=Binary already exists and is valid
+
+:[1/6] Binario
+=[1/6] Binary
+
+:Binario eliminado
+=Binary deleted
+
+:Binario no encontrado
+=Binary not found
+
+:[2/6] Configuración
+=[2/6] Configuration
+
+:[3/6] Servicio systemd
+=[3/6] Service systemd
+
+:Archivo de servicio no encontrado
+=File of service not found
+
+:[4/6] Estado del servicio
+=[4/6] Status of the service
+
+:Servicio iniciado
+=Service started
+
+:Error al iniciar
+=Error while starting
+
+:[5/6] Puerto UDP
+=[5/6] Port UDP
+
+:[6/6] Log del servicio
+=[6/6] Log of the service
+
+:Sin logs disponibles
+=No available logs
+
+:UDP-Custom no está instalado
+=UDP-Custom is not installed
+
+:Nuevo puerto [
+=New port [
+
+:Nuevo rango [
+=New range [
+
+: Binario y configuración 
+= Binary and configuration 
+
+:Iniciar / Parar
+=Start / Stop
+
+:Modificar configuración
+=Modify configuration
+
+:Instalar UDP-Custom
+=Install UDP-Custom
+
+:Error al extraer binario
+=Error while extraer binary
+
+:Servicio systemd configurado
+=Service systemd configured
+
+:(ya instalado)
+=(already installed)
+
+:Config no encontrado después de instalar
+=Config not found after of install
+
+:Config no encontrado
+=Config not found
+
+:Puerto cambiado a 
+=Port changed to 
+
+:Host cambiado a 
+=Host changed to 
+
+:Configurar Puerto
+=Configure Port
+
+:Configurar Host
+=Configure Host
+
+:Certificado SSL/TLS
+=Certificate SSL/TLS
+
+:Reiniciando Xray...
+=Restarting Xray...
+
+:Reiniciando Xray...                              
+=Restarting Xray... 
+
+:(10 años, sin DNS obligatorio)
+=(10 years, no DNS required)
+
+:Protocolo
+=Protocol
+
+: (activada)
+= (enabled)
+
+:Error al instalar Xray
+=Error while installing Xray
+
+:Xray instalado correctamente
+=Xray installed successfully
+
+:Xray desinstalado
+=Xray uninstalled
+
+:Puerto → 
+=Port → 
+
+:Sin cambios
+=No cambios
+
+:Protocolo → 
+=Protocol → 
+
+:Xray no está configurado
+=Xray is not configured
+
+:Host actualizado
+=Host updated
+
+:Certificado local encontrado en 
+=Local Certificate found in 
+
+:TLS activado con certificado local
+=TLS enabled with local certificate
+
+:Desactivar TLS
+=Disable TLS
+
+:Configuración aplicada
+=Configuration applied
+
+:→ Puerto UDP Custom 
+=→ Port UDP Custom 
+
+:ninguna
+=none
+
+:UFW no instalado
+=UFW not installed
+
+:No hay dominio configurado
+=There are no domain configured
+
+: libre: 
+= free: 
+
+:Config no encontrado: 
+=Config not found: 
+
+:✓  Usuario creado: 
+=✓ User created: 
+
+:Opcion: 
+=Option: 
+
+:Config Xray no encontrada: 
+=Config Xray not found: 
+
+: ── Puerto: 
+= ── Port: 
+
+:  También disponible como: 
+= Also available as: 
+
+:Nuevo Token: 
+=New Token: 
+
+:Tu nuevo ID: 
+=Your new ID: 
+
+:Token del bot: 
+=Token of the bot: 
+
+:Tu ID de Telegram: 
+=Your ID of Telegram: 
+
+:Bot no disponible: 
+=Bot unavailable: 
+
+: Límite   : 
+= Limit: 
+
+: Registro generado en: 
+= Log generated in: 
+
+: Límite de dominios [Enter = 300]: 
+= Limit of domains [Enter = 300]: 
+
+:Ver estado:  
+=View status: 
+
+:En CloudFront:
+=In CloudFront:
+
+:Valor:  
+=Value: 
+
+:Sistema DNS: 
+=System DNS: 
+
+:DNS actual: 
+=DNS current: 
+
+:DNS aplicado: 
+=DNS applied: 
+
+:⚠ Ya agregado: 
+=⚠ Already added: 
+
+:Sistema: 
+=System: 
+
+:  ✔ Tu IP pública: 
+= ✔ Your IP public: 
+
+:  Dominio   : 
+= Domain: 
+
+:Antes:
+=Before:
+
+:Total   : 
+=Total: 
+
+:Libre   : 
+=Free: 
+
+:Después:
+=After:
+
+:Total      : 
+=Total: 
+
+:Disponible : 
+=Available: 
+
+:Swap       : 
+=Swap: 
+
+:Servicio   : 
+=Service: 
+
+:✗ No se pudo copiar binario: 
+=✗ could not copy binary: 
+
+:Servicio  : 
+=Service: 
+
+:Libre:
+=Free:
+
+:Archivo:
+=File:
+
+:Disco libre (/):
+=Free Disk (/):
+
+:RAM disponible: 
+=RAM available: 
+
+:Disco libre:    
+=Free Disk: 
+
+:  Libre: 
+= Free: 
+
+:  Swap libre:  
+= Swap free: 
+
+:Valor actual: 
+=Current Value: 
+
+:Valor en kernel: 
+=Value in kernel: 
+
+:Disco libre: 
+=Free Disk: 
+
+:Estado SSH:  
+=Status SSH: 
+
+:✓ Zona horaria actualizada a: 
+=✓ Zone time updated to: 
+
+:Hora actual: 
+=Hour current: 
+
+: Versión: 
+= Version: 
+
+: Usuario:    
+= User: 
+
+: Contraseña: 
+= Password: 
+
+:DNS del servidor:
+=DNS of the server:
+
+:Listas activas:
+=Lists active:
+
+:Estado servicio:
+=Status service:
+
+:Ya está instalado: 
+=Already is installed: 
+
+:Binario: 
+=Binary: 
+
+:Faltan dependencias: 
+=Missing dependencies: 
+
+:Puerto inválido: 
+=Invalid Port: 
+
+:Puertos ya en uso:
+=Ports already in use:
+
+:Servicio:
+=Service:
+
+:Puerto:
+=Port:
+
+:Resultados:
+=Results:
+
+:Archivo: 
+=File: 
+
+:Dominio: 
+=Domain: 
+
+:Puerto actual:
+=Current Port:
+
+:Nuevo puerto: 
+=New port: 
+
+:Nuevo puerto:
+=New port:
+
+: usando SNI:          
+= using SNI: 
+
+:Puerto:   
+=Port: 
+
+:Servicio: 
+=Service: 
+
+:[actual: 
+=[current: 
+
+:Versión      : 
+=Version: 
+
+:IP pública   : 
+=IP public: 
+
+:Puerto UDP   : 
+=Port UDP: 
+
+:OBFS actualizado: 
+=OBFS updated: 
+
+:Conexiones UDP activas en :
+=Connections UDP active in:
+
+:Estado ufw:
+=Status ufw:
+
+:SNI/Dominio  : 
+=SNI/Domain: 
+
+:  Puerto 80: 
+= Port 80: 
+
+:Modo (1/2/3, 0=cancelar): 
+=Mode (1/2/3, 0=cancel): 
+
+:Modo    :
+=Mode:
+
+:Entrada :
+=Input:
+
+:Config  :
+=Config:
+
+:Numero (0=volver): 
+=Number (0=return): 
+
+:Nginx   :
+=Nginx:
+
+:Version :
+=Version:
+
+:Puerto 80:
+=Port 80:
+
+:Opcion (0=volver): 
+=Option (0=return): 
+
+:Puertos: 
+=Ports: 
+
+:IP de este VPS: 
+=IP of this VPS: 
+
+:Protocolos disponibles:
+=Protocols available:
+
+:Puerto meek actual: 
+=Port meek current: 
+
+:IP en el entry: 
+=IP in the entry: 
+
+:Puertos:
+=Ports:
+
+:NS actual: 
+=NS current: 
+
+:Puerto configurado: 
+=Port configured: 
+
+:Puerto SSH del sistema: 
+=Port SSH of the system: 
+
+:Puerto SSH destino: 
+=Port SSH target: 
+
+:Hay un proceso en el puerto 53:
+=There is a process in the port 53:
+
+:Nueva PUB KEY para tus clientes:
+=New PUB KEY for your clients:
+
+:Respaldo guardado en: 
+=Backup saved in: 
+
+:Falta: 
+=Missing: 
+
+:Opción [1]: 
+=Option [1]: 
+
+:RESUMEN DE CONFIGURACIÓN:
+=SUMMARY OF CONFIGURATION:
+
+:Puerto SOCKS:
+=Port SOCKS:
+
+:Destino:
+=Target:
+
+:Log del servicio:
+=Log of the service:
+
+:Último log de instalación:
+=Last log of installation:
+
+:IP servidor:
+=IP server:
+
+:Nuevos puertos: 
+=New ports: 
+
+:Nuevo puerto SSH principal: 
+=New port SSH main: 
+
+:✗ Puerto inválido: 
+=✗ invalid Port: 
+
+:✗ Puerto fuera de rango: 
+=✗ Port out of range: 
+
+:Puertos a agregar: 
+=Ports to add: 
+
+:Para generar el certificado:
+=To generate the certificate:
+
+:Este VPS:  
+=This VPS: 
+
+:Generando certificado para: 
+=Generating certificate for: 
+
+:Dominio:
+=Domain:
+
+:Dominio detectado: 
+=Domain detected: 
+
+:Destino seleccionado: 
+=Target selected: 
+
+:Puerto SSL a abrir: 
+=Port SSL to open: 
+
+:Destino: 
+=Target: 
+
+:Puerto SSL a agregar: 
+=Port SSL to add: 
+
+:Solo hay un puerto SSL activo: 
+=Only there is a port SSL active: 
+
+:Puerto SSL a editar:
+=Port SSL to edit:
+
+:Nuevo destino:
+=New target:
+
+:  Config no encontrada: 
+= Config not found: 
+
+:  Certificado no encontrado: 
+= Certificate not found: 
+
+:Instalando dependencias: 
+=Installing dependencies: 
+
+:IP Pública:
+=IP Public:
+
+:Puerto UDP:
+=Port UDP:
+
+:Rango:
+=Range:
+
+:Configuración actual:
+=Current Configuration:
+
+:Conexiones:
+=Connections:
+
+:Config creada: 
+=Config created: 
+
+:Paquetes con fallos: 
+=Packages with failures: 
+
+:Fecha actual: 
+=Current Date: 
+
+:Versión a instalar: 
+=Version to install: 
+
+:Nuevo puerto [1-65535] (0=cancelar): 
+=New port [1-65535] (0=cancel): 
+
+:Host actual:
+=Host current:
+
+:Nuevo host (0=cancelar): 
+=New host (0=cancel): 
+
+:TLS actual:
+=TLS current:
+
+:Certificado encontrado:
+=Certificate found:
+
+:Dominio actual: 
+=Current Domain: 
+
+:Dominio (0=cancelar TLS): 
+=Domain (0=cancel TLS): 
+
+:Opción [1=VMess, 2=VLess]: 
+=Option [1=VMess, 2=VLess]: 
+
+:Opción [1=WS]: 
+=Option [1=WS]: 
+
+:Dominio (Enter=sin dominio / usar IP): 
+=Domain (Enter=no dominio / use IP): 
+
+:Protocolo: 
+=Protocol: 
+
+:Puerto:    
+=Port: 
+
+:Dominio:   
+=Domain: 
+
+:API de estadísticas activada en 127.0.0.1:
+=API of statistics enabled in 127.0.0.1:
+
+:Puerto actual: 
+=Current Port: 
+
+:Nuevo puerto (1-65535, 0=cancelar): 
+=New port (1-65535, 0=cancel): 
+
+:Protocolo actual: 
+=Current Protocol: 
+
+:  Protocolo actual: 
+= Current Protocol: 
+
+:Nuevo dominio (0=cancelar, Enter=quitar dominio/usar IP): 
+=New domain (0=cancel, Enter=remove domain/use IP): 
+
+:Host actual: 
+=Host current: 
+
+:Nuevo host (0=cancelar, vacío=eliminar): 
+=New host (0=cancel, empty=delete): 
+
+:TLS actual:  
+=TLS current: 
+
+:Dominio:     
+=Domain: 
+
+:  Actual: 
+= Current: 
+
+:Puerto destino:   
+=Port target: 
+
+:Puerto websocket: 
+=Port websocket: 
+
+:Puerto destino inválido: 
+=Invalid Port target: 
+
+:Puerto destino fuera de rango: 
+=Port target out of range: 
+
+:✓ Servicio ZIV activo escuchando en UDP:
+=✓ Service ZIV active listening in UDP:
+
+:Puerto ZIV:      
+=Port ZIV: 
+
+:Rango actual:
+=Current Range:
+
+:✓ Puerto: 
+=✓ Port: 
+
+:✓ Configuración actualizada:
+=✓ Configuration updated:
+
+:✓ Dominio guardado: 
+=✓ Domain saved: 
+
+:Rango UDP:
+=Range UDP:
+
+:Usuarios SSH:
+=Users SSH:
+
+:✓  Restaurado correctamente
+=✓ Restored successfully
+
+:✓ Servicio instalado y activo.
+=✓ Service installed and active.
+
+:✓ Servicio eliminado.
+=✓ Service deleted.
+
+:✔ Reiniciado correctamente
+=✔ Restarted successfully
+
+:✓ Servicio iniciado
+=✓ Service started
+
+:✓ Servicio reiniciado
+=✓ Service restarted
+
+:✓ Servicio Dropbear reiniciado
+=✓ Service Dropbear restarted
+
+:✓ Puerto Stunnel actualizado
+=✓ Port Stunnel updated
+
+:✓ Todo ya instalado.
+=✓ All already installed.
+
+:✓ Puerto 
+=✓ Port 
+
+:✓ Servicio Squid reiniciado
+=✓ Service Squid restarted
+
+:✓ Puerto SSH principal actualizado y servicio reiniciado.
+=✓ Port SSH main updated and service restarted.
+
+:✓ SSH detenido.
+=✓ SSH stopped.
+
+:✓ SSH iniciado.
+=✓ SSH started.
+
+:✓ Servicio reiniciado.
+=✓ Service restarted.
+
+:✓ Certificado SSL generado con éxito.
+=✓ Certificate SSL generated with success.
+
+:✓ Disponible
+=✓ Available
+
+:✓ Configuración actualizada
+=✓ Configuration updated
+
+:✓ Servicio iniciado en puerto 
+=✓ Service started in port 
+
+:✓ Regla ZIV: UDP 
+=✓ Rule ZIV: UDP 
+
+:✓ Iniciado
+=✓ Started
+
+:✓ Detenido
+=✓ Stopped
+
+:✓ Reiniciado
+=✓ Restarted
+
+:✗ Error al purgar el paquete.
+=✗ Error while purgar the package.
+
+:✗ Inválido
+=✗ Invalid
+
+:✗ Número válido (≥1)
+=✗ valid Number (≥1)
+
+:✗ No hay copia en 
+=✗ there are no copy in 
+
+:✗ Número inválido
+=✗ invalid Number
+
+:✗ No hay copia disponible
+=✗ there are no copy available
+
+:✗ Opción inválida
+=✗ invalid Option
+
+:✗ No se pudo escribir 
+=✗ could not write 
+
+:✗ Error al instalar el servicio.
+=✗ Error while installing the service.
+
+:✗ Valor inválido (mínimo 1 minuto).
+=✗ invalid Value (minimum 1 minute).
+
+:✗ Opción inválida.
+=✗ invalid Option.
+
+:✗ Fuera de rango (1-10).
+=✗ out of range (1-10).
+
+:✗ Error al configurar la zona horaria.
+=✗ Error while configuring the zone time.
+
+:✗ Error al instalar en 
+=✗ Error while installing in 
+
+:✗ Fallo al iniciar badvpn
+=✗ Failure while starting badvpn
+
+:✗ Fallo al iniciar
+=✗ Failure while starting
+
+:✗ Fallo al reiniciar
+=✗ Failure while restarting
+
+:✗ Puerto inválido (1-65535)
+=✗ invalid Port (1-65535)
+
+:✗ no instalado
+=✗ not installed
+
+:✗ Error al iniciar
+=✗ Error while starting
+
+:✗ Error al reiniciar
+=✗ Error while restarting
+
+:✗ No se pudo iniciar 
+=✗ could not start 
+
+:✗ No se pudo iniciar puerto 
+=✗ could not start port 
+
+:✗ Puerto inválido.
+=✗ invalid Port.
+
+:✗ Puerto fuera de rango.
+=✗ Port out of range.
+
+:✗ No existe 
+=✗ does not exist 
+
+:✗ Error al generar el certificado SSL.
+=✗ Error while generating the certificate SSL.
+
+:✗ Rango inválido (1-65535)
+=✗ invalid Range (1-65535)
+
+:✗ Puerto 
+=✗ Port 
+
+:✗ Valor inválido
+=✗ invalid Value
+
+:✗ No parece un dominio válido.
+=✗ Not seems a valid domain.
+
+:! Sin espacio para 2GB swap
+=! no espacio for 2GB swap
+
+:⚠  Tu sistema tiene más de 2GB de RAM.
+=⚠ Your system has more of 2GB of RAM.
+
+:⚠ Sin datos. Instala primero.
+=⚠ no datos. Install first.
+
+:⚠ Cancelado
+=⚠ Cancelled
+
+:⚠  Puerto 
+=⚠ Port 
+
+:  ⚠ Puerto 
+= ⚠ Port 
+
+:⚠ Eliminar puerto 
+=⚠ Delete port 
+
+:⚠ El puerto 
+=⚠ The port 
+
+:⚠ No hay certificados para eliminar.
+=⚠ there are no certificates to delete.
+
+:⚠ Servicio instalado pero el puerto 
+=⚠ Service installed but the port 
+
+:⚠ Sin usuarios SSH aún — contraseña temporal: SNPLUS
+=⚠ no users SSH still — temporary password: SNPLUS
+
+:✓ PUERTO SOCKS CREADO Y ACTIVO
+=✓ PORT SOCKS CREATED AND ACTIVE
+
+:API activa pero sin datos aún para este usuario.
+=API active but no datos still for this user.
+
+:Servicio personalizado iniciado correctamente
+=Custom Service started successfully
+
+: 2. Instala Stunnel escuchando en puerto 4443      
+= 2. Install Stunnel listening in port 4443 
+
+:Este servidor no tiene ningun protocolo MEEK activo.
+=This server has no no protocol MEEK active.
+
+:No hay llave publica. Instala SlowDNS primero.
+=There are no public key. Install SlowDNS first.
+
+:Los clientes con la llave anterior ya no pueden conectar.
+=The clients with the previous key already cannot connect.
+
+:No se pudo instalar ningún paquete de Squid
+=Could not install no package of Squid
+
+:No hay puertos disponibles para redirigir
+=There are no available ports to redirect
+
+:Configuración inválida — Xray NO reiniciado
+=Invalid Configuration — Xray NOT restarted
+
+:Dominio personalizado (opcional, Enter para omitir)
+=Custom Domain (optional, Enter to omitir)
+
+:Soporte: t.me/SIN_NOMBRE22
+=Support: t.me/SIN_NOMBRE22
+
+:Error: fork() falló al ejecutar 
+=Error: fork() failed while running 
+
+:No se encontraron servicios activos con puertos.
+=No active services with ports were found.
+
+:¿Estás seguro que deseas reiniciar el VPS? (s/n): 
+=Are you sure you want to reboot the VPS? (y/n): 
+
+:El VPS se reiniciará en 10 segundos...
+=The VPS will reboot in 10 seconds...
+
+:Esta acción es irreversible.
+=This action cannot be undone.
+
+:Desinstalación completa.
+=Uninstall complete.
+
+:El Script y los servicios añadidos han sido eliminados.
+=The script and the added services have been removed.
+
+:Puedes cerrar la terminal o reiniciar el VPS.
+=You can close the terminal or reboot the VPS.
+
+:Ejecutando actualizador local...
+=Running local updater...
+
+:Descargando actualizador...
+=Downloading updater...
+
+:Actualizador descargado. Ejecutando...
+=Updater downloaded. Running...
+
+:Para actualización completa, reinstala el panel.
+=For a full update, reinstall the panel.
+
+:Error al descargar la actualización.
+=Error downloading the update.
+
+:Cerrando conexión...
+=Closing connection...
+
+:              Saliendo de SN-PLUS...
+=              Exiting SN-PLUS...
+
+:           ¡CONTACTO t.me/SIN_NOMBRE22!
+=           CONTACT t.me/SIN_NOMBRE22!
+
+:[!] sshd_config tiene errores de sintaxis. 
+=[!] sshd_config has syntax errors. 
+
+:    Revisa con: sshd -t
+=    Check with: sshd -t
+
+:[!] Error en sshd_config tras la edicion. Revirtiendo...
+=[!] Error in sshd_config after editing. Reverting...
+
+:Se abrirá un editor para tu diseño HTML.
+=An editor will open for your HTML design.
+
+:Nota: Este banner NO soporta etiquetas dinámicas.
+=Note: This banner does NOT support dynamic tags.
+
+:✔ Banner Estático Activado.
+=✔ Static Banner enabled.
+
+:Usa estas etiquetas exactas en tu diseño HTML:
+=Use these exact tags in your HTML design:
+
+:✔ Banner Dinámico Activado.
+=✔ Dynamic Banner enabled.
+
+:✔ Todos los banners han sido desactivados.
+=✔ All banners have been disabled.
+
+:Esto borrará por completo tus diseños y configuraciones.
+=This will completely erase your designs and settings.
+
+:¿Estás seguro? 
+=Are you sure? 
+
+:✔ Banners eliminados correctamente.
+=✔ Banners deleted successfully.
+
+:No hay elementos para mostrar.
+=There are no items to show.
+
+:⚠ ATENCIÓN: Servicio crítico del sistema.
+=⚠ WARNING: Critical system service.
+
+:No se permite gestionar 
+=Not allowed to manage 
+
+:DESACTIVAR (Stop/Kill)
+=DISABLE (Stop/Kill)
+
+:ELIMINAR (Purgar paquete)
+=DELETE (Purge package)
+
+:✗ No se detectó un paquete APT para este servicio.
+=✗ No APT package was detected for this service.
+
+:⚠ ¿Confirmas purgar 
+=⚠ Confirm purging 
+
+:✓ Paquete purgado.
+=✓ Package purged.
+
+:No se encontraron servicios con el término: 
+=No services were found with the term: 
+
+:Saliendo... @SINNOMBRE22
+=Exiting... @SINNOMBRE22
+
+:jq no instalado. Instálalo con: apt install jq
+=jq not installed. Install it with: apt install jq
+
+:(inbound VMess no encontrado)
+=(VMess inbound not found)
+
+:Inbound VMess no encontrado en config
+=VMess inbound not found in config
+
+:Solo letras, números y _
+=Letters, numbers and _ only
+
+:Días de expiración (0=ilimitado)
+=Expiration days (0=unlimited)
+
+:Expira: 
+=Expires: 
+
+:✗ Inbound VMess no encontrado
+=✗ VMess inbound not found
+
+:N° a eliminar (0 para volver)
+=No. to delete (0 to go back)
+
+:? (s/n): 
+=? (y/n): 
+
+:N° del usuario
+=User no.
+
+:N° a renovar
+=No. to renew
+
+:Días adicionales
+=Additional days
+
+:N° a bloquear/desbloquear
+=No. to block/unblock
+
+:Incluye usuarios VMess
+=Includes VMess users
+
+:Restaurar? (s/n): 
+=Restore? (y/n): 
+
+:Habilitando API de estadísticas...
+=Enabling statistics API...
+
+:API de stats no configurada.
+=Stats API not configured.
+
+:  Se necesita activarla para ver el consumo por usuario.
+=  It must be enabled to see data usage per user.
+
+:¿Activar ahora? (s/n): 
+=Enable now? (y/n): 
+
+:(sin estadísticas)
+=(no statistics)
+
+:Consultando API...
+=Querying API...
+
+:  El tráfico aparece tras la primera conexión del cliente.
+=  Traffic appears after the client's first connection.
+
+:Días de duración (0=cancelar)
+=Duration in days (0=cancel)
+
+:Enter = UUID automático | Pega uno personalizado
+=Enter = automatic UUID | Paste a custom one
+
+:UUID personalizado aceptado
+=Custom UUID accepted
+
+:Crear? (s/n)
+=Create? (y/n)
+
+:N° a eliminar
+=No. to delete
+
+:No hay usuarios vencidos. Todo limpio.
+=There are no expired users. All clean.
+
+:Expiró
+=Expired
+
+:Se eliminarán 
+=Will be deleted: 
+
+: usuario(s) vencido(s). Esta acción no se puede deshacer.
+= expired user(s). This action cannot be undone.
+
+:Confirmar eliminación masiva? (s/n)
+=Confirm bulk deletion? (y/n)
+
+:Consultando estadísticas...
+=Querying statistics...
+
+:⚠ Stats no disponibles — actívala al ver un usuario
+=⚠ Stats unavailable — enable it when viewing a user
+
+:Días adicionales (desde hoy si expirado)
+=Additional days (from today if expired)
+
+:Copia más reciente: 
+=Most recent copy: 
+
+:Restaurar? Se sobreescribirá la config actual (s/n)
+=Restore? The current config will be overwritten (y/n)
+
+:✗ El archivo de backup está corrupto
+=✗ The backup file is corrupted
+
+:Configuración restaurada
+=Settings restored
+
+:¿Confirmar? [s/N]: 
+=Confirm? [y/N]: 
+
+:Saliendo de SN-PLUS...
+=Exiting SN-PLUS...
+
+:¡CONTACTO t.me/SIN_NOMBRE22!
+=CONTACT t.me/SIN_NOMBRE22!
+
+:Ejecuta el instalador e ingresa una key valida.
+=Run the installer and enter a valid key.
+
+:Rutas buscadas:
+=Paths searched:
+
+:Error: fork() fallo al ejecutar 
+=Error: fork() failed while running 
+
+:Seleccione una opcion
+=Select an option
+
+: ✗ URL rechazada (caracteres inválidos): 
+= ✗ URL rejected (invalid characters): 
+
+: Objetivo : 
+= Target   : 
+
+: Realizando escaneo inicial...
+= Running initial scan...
+
+: ✗ No se encontraron enlaces en el objetivo.
+= ✗ No links were found on the target.
+
+:) - Escaneando ---> 
+=) - Scanning ---> 
+
+: Selección: 
+= Selection: 
+
+: Interrupción recibida. Saliendo...
+= Interrupt received. Exiting...
+
+: Site Alvo (o 0 para volver): 
+= Target site (or 0 to go back): 
+
+:fork() falló
+=fork() failed
+
+:Se realizarán las siguientes acciones:
+=The following actions will be performed:
+
+:¿Confirmar instalación? (s/n): 
+=Confirm installation? (y/n): 
+
+:App en:         
+=App on:         
+
+:En CloudFront configura:
+=In CloudFront configure:
+
+:App Port:       
+=App Port:       
+
+:Nginx:          
+=Nginx:          
+
+:IPs CF activas: 
+=Active CF IPs:  
+
+:          ACTUALIZAR IPs CLOUDFRONT
+=          UPDATE CLOUDFRONT IPs
+
+:  ✓ IPs actualizadas correctamente
+=  ✓ IPs updated successfully
+
+:  ✗ Error al actualizar IPs
+=  ✗ Error updating IPs
+
+:IPs activas: 
+=Active IPs: 
+
+:No instalado. Ejecuta primero la instalación.
+=Not installed. Run the installation first.
+
+:Secret actual:
+=Current secret:
+
+:Header: 
+=Header: 
+
+:⚠ Se eliminará completamente:
+=⚠ This will be completely removed:
+
+:¿Estás seguro? (s/n): 
+=Are you sure? (y/n): 
+
+:Nginx:   
+=Nginx:   
+
+:IPs CF:  
+=CF IPs:  
+
+:Ver estado y secret
+=View status and secret
+
+:Actualizar IPs CloudFront
+=Update CloudFront IPs
+
+:Mostrar Origin Secret
+=Show Origin Secret
+
+:No se encontraron servidores DNS configurados
+=No configured DNS servers were found
+
+:Backup: 
+=Backup: 
+
+:Selecciona un servidor DNS:
+=Select a DNS server:
+
+:Confirmar? (s/n)
+=Confirm? (y/n)
+
+:Ingresa los servidores DNS:
+=Enter the DNS servers:
+
+:Puedes agregar hasta 4 servidores. Enter en blanco = terminar.
+=You can add up to 4 servers. Blank Enter = finish.
+
+:✗ IPv4 inválida: 
+=✗ Invalid IPv4: 
+
+:No se ingresó ningún DNS. Cancelado.
+=No DNS was entered. Cancelled.
+
+:Se aplicarán los siguientes DNS:
+=The following DNS will be applied:
+
+:No hay backup disponible en:
+=No backup available at:
+
+:Contenido del backup:
+=Backup contents:
+
+:Restaurar backup? (s/n)
+=Restore backup? (y/n)
+
+:DNS restaurado desde backup
+=DNS restored from backup
+
+:Error al restaurar backup
+=Error restoring backup
+
+:No hay DNS configurados para probar
+=There are no configured DNS to test
+
+:Prueba de resolución DNS:
+=DNS resolution test:
+
+:Esto controla si DHCP o NetworkManager pueden 
+=This controls whether DHCP or NetworkManager can 
+
+:sobreescribir tu 
+=overwrite your 
+
+: (inmutable)
+= (immutable)
+
+: (puede ser sobreescrito)
+= (can be overwritten)
+
+:Protección desactivada
+=Protection disabled
+
+:Protección activada
+=Protection enabled
+
+:Otros catalogos encontrados
+=Other catalogs found
+
+:Escribe el codigo para usarlo
+=Type the code to use it
+
+:Ese idioma no tiene catalogo instalado.
+=That language has no catalog installed.
+
+:Actualiza el script con la opcion 101.
+=Update the script with option 101.
+
+:Vuelve a escribir  sn  para entrar en el idioma nuevo.
+=Type  sn  again to enter in the new language.
+
+:✔ OK
+=✔ OK
+
+:WHOIS (resumen)
+=WHOIS (summary)
+
+:DETALLE ADICIONAL  (ipapi.co)
+=ADDITIONAL DETAIL  (ipapi.co)
+
+:  ✖ No se pudo resolver: 
+=  ✖ Could not resolve: 
+
+:  ✔ Resuelto → 
+=  ✔ Resolved → 
+
+:  ⚠  IP privada/loopback detectada: 
+=  ⚠  Private/loopback IP detected: 
+
+:  ✖ Objetivo inválido (caracteres no permitidos).
+=  ✖ Invalid target (characters not allowed).
+
+:  Objetivo  : 
+=  Target    : 
+
+:  Fuentes   : 
+=  Sources   : 
+
+:  Coordenadas     : 
+=  Coordinates     : 
+
+:  Google Maps     : 
+=  Google Maps     : 
+
+:  ✔ Consulta completada  —  
+=  ✔ Query completed  —  
+
+:  Escribe 
+=  Type 
+
+:  [Enter] Nueva consulta   
+=  [Enter] New query       
+
+:Limpiando caché de memoria...
+=Clearing memory cache...
+
+:Caché liberada correctamente.
+=Cache freed successfully.
+
+:No se pudo limpiar la caché.
+=Could not clear the cache.
+
+:no pudo reiniciarse
+=could not be restarted
+
+:Ejecutando actualización del sistema...
+=Running system update...
+
+:A continuación se te pedirá la nueva contraseña.
+=You will now be asked for the new password.
+
+:Ingresa el dominio del servidor:
+=Enter the server domain:
+
+:Usada   : 
+=Used    : 
+
+:Caché   : 
+=Cache   : 
+
+:Liberando RAM...
+=Freeing RAM...
+
+:Liberados: 
+=Freed:    
+
+:Truncado: 
+=Truncated: 
+
+:Espacio recuperado: 
+=Space reclaimed: 
+
+:Núcleos CPU : 
+=CPU cores   : 
+
+:Carga       : 
+=Load        : 
+
+:Uptime      : 
+=Uptime      : 
+
+:Procesos zombie  : 
+=Zombie processes : 
+
+:✓ Limpieza total completada.
+=✓ Full cleanup completed.
+
+:Usada      : 
+=Used       : 
+
+:Caché      : 
+=Cache      : 
+
+:Núcleos    : 
+=Cores      : 
+
+:Load avg   : 
+=Load avg   : 
+
+:Uptime     : 
+=Uptime     : 
+
+:Uso /      : 
+=Usage /    : 
+
+:Zombies    : 
+=Zombies    : 
+
+:Habilitado : 
+=Enabled    : 
+
+:Intervalo  : 
+=Interval   : 
+
+:Intervalo : 
+=Interval  : 
+
+:  06. AUTO-LIMPIEZA PROGRAMADA (systemd)
+=  06. SCHEDULED AUTO-CLEANUP (systemd)
+
+:Intervalo en minutos (ej: 30, 60, 120): 
+=Interval in minutes (e.g. 30, 60, 120): 
+
+:✓ Auto-limpieza activada cada 
+=✓ Auto-cleanup enabled every 
+
+:✓ Persistirá tras reboot.
+=✓ It will persist after reboot.
+
+:          ⚡ OPTIMIZADOR VPS — SN PLUS v2.4
+=          ⚡ VPS OPTIMIZER — SN PLUS v2.4
+
+:   Load : 
+=   Load : 
+
+:   Auto : 
+=   Auto : 
+
+:Auto-limpieza (systemd)
+=Auto-cleanup (systemd)
+
+:↩  Volviendo al menú principal...
+=↩  Returning to the main menu...
+
+:Optimizaciones:
+=Optimizations:
+
+:Enfoque: 
+=Focus:   
+
+:qdisc:   
+=qdisc:   
+
+:Iface:   
+=Iface:   
+
+:¿Aplicar este perfil? (s/n): 
+=Apply this profile? (y/n): 
+
+:  APLICANDO: ULTRA — Latencia Minima
+=  APPLYING: ULTRA — Minimum Latency
+
+:Config: 
+=Config: 
+
+:⚠ Se restauran los valores originales.
+=⚠ The original values will be restored.
+
+:¿Continuar? (s/n): 
+=Continue? (y/n): 
+
+:✓ Revertido correctamente
+=✓ Reverted successfully
+
+:★ ULTRA — Latencia Minima Agresiva
+=★ ULTRA — Aggressive Minimum Latency
+
+:Proxy  / V2Ray / Xray / Hysteria2
+=Proxy  / V2Ray / Xray / Hysteria2
+
+:Tunnel / WireGuard / OpenVPN
+=Tunnel / WireGuard / OpenVPN
+
+:Gaming / Latencia media-baja
+=Gaming / Medium-low latency
+
+:Balanced / Uso general
+=Balanced / General use
+
+:Low RAM  / VPS <= 512MB
+=Low RAM  / VPS <= 512MB
+
+: Perfil invalido: 
+= Invalid profile: 
+
+: Desconocido: 
+= Unknown: 
+
+:Este programa requiere permisos de root.
+=This program requires root permissions.
+
+:Usado:
+=Used:
+
+:Total:
+=Total:
+
+:Swappiness:      
+=Swappiness:      
+
+:para ver qué línea está rota.
+=to see which line is broken.
+
+:⚠  Se eliminará el swapfile actual (/swapfile).
+=⚠  The current swapfile (/swapfile) will be deleted.
+
+:[s/N]
+=[y/N]
+
+:Swapfile eliminado correctamente.
+=Swapfile deleted successfully.
+
+:   No es estrictamente necesario, pero puedes continuar.
+=   It is not strictly necessary, but you can continue.
+
+:Elige el tamaño del swapfile:
+=Choose the swapfile size:
+
+:← Recomendado
+=← Recommended
+
+:✗ Espacio insuficiente en disco.
+=✗ Not enough disk space.
+
+:Creando swapfile de 
+=Creating swapfile of 
+
+:✗ Error al crear /swapfile con dd.
+=✗ Error creating /swapfile with dd.
+
+:  Verifica el espacio disponible y los permisos.
+=  Check the available space and permissions.
+
+:✗ mkswap falló. El archivo puede estar corrupto.
+=✗ mkswap failed. The file may be corrupted.
+
+:  Eliminando /swapfile...
+=  Deleting /swapfile...
+
+:✗ swapon falló.
+=✗ swapon failed.
+
+:  El sistema puede no tener soporte de swap o el archivo tiene huecos.
+=  The system may not support swap or the file has holes.
+
+:sshd -t detectó errores en la config SSH.
+=sshd -t detected errors in the SSH config.
+
+:  Ejecuta 'sshd -t' manualmente antes de reiniciar.
+=  Run 'sshd -t' manually before restarting.
+
+:SSH config OK
+=SSH config OK
+
+:Swapfile de 
+=Swapfile of 
+
+:  Swap total:  
+=  Total swap:  
+
+:         PRIORIDAD DE SWAP  (Swappiness)
+=         SWAP PRIORITY  (Swappiness)
+
+:desconocido
+=unknown
+
+:Define qué tan rápido el sistema usa la SWAP.
+=Sets how quickly the system uses SWAP.
+
+:Bajo = Prioriza RAM  │  Alto = Usa más SWAP
+=Low = Prefers RAM  │  High = Uses more SWAP
+
+:← Mínimo  (máxima RAM)
+=← Minimum  (maximum RAM)
+
+:← Recomendado VPS
+=← Recommended for VPS
+
+:← Balanceado
+=← Balanced
+
+:← Default Linux
+=← Linux default
+
+:← Máximo (agresivo)
+=← Maximum (aggressive)
+
+:Selecciona (1-10): 
+=Select (1-10): 
+
+:Swappiness actualizado a: 
+=Swappiness updated to: 
+
+:swapon --show:
+=swapon --show:
+
+:Swappiness:  
+=Swappiness:  
+
+:✓ Config OK
+=✓ Config OK
+
+:✗ Config con errores (ejecuta: sshd -t)
+=✗ Config has errors (run: sshd -t)
+
+:Selecciona un continente:
+=Select a continent:
+
+:UTC / Otros
+=UTC / Others
+
+:Elige un continente: 
+=Choose a continent: 
+
+:✗ No se encontraron zonas para: 
+=✗ No zones were found for: 
+
+:Selecciona el número de tu ciudad: 
+=Select the number of your city: 
+
+:Selección inválida.
+=Invalid selection.
+
+:    ✖ Arquitectura no soportada: 
+=    ✖ Unsupported architecture: 
+
+:✖ El servicio no inició
+=✖ The service did not start
+
+:✔ AdGuard Home activo — anuncios bloqueados
+=✔ AdGuard Home active — ads blocked
+
+:✔ Intercepción DNS activa para todos los protocolos
+=✔ DNS interception active for all protocols
+
+:Panel de administración:
+=Admin panel:
+
+: Estándar       : 
+= Standard       : 
+
+: DNS-over-HTTPS : 
+= DNS-over-HTTPS : 
+
+: AdGuard DNS   
+= AdGuard DNS   
+
+: AdAway (ambas) 
+= AdAway (both) 
+
+:Whitelist integrada:
+=Built-in whitelist:
+
+:✖ AdGuard Home detenido — DNS sin filtrar
+=✖ AdGuard Home stopped — DNS unfiltered
+
+:✔ AdGuard Home activo — DNS filtrado
+=✔ AdGuard Home active — DNS filtered
+
+:Intercepción DNS:
+=DNS interception:
+
+:AdGuard Home:
+=AdGuard Home:
+
+:¿Desinstalar? [s/N]
+=Uninstall? [y/N]
+
+:Arquitectura: 
+=Architecture: 
+
+:Compilando desde código fuente
+=Building from source code
+
+:(descarga tarball oficial + compila con gcc)
+=(downloads official tarball + builds with gcc)
+
+:↳ Compilación fallida
+=↳ Build failed
+
+:No se pudo instalar badvpn-udpgw.
+=Could not install badvpn-udpgw.
+
+:Verifica la conexión a internet e intenta nuevamente.
+=Check the internet connection and try again.
+
+:¿Configurar e iniciar ahora? (s/n): 
+=Configure and start now? (y/n): 
+
+:Presiona Enter en cada campo para usar el valor por defecto
+=Press Enter on each field to use the default value
+
+:IP listen [
+=Listen IP [
+
+:Max clientes [
+=Max clients [
+
+:Max conexiones por cliente [
+=Max connections per client [
+
+:Escucha:      
+=Listening:    
+
+:Max clientes: 
+=Max clients:  
+
+:Max conn/cli: 
+=Max conn/cli: 
+
+:¿Aplicar? (s/n): 
+=Apply? (y/n): 
+
+:Escucha:  
+=Listening:
+
+:Revisa los logs con la opción del menú
+=Check the logs with the menu option
+
+:(últimas 30 líneas)
+=(last 30 lines)
+
+:No hay logs disponibles
+=There are no logs available
+
+:Ver logs
+=View logs
+
+:Puertos abiertos en 
+=Ports opened in 
+
+:Fallo el inicio estándar. Creando servicio personalizado...
+=Standard start failed. Creating custom service...
+
+:No se pudo iniciar ni con servicio personalizado
+=Could not start even with a custom service
+
+:¿Instalar automáticamente? (s/n): 
+=Install automatically? (y/n): 
+
+:Las animaciones pueden fallar
+=Animations may fail
+
+:Continúa sin las dependencias (pueden fallar animaciones)
+=Continuing without the dependencies (animations may fail)
+
+:Error al descargar el código fuente
+=Error downloading the source code
+
+:Error en la compilación
+=Build error
+
+:Compilación finalizada
+=Build finished
+
+:Puerto(s):
+=Port(s):
+
+:Puedes ingresar varios puertos separados por espacio
+=You can enter several ports separated by a space
+
+:Ingresa los puertos [1-65535]: 
+=Enter the ports [1-65535]: 
+
+:¿Continuar con los puertos libres? (s/n): 
+=Continue with the free ports? (y/n): 
+
+:No hay puertos válidos libres
+=There are no valid free ports
+
+:No se pudo compilar la versión personalizada, se usará la normal
+=Could not build the custom version, the normal one will be used
+
+:Puerto(s) actual(es):
+=Current port(s):
+
+:Ingresa nuevos puertos separados por espacio
+=Enter new ports separated by a space
+
+:No ingresaste puertos válidos
+=You did not enter valid ports
+
+:✓ Puertos configurados: 
+=✓ Ports configured: 
+
+:✗ Falla al reiniciar Dropbear
+=✗ Failure restarting Dropbear
+
+:Dropbear está corriendo pero no se detectaron puertos
+=Dropbear is running but no ports were detected
+
+:Dropbear no está corriendo
+=Dropbear is not running
+
+:● Corriendo
+=● Running
+
+:SSH-2.0-dropbear (sin registros recientes)
+=SSH-2.0-dropbear (no recent records)
+
+:stunnel_port no definido. Usa 'Setear puerto Stunnel'.
+=stunnel_port not defined. Use 'Set Stunnel port'.
+
+:haproxy.cfg generado en 
+=haproxy.cfg generated at 
+
+:HAProxy puede no tener soporte TLS (req_ssl_sni)
+=HAProxy may not have TLS support (req_ssl_sni)
+
+:Si el ruteo por SNI no funciona, instala haproxy-full
+=If SNI routing does not work, install haproxy-full
+
+:Paso 1: Generar configuración
+=Step 1: Generate configuration
+
+:Paso 2: Instalar servicio systemd
+=Step 2: Install systemd service
+
+:Config:
+=Config:
+
+:Próximos pasos:
+=Next steps:
+
+:Instala V2Ray/XRay en puerto 8443 con TLS
+=Install V2Ray/XRay on port 8443 with TLS
+
+:Usa 'Agregar SNI' para registrar dominios
+=Use 'Add SNI' to register domains
+
+: HAProxy config 
+= HAProxy config 
+
+:Ya no queda ningún rastro del servicio haproxy-mux
+=No trace of the haproxy-mux service remains
+
+:Stunnel:  
+=Stunnel:  
+
+:V2Ray/Xray: 
+=V2Ray/Xray: 
+
+:Config:  
+=Config:  
+
+:Puerto de escucha (HAProxy):
+=Listening port (HAProxy):
+
+:Puerto Stunnel (por defecto):
+=Stunnel port (default):
+
+:Mappings (V2Ray/SNI):
+=Mappings (V2Ray/SNI):
+
+:Dominio/SNI (ej: v2ray.example.com): 
+=Domain/SNI (e.g. v2ray.example.com): 
+
+:Puerto local destino (ej: 8443): 
+=Local target port (e.g. 8443): 
+
+:✓ Mapping agregado
+=✓ Mapping added
+
+:No hay mappings registrados
+=There are no registered mappings
+
+:Mappings actuales:
+=Current mappings:
+
+:Número a eliminar (ENTER cancela): 
+=Number to delete (ENTER cancels): 
+
+:Índice inválido
+=Invalid index
+
+:✓ Mapping eliminado (índice 
+=✓ Mapping deleted (index 
+
+:Nuevo puerto (ej 4443): 
+=New port (e.g. 4443): 
+
+:Puerto de escucha actual:
+=Current listening port:
+
+:HAProxy acepta las conexiones TLS en este puerto.
+=HAProxy accepts TLS connections on this port.
+
+:Puertos comunes:
+=Common ports:
+
+:  (Normal)
+=  (Normal)
+:  (CheckUser)
+=  (CheckUser)
+:PIDs:     
+=PIDs:     
+:API de estadísticas habilitada                    
+=Statistics API enabled                           
+:Error al habilitar API de stats                   
+=Error enabling stats API                         
+:↑ Upload
+=↑ Upload
+:  [Enter] 
+=  [Enter] 
+:Origin Secret:  
+=Origin Secret:  
+:Origin Domain: 
+=Origin Domain: 
+:Custom Header: 
+=Custom Header: 
+:X-Origin-Secret = 
+=X-Origin-Secret = 
+: Kernel 
+= Kernel 
+:     NETWORK OPTIMIZER  v
+=     NETWORK OPTIMIZER  v
+: 512 MB
+= 512 MB
+:   1 GB
+=   1 GB
+:   2 GB
+=   2 GB
+:   4 GB
+=   4 GB
+:   8 GB
+=   8 GB
+:America
+=America
+:Australia
+=Australia
+:Europe
+=Europe
+:Atlantic
+=Atlantic
+:Asia
+=Asia
+:Pacific
+=Pacific
+:Africa
+=Africa
+:✔ SSH-SSL / WebSocket / UDP / ZipVPN / HTTPCustom ← OK
+=✔ SSH-SSL / WebSocket / UDP / ZipVPN / HTTPCustom ← OK
+:Nuevo puerto de escucha: 
+=New listening port: 
+:HAProxy podría fallar al iniciar. ¿Continuar? (s/n): 
+=HAProxy could fail to start. Continue? (y/n): 
+:Puerto de escucha: 
+=Listening port: 
+:✓ Puerto de escucha actualizado
+=✓ Listening port updated
+:HAProxy ahora escucha en puerto: 
+=HAProxy now listens on port: 
+:Actualiza tus clientes para conectar al nuevo puerto.
+=Update your clients to connect to the new port.
+:   HAProxy MUX - Guía de Uso (SinNombre v2.0)       
+=   HAProxy MUX - Usage Guide (SinNombre v2.0)      
+: Multiplexar TLS en puerto 
+= Multiplex TLS on port 
+:   • V2Ray/XRay (por dominio) → 127.0.0.1:8443     
+=   • V2Ray/XRay (by domain)   → 127.0.0.1:8443     
+:   • Stunnel (por defecto)     → 127.0.0.1:4443    
+=   • Stunnel (default)         → 127.0.0.1:4443    
+: 1. Instala V2Ray/XRay con TLS en puerto 8443      
+= 1. Install V2Ray/XRay with TLS on port 8443       
+:    Config SNI = dominio que registrarás           
+=    SNI config = domain you will register          
+: 3. Usa 'Setear puerto de escucha' si no quieres  
+= 3. Use 'Set listening port' if you do not want   
+:    usar el 443 (ej: 8443, 2053, 2083...)          
+=    to use 443 (e.g. 8443, 2053, 2083...)          
+: 4. Ejecuta 'Instalar' desde este panel            
+= 4. Run 'Install' from this panel                  
+: 5. Usa 'Agregar SNI' para cada dominio V2Ray      
+= 5. Use 'Add SNI' for each V2Ray domain            
+: 6. HAProxy rutea en base a SNI:                   
+= 6. HAProxy routes based on SNI:                   
+:    • v2ray.example.com → puerto 8443              
+=    • v2ray.example.com → port 8443                
+:    • Otros SNIs        → puerto 4443 (Stunnel)    
+=    • Other SNIs        → port 4443 (Stunnel)      
+: • El ruteo se basa en SNI (req.ssl_sni)           
+= • Routing is based on SNI (req.ssl_sni)           
+: • Los clientes V2Ray deben enviar SNI correcto    
+= • V2Ray clients must send the correct SNI         
+: • V2Ray y Stunnel NO pueden usar el mismo SNI     
+= • V2Ray and Stunnel can NOT use the same SNI      
+: • HAProxy requiere soporte TLS (haproxy-full)     
+= • HAProxy requires TLS support (haproxy-full)     
+: • Puertos <1024 requieren permisos root           
+= • Ports <1024 require root permissions            
+: • Backup automático: .sn-bak-YYYYMMDDHHMMSS      
+= • Automatic backup: .sn-bak-YYYYMMDDHHMMSS       
+:HAProxy MUX - Stunnel + V2Ray (SNI)
+=HAProxy MUX - Stunnel + V2Ray (SNI)
+:(configurable con opción 10)
+=(configurable with option 10)
+:Detectar puertos (auto)
+=Detect ports (auto)
+:Ver mappings y configuración
+=View mappings and configuration
+:Agregar SNI (mapping)
+=Add SNI (mapping)
+:Quitar SNI (mapping)
+=Remove SNI (mapping)
+:Setear puerto Stunnel (backend)
+=Set Stunnel port (backend)
+:Setear puerto de escucha
+=Set listening port
+:Ayuda / Indicaciones de uso
+=Help / Usage instructions
+: — default: 
+= — default: 
+:fork() falló: 
+=fork() failed: 
+:Ejecuta como root: sudo ./hysteria
+=Run as root: sudo ./hysteria
+:¿Usar este certificado? (s/n): 
+=Use this certificate? (y/n): 
+:No se pudo crear autSSH en 
+=Could not create autSSH at 
+:autSSH creado — valida contra 
+=autSSH created — validates against 
+:Firewall: puerto 
+=Firewall: port 
+:INSTALADOR UDP-HYSTERIA v1
+=UDP-HYSTERIA v1 INSTALLER
+:Hysteria v1 ya está instalado
+=Hysteria v1 is already installed
+:Arquitectura : 
+=Architecture : 
+:Configura los parámetros (ENTER = usar valor sugerido)
+=Set the parameters (ENTER = use suggested value)
+:Auth         : 
+=Auth         : 
+:external (autSSH)
+=external (autSSH)
+:Redirect UDP : 
+=Redirect UDP : 
+:(rango exclusivo Hysteria)
+=(Hysteria exclusive range)
+:No se pudo obtener certificado TLS
+=Could not obtain TLS certificate
+:config.json generado
+=config.json generated
+:✗ El servicio no arrancó
+=✗ The service did not start
+:Usa RECONFIGURAR para cambiar puerto, OBFS o credenciales.
+=Use RECONFIGURE to change port, OBFS or credentials.
+:CONFIGURAR UDP-HYSTERIA v1
+=CONFIGURE UDP-HYSTERIA v1
+:Hysteria v1 no está instalado
+=Hysteria v1 is not installed
+:IP pública detectada: 
+=Public IP detected: 
+:⚠ autSSH no encontrado — recompilando...
+=⚠ autSSH not found — rebuilding...
+:config.json escrito
+=config.json written
+:(exclusivo Hysteria)
+=(Hysteria exclusive)
+:No hay configuración. Configura primero.
+=There is no configuration. Configure it first.
+:⚠  Se eliminará completamente:
+=⚠  This will be completely removed:
+:(q para salir)
+=(q to exit)
+:(Ctrl+C para salir)
+=(Ctrl+C to exit)
+:(excl.Hysteria)
+=(excl.Hysteria)
+:✗ Hysteria v1 no instalado
+=✗ Hysteria v1 not installed
+:INSTALAR HYSTERIA v2
+=INSTALL HYSTERIA v2
+:Hysteria v2 ya instalado
+=Hysteria v2 already installed
+:Password     : 
+=Password     : 
+:config.yaml generado
+=config.yaml generated
+:URI cliente:
+=Client URI:
+:Usa CONFIGURAR SERVIDOR para cambiar puerto, password, etc.
+=Use CONFIGURE SERVER to change port, password, etc.
+:CONFIGURAR HYSTERIA v2
+=CONFIGURE HYSTERIA v2
+:Hysteria v2 no instalado
+=Hysteria v2 not installed
+:DESINSTALAR HYSTERIA v2
+=UNINSTALL HYSTERIA v2
+:✗ Hysteria v2 no instalado
+=✗ Hysteria v2 not installed
+:Error nginx:
+=nginx error:
+:nginx (stream_ssl)  
+=nginx (stream_ssl)  
+:Instalar/actualizar? (s/n): 
+=Install/update? (y/n): 
+:¿Instalar landing page en puerto 80? (s/n) [n]: 
+=Install landing page on port 80? (y/n) [n]: 
+:✓ nginx 
+=✓ nginx 
+:  Landing omitida — puerto 80 libre.
+=  Landing skipped — port 80 free.
+: nginx: 
+= nginx: 
+:Puerto de entrada (ej. 
+=Inbound port (e.g. 
+:  Continuar de todos modos? (s/n): 
+=  Continue anyway? (y/n): 
+:Puerto backend local [8080]: 
+=Local backend port [8080]: 
+:TLSv1.2+TLSv1.3 / ECDSA P-384
+=TLSv1.2+TLSv1.3 / ECDSA P-384
+:Keepalive:
+=Keepalive:
+:Backend :
+=Backend :
+:Confirmar? (s/n): 
+=Confirm? (y/n): 
+:⚠ Nginx recargado pero puerto 
+=⚠ Nginx reloaded but port 
+:  Verifica: ss -tlnp | grep 
+=  Check: ss -tlnp | grep 
+:Confirmar (s/n): 
+=Confirm (y/n): 
+: nginx -t: 
+= nginx -t: 
+:OpenSSL :
+=OpenSSL :
+:SSL mod :
+=SSL mod :
+:stream.d:
+=stream.d:
+:Keepaliv:
+=Keepaliv:
+:  (v6.5)
+=  (v6.5)
+:No se encontro el binario psiphond.
+=The psiphond binary was not found.
+:Al regenerar cambian todas las llaves y el hex actual deja de servir.
+=Regenerating changes all keys and the current hex stops working.
+:Escribe los numeros separados por espacio. Ej: 1 2
+=Type the numbers separated by a space. E.g. 1 2
+:No elegiste ningun protocolo.
+=You did not choose any protocol.
+:Puerto del web server (0 = ninguno)
+=Web server port (0 = none)
+:psiphond no pudo generar la configuracion.
+=psiphond could not generate the configuration.
+:Usa VER SERVER ENTRY para copiar el hexadecimal.
+=Use VIEW SERVER ENTRY to copy the hexadecimal.
+:No hay server entry. Genera la configuracion primero.
+=There is no server entry. Generate the configuration first.
+:Pega esto en el campo TargetServerEntry de tu app.
+=Paste this into the TargetServerEntry field of your app.
+:Longitud: 
+=Length: 
+:Enter vacio usa el server entry de este servidor.
+=An empty Enter uses this server's server entry.
+:Pega el hexadecimal
+=Paste the hexadecimal
+:No hay nada que decodificar.
+=There is nothing to decode.
+:Ese texto no es hexadecimal valido.
+=That text is not valid hexadecimal.
+:Debe tener solo 0-9 a-f y longitud par.
+=It must contain only 0-9 a-f and have an even length.
+:El contenido no parece un server entry de Psiphon.
+=The content does not look like a Psiphon server entry.
+:CABECERA (campos heredados)
+=HEADER (legacy fields)
+:0 0 0 0  →  web server desactivado, es normal
+=0 0 0 0  →  web server disabled, this is normal
+:Web port  
+=Web port  
+:Secret    
+=Secret    
+:IP real (del JSON): 
+=Real IP (from JSON): 
+:JSON guardado. Editalo con la opcion EDITAR JSON.
+=JSON saved. Edit it with the EDIT JSON option.
+:No se pudo leer el server entry actual.
+=Could not read the current server entry.
+:Se abrira el editor. Guarda con Ctrl+O y sal con Ctrl+X.
+=The editor will open. Save with Ctrl+O and exit with Ctrl+X.
+:Al salir se genera el hexadecimal automaticamente.
+=On exit the hexadecimal is generated automatically.
+:El archivo quedo vacio. No se cambio nada.
+=The file was left empty. Nothing was changed.
+:El JSON tiene llaves, corchetes o comillas sin cerrar.
+=The JSON has unclosed braces, brackets or quotes.
+:Vuelve a editarlo y corrigelo. No se toco el entry activo.
+=Edit it again and fix it. The active entry was not touched.
+:Falta el campo ipAddress. No es un server entry valido.
+=The ipAddress field is missing. This is not a valid server entry.
+:JSON valido. Hexadecimal generado.
+=Valid JSON. Hexadecimal generated.
+:Meek  
+=Meek  
+:Aplicado. Se guardo un respaldo del anterior.
+=Applied. A backup of the previous one was saved.
+:No se aplico. El hexadecimal sigue disponible arriba.
+=Not applied. The hexadecimal is still available above.
+:Regenera eligiendo UNFRONTED-MEEK-HTTPS-OSSH o FRONTED-MEEK-OSSH.
+=Regenerate choosing UNFRONTED-MEEK-HTTPS-OSSH or FRONTED-MEEK-OSSH.
+:Continuar de todas formas?
+=Continue anyway?
+:Puertos que acepta Cloudflare: 443 2053 2083 2087 2096 8443
+=Ports accepted by Cloudflare: 443 2053 2083 2087 2096 8443
+:Dominio (Host header)
+=Domain (Host header)
+:El SNI viaja en el TLS. Normalmente es el mismo dominio.
+=The SNI travels in the TLS. It is usually the same domain.
+:Deshabilitar el envio de SNI?
+=Disable sending the SNI?
+:Identificador del CDN
+=CDN identifier
+:El dominio aun no resuelve. Se guardara igual.
+=The domain does not resolve yet. It will be saved anyway.
+:El dominio resuelve a 
+=The domain resolves to 
+:Host      
+=Host      
+:Proveedor 
+=Provider  
+:Reemplazar el server entry activo?
+=Replace the active server entry?
+:Reemplazado. Se guardo un respaldo.
+=Replaced. A backup was saved.
+:En tu CDN: apunta el dominio a este VPS y usa un
+=In your CDN: point the domain to this VPS and use a
+:puerto compatible. En Cloudflare deja la nube naranja.
+=compatible port. In Cloudflare leave the orange cloud.
+:Binario psiphond
+=psiphond binary
+:Falta psiphond
+=psiphond missing
+:psiphond.config
+=psiphond.config
+:Falta psiphond.config
+=psiphond.config missing
+:server-entry.dat
+=server-entry.dat
+:Falta server-entry.dat
+=server-entry.dat missing
+:psiphond activo
+=psiphond active
+:psiphond inactivo
+=psiphond inactive
+:Sin puertos registrados
+=No registered ports
+:Decodifica correctamente
+=Decodes correctly
+:El JSON no trae ipAddress
+=The JSON has no ipAddress
+:No coincide con la IP del VPS (
+=Does not match the VPS IP (
+:Cabecera en ceros (web server desactivado)
+=Header set to zeros (web server disabled)
+:Web server en el puerto 
+=Web server on port 
+:capabilities: 
+=capabilities: 
+:El server entry esta corrupto
+=The server entry is corrupted
+:psiphond activo.
+=psiphond active.
+:No arranco. Revisa DIAGNOSTICO.
+=It did not start. Check DIAGNOSTICS.
+:Se eliminan configuracion, server entry y servicio.
+=Configuration, server entry and service will be removed.
+:El binario psiphond se conserva.
+=The psiphond binary is kept.
+:Falta el binario psiphond.
+=The psiphond binary is missing.
+:[OK]
+=[OK]
+:qrencode no disponible
+=qrencode unavailable
+:Código QR de conexión
+=Connection QR code
+:Password [
+=Password [
+:Método de cifrado:
+=Encryption method:
+:⚠ Instalado pero el servicio no respondió a tiempo
+=⚠ Installed but the service did not respond in time
+:Revisa con la opción de logs.
+=Check with the logs option.
+:Password actual: 
+=Current password: 
+:Nueva password
+=New password
+:Password no puede estar vacía
+=Password cannot be empty
+:Nueva password: 
+=New password: 
+:── Archivo raw ──
+=── Raw file ──
+:¿Estás seguro? (s/n)
+=Are you sure? (y/n)
+:El servidor responde en local
+=The server responds locally
+:Redireccion 53 activa
+=Port 53 redirect active
+:Delegado a 
+=Delegated to 
+:Sesiones registradas: 
+=Sessions recorded: 
+:Aun sin trafico. Prueba conectando un cliente.
+=No traffic yet. Try connecting a client.
+:Las consultas externas alcanzan el servidor
+=External queries reach the server
+:Solo necesitas tu dominio. El resto lo configura el panel.
+=You only need your domain. The panel configures the rest.
+:Antes de seguir, crea estos 2 registros en tu dominio:
+=Before continuing, create these 2 records on your domain:
+:Luego usa  ns.tudominio.com  como dominio NS.
+=Then use  ns.yourdomain.com  as the NS domain.
+:El NS aun no propaga. Se instalara igual.
+=The NS has not propagated yet. It will be installed anyway.
+:Delegacion NS detectada.
+=NS delegation detected.
+:No se pudo descargar sldns-server.
+=Could not download sldns-server.
+:sldns-client no se descargo (no es critico).
+=sldns-client was not downloaded (not critical).
+:Llaves compartidas no disponibles, generando propias.
+=Shared keys unavailable, generating our own.
+:No se pudieron obtener ni generar las llaves.
+=The keys could not be obtained or generated.
+:No se pudieron crear los servicios.
+=The services could not be created.
+:Entrega estos datos a tus clientes:
+=Give these details to your clients:
+:Cuando lo corrijas usa DIAGNOSTICO para revalidar.
+=When you fix it use DIAGNOSTICS to revalidate.
+:Tus clientes necesitan el dominio NS y la PUBLIC KEY.
+=Your clients need the NS domain and the PUBLIC KEY.
+:Actualizado, pero el servicio no arranco.
+=Updated, but the service did not start.
+:El servidor no arranco. Revisa DIAGNOSTICO.
+=The server did not start. Check DIAGNOSTICS.
+:Falta dns-client
+=dns-client missing
+:Puerto interno UDP: 
+=Internal UDP port: 
+:El SSH del sistema escucha en 
+=The system SSH listens on 
+:Nada escuchando en UDP 
+=Nothing listening on UDP 
+:Puerto 53 libre para la redireccion
+=Port 53 free for the redirect
+:Regla de redireccion presente
+=Redirect rule present
+:Otra regla ocupa la posicion 1 de PREROUTING:
+=Another rule occupies position 1 of PREROUTING:
+:Puede interceptar el trafico antes que SlowDNS.
+=It may intercept the traffic before SlowDNS.
+:Tunel operativo de extremo a extremo.
+=Tunnel working end to end.
+:Estas usando la llave publica compartida del repo.
+=You are using the shared public key from the repo.
+:Cualquiera que conozca tu dominio NS puede conectarse.
+=Anyone who knows your NS domain can connect.
+:Al cambiar la llave, TODOS los clientes actuales dejan de conectar.
+=When the key changes, ALL current clients stop connecting.
+:Tendras que pasarles la nueva PUB KEY para que vuelvan a entrar.
+=You will have to give them the new PUB KEY to get back in.
+:Escribe CAMBIAR para confirmar
+=Type CHANGE to confirm
+:Cancelado. No se toco nada.
+=Cancelled. Nothing was touched.
+:No se pudieron generar las llaves nuevas.
+=The new keys could not be generated.
+:Restaurando las anteriores...
+=Restoring the previous ones...
+:Se eliminaran binarios, llaves, servicios y reglas.
+=Binaries, keys, services and rules will be removed.
+:Escribe SI para confirmar
+=Type YES to confirm
+:Instalando Python2 desde repositorio SINNOMBRE22...
+=Installing Python2 from the SINNOMBRE22 repository...
+:No se pudo descargar py2.tar.gz — verifica tu conexión
+=Could not download py2.tar.gz — check your connection
+:Intentando instalación rápida desde repo SINNOMBRE22...
+=Trying a quick install from the SINNOMBRE22 repo...
+:Fallback: repositorios oficiales Ubuntu 
+=Fallback: official Ubuntu repositories 
+:Fallback: .deb de Ubuntu 22.04 (jammy)...
+=Fallback: .deb from Ubuntu 22.04 (jammy)...
+:Reintentando con mirror security...
+=Retrying with the security mirror...
+:Python 2 es requerido para ejecutar PDirect.py
+=Python 2 is required to run PDirect.py
+:Instalar Python 2 automáticamente
+=Install Python 2 automatically
+:Asegúrate de que PDirect.py exista en 
+=Make sure PDirect.py exists at 
+:No hay puertos registrados
+=There are no registered ports
+:Puerto SOCKS (escucha): 
+=SOCKS port (listen): 
+:¿Recrear? (s/n): 
+=Recreate? (y/n): 
+:Puerto destino local (ej: 22 para SSH): 
+=Local target port (e.g. 22 for SSH): 
+:Tipo de respuesta HTTP:
+=HTTP response type:
+:─ Connection Established
+=─ Connection Established
+:─ Switching Protocols
+=─ Switching Protocols
+:─ Personalizado (tú eliges código y texto)
+=─ Custom (you choose code and text)
+:Códigos HTTP comunes:
+=Common HTTP codes:
+:200  ─ OK / Connection Established
+=200  ─ OK / Connection Established
+:101  ─ Switching Protocols
+=101  ─ Switching Protocols
+:301  ─ Moved Permanently
+=301  ─ Moved Permanently
+:302  ─ Found (Redirect)
+=302  ─ Found (Redirect)
+:400  ─ Bad Request
+=400  ─ Bad Request
+:403  ─ Forbidden
+=403  ─ Forbidden
+:404  ─ Not Found
+=404  ─ Not Found
+:500  ─ Internal Server Error
+=500  ─ Internal Server Error
+:Código HTTP (100-599): 
+=HTTP code (100-599): 
+:Código inválido
+=Invalid code
+:Código debe ser 100-599
+=The code must be 100-599
+:Texto de respuesta: 
+=Response text: 
+:Usando default: 
+=Using default: 
+:Respuesta: 
+=Response: 
+:HTML o texto plano
+=HTML or plain text
+:Enter = mantener: 
+=Enter = keep: 
+:Banner: 
+=Banner: 
+:X-Pass global
+=Global X-Pass
+:(cabecera HTTP X-Pass: valor — Enter = sin pass)
+=(HTTP header X-Pass: value — Enter = no pass)
+:X-Pass: 
+=X-Pass: 
+:Sin X-Pass requerido
+=No X-Pass required
+:Respuesta HTTP:
+=HTTP response:
+:X-Pass global:
+=Global X-Pass:
+:¿Crear servicio? (s/n): 
+=Create service? (y/n): 
+:Escucha:
+=Listening:
+:Respuesta:
+=Response:
+:X-Pass:
+=X-Pass:
+:Eliminando servicio fallido...
+=Removing the failed service...
+:Revisa que PDirect.py funcione correctamente
+=Check that PDirect.py works correctly
+:Últimas líneas del log:
+=Last lines of the log:
+:⚠ Se eliminará:
+=⚠ This will be removed:
+: Launcher 
+= Launcher 
+:¿Confirmar? (s/n): 
+=Confirm? (y/n): 
+:Acciones:
+=Actions:
+:PDirect.py encontrado
+=PDirect.py found
+:✓ Reparación completa
+=✓ Repair complete
+:Puertos reiniciados:
+=Ports restarted:
+: Todos los launchers en 
+= All launchers in 
+:ERROR CRÍTICO: No se encontró SNPLUS
+=CRITICAL ERROR: SNPLUS was not found
+:SOCKS PYTHON2 (PDirect)
+=SOCKS PYTHON2 (PDirect)
+:Python2:
+=Python2:
+:Ingrese los puertos separados por espacio
+=Enter the ports separated by a space
+:Debes ingresar al menos un puerto
+=You must enter at least one port
+:Posibles soluciones:
+=Possible solutions:
+: Ejecuta: 
+= Run: 
+: En Ubuntu 24.04+: 
+= On Ubuntu 24.04+: 
+:⚠ Squid instalado pero el servicio no arrancó
+=⚠ Squid installed but the service did not start
+:Config escrita en: 
+=Config written to: 
+:Diagnóstico del servicio:
+=Service diagnostics:
+:Intenta manualmente: 
+=Try manually: 
+:Puertos actuales: 
+=Current ports: 
+:Ingrese nuevos puertos separados por espacio
+=Enter new ports separated by a space
+:✓ Puertos agregados: 
+=✓ Ports added: 
+:No hay puertos configurados
+=There are no configured ports
+:¿Desea detener el servicio? (s/n): 
+=Do you want to stop the service? (y/n): 
+:Seleccione el puerto a quitar:
+=Select the port to remove:
+:Hosts bloqueados actualmente:
+=Currently blocked hosts:
+:(ej: .facebook.com)
+=(e.g. .facebook.com)
+:El host debe comenzar con punto (ej: .facebook.com)
+=The host must start with a dot (e.g. .facebook.com)
+:Host 
+=Host 
+:No hay hosts bloqueados
+=There are no blocked hosts
+:Hosts bloqueados:
+=Blocked hosts:
+:Expresiones bloqueadas actualmente:
+=Currently blocked expressions:
+:Nueva expresión 
+=New expression 
+:(ej: torrent, casino)
+=(e.g. torrent, casino)
+:La expresión ya existe
+=The expression already exists
+:Expresión 
+=Expression 
+:No hay expresiones bloqueadas
+=There are no blocked expressions
+:Expresiones bloqueadas:
+=Blocked expressions:
+: desbloqueada
+= unblocked
+:Bloquear expresión regular
+=Block regular expression
+:Desbloquear expresión regular
+=Unblock regular expression
+:Puerto(s) actual(es): 
+=Current port(s): 
+:¿Confirmas cambiar SSH al puerto 
+=Confirm changing SSH to port 
+:⚠ Recuerda abrir el puerto 
+=⚠ Remember to open port 
+:✗ Configuración inválida. Revirtiendo cambios...
+=✗ Invalid configuration. Reverting changes...
+:Ingrese el/los puerto(s) NUEVO(S) a agregar (separados por coma o espacio): 
+=Enter the NEW port(s) to add (separated by comma or space): 
+:✗ No se ingresaron puertos.
+=✗ No ports were entered.
+:✗ No se detectaron puertos válidos.
+=✗ No valid ports were detected.
+:Se declarará también 
+=It will also declare 
+: de forma explícita para no perder el acceso actual.
+= explicitly so the current access is not lost.
+:¿Confirmas agregarlos? (s/n): 
+=Confirm adding them? (y/n): 
+:✓ Puertos SSH adicionales agregados correctamente.
+=✓ Additional SSH ports added successfully.
+:⚠ Asegúrate de abrir estos puertos en el firewall.
+=⚠ Make sure to open these ports in the firewall.
+:El dominio no resuelve a ninguna IP.
+=The domain does not resolve to any IP.
+:Puede estar mal escrito, o el registro A no existe
+=It may be misspelled, or the A record does not exist
+:o todavía no ha propagado.
+=or it has not propagated yet.
+:Crea este registro en tu proveedor:
+=Create this record at your provider:
+:¿Intentar de todas formas? [s/n]
+=Try anyway? [y/n]
+:El dominio apunta a este VPS (
+=The domain points to this VPS (
+:El dominio apunta a Cloudflare (
+=The domain points to Cloudflare (
+:Tienes el proxy activado (nube naranja).
+=The proxy is enabled (orange cloud).
+: Pon el registro en 
+= Set the record to 
+:DNS only
+=DNS only
+:El dominio NO apunta a este servidor.
+=The domain does NOT point to this server.
+:Apunta a:  
+=Points to: 
+:Corrige el registro A o revisa si escribiste mal el dominio.
+=Fix the A record or check whether you misspelled the domain.
+:Ingrese su dominio
+=Enter your domain
+:Ese dominio no tiene un formato válido.
+=That domain does not have a valid format.
+:Ejemplo correcto: mi.dominio.com
+=Correct example: my.domain.com
+:¿Intentar con otro? [s/n]
+=Try another one? [y/n]
+:¿Escribir otro dominio? [s/n]
+=Enter a different domain? [y/n]
+:Comprobando puertos 80 y 443...
+=Checking ports 80 and 443...
+:Liberando puerto: 
+=Freeing port: 
+:Instalando script acme.sh...
+=Installing acme.sh script...
+:Registrando cuenta en 
+=Registering account at 
+:Causas más comunes:
+=Most common causes:
+:• El puerto 80 está bloqueado por el firewall del proveedor
+=• Port 80 is blocked by the provider firewall
+:• El dominio cambió de IP hace poco y aún no propaga
+=• The domain changed IP recently and has not propagated
+:• Se alcanzó el límite de emisiones de Let's Encrypt
+=• The Let's Encrypt issuance limit was reached
+:Requiere el contenido del 
+=Requires the contents of the 
+: y la 
+= and the 
+:¿Continuar? [s/n]
+=Continue? [y/n]
+:PEGUE EL CONTENIDO DEL CERTIFICADO (.crt)
+=PASTE THE CERTIFICATE CONTENT (.crt)
+:Se abrirá nano. Pegue, guarde (Ctrl+O) y salga (Ctrl+X)
+=Nano will open. Paste, save (Ctrl+O) and exit (Ctrl+X)
+:PEGUE EL CONTENIDO DE LA CLAVE (.key)
+=PASTE THE KEY CONTENT (.key)
+:✗ ERROR: Los datos ingresados no son válidos.
+=✗ ERROR: The data entered is not valid.
+:Ingrese correo ZeroSSL
+=Enter ZeroSSL email
+:¿Usar este dominio? [s/n]
+=Use this domain? [y/n]
+:✓ Certificados eliminados correctamente.
+=✓ Certificates deleted successfully.
+:Expira:
+=Expires:
+:GENERAR CERT SSL (Let's Encrypt)
+=GENERATE SSL CERT (Let's Encrypt)
+:GENERAR CERT SSL (ZeroSSL)
+=GENERATE SSL CERT (ZeroSSL)
+:✗ El servicio aún aparece activo
+=✗ The service still appears active
+:✗ El paquete aún aparece instalado
+=✗ The package still appears installed
+:INSTALADOR STUNNEL SSL — By SinNombre
+=STUNNEL SSL INSTALLER — By SinNombre
+:Seleccione el puerto de redirección de tráfico
+=Select the traffic redirect port
+:✗ Solo números
+=✗ Numbers only
+:No se pudo generar certificado. Abortando.
+=Could not generate the certificate. Aborting.
+:Puerto de redirección:
+=Redirect port:
+:Para quitarlo debe detener stunnel completamente.
+=To remove it you must stop stunnel completely.
+:¿Detener el servicio ahora? (s/n): 
+=Stop the service now? (y/n): 
+:  Intenta: pkill -9 stunnel4
+=  Try: pkill -9 stunnel4
+:Excluido: ZIV 5000-30000 | Hysteria 20000-39999
+=Excluded: ZIV 5000-30000 | Hysteria 20000-39999
+:DNAT a todo el rango 1-65535 (sin exclusiones)
+=DNAT to the whole 1-65535 range (no exclusions)
+:✗ Error DNAT 
+=✗ DNAT error 
+:✗ CRITICO: ninguna regla aplicada
+=✗ CRITICAL: no rule was applied
+:Intento 
+=Attempt 
+:Verificando y limpiando entorno...
+=Checking and cleaning the environment...
+:Proceso udp-custom en ejecución detectado — terminando...
+=Running udp-custom process detected — terminating...
+:Servicio previo activo — deteniendo...
+=Previous service active — stopping...
+:Binario corrupto detectado — eliminando...
+=Corrupted binary detected — deleting...
+:config.json inválido — eliminando...
+=Invalid config.json — deleting...
+:Lock obsoleto detectado — limpiando...
+=Stale lock detected — cleaning...
+:Entorno limpio — sin conflictos previos
+=Clean environment — no previous conflicts
+:Diagnóstico del sistema
+=System diagnostics
+:systemd no disponible — requerido
+=systemd unavailable — required
+:Conexión a internet disponible
+=Internet connection available
+:Sin conexión a internet
+=No internet connection
+:✓ Sistema listo para instalar
+=✓ System ready to install
+:✗ Se encontraron problemas que impiden la instalación
+=✗ Problems were found that prevent the installation
+:Instalación ya en curso (lock activo)
+=Installation already in progress (lock active)
+:INSTALAR UDP-CUSTOM v
+=INSTALL UDP-CUSTOM v
+:MultiUDP (ZIP, Hysteria, Custom)
+=MultiUDP (ZIP, Hysteria, Custom)
+:(ZIV 5000-30000, Hysteria 20000-39999)
+=(ZIV 5000-30000, Hysteria 20000-39999)
+:¿Aplicar? [s/N]: 
+=Apply? [y/N]: 
+:✓ Se aplicará exclusión de rangos reservados.
+=✓ Reserved range exclusion will be applied.
+:✓ No se aplicará exclusión. Se interceptará TODO el tráfico UDP.
+=✓ No exclusion will be applied. ALL UDP traffic will be intercepted.
+:Formato inválido (ej: 1-65535)
+=Invalid format (e.g. 1-65535)
+:¿Continuar de todas formas? (s/n): 
+=Continue anyway? (y/n): 
+:No se pudo descargar el binario tras 
+=Could not download the binary after 
+:Arquitectura del binario puede no coincidir con el sistema (
+=The binary architecture may not match the system (
+:Binario verificado correctamente
+=Binary verified successfully
+:Logs:
+=Logs:
+:Rangos excluidos:
+=Excluded ranges:
+:Últimos errores del servicio:
+=Latest service errors:
+:Revisa con la opción Diagnóstico del menú.
+=Check with the Diagnostics option in the menu.
+:Binario OK (ELF ejecutable)
+=Binary OK (executable ELF)
+:Binario corrupto (no es ELF)
+=Corrupted binary (not an ELF)
+:¿Eliminar y permitir re-descarga? (s/n): 
+=Delete and allow re-download? (y/n): 
+:Binario existe pero no tiene permisos de ejecución — corrigiendo
+=The binary exists but has no execute permission — fixing
+:Permisos corregidos
+=Permissions fixed
+:config.json válido
+=Valid config.json
+:config.json inválido o corrupto
+=Invalid or corrupted config.json
+:Restaurando desde backup...
+=Restoring from backup...
+:Restaurado desde backup
+=Restored from backup
+:Backup también corrupto
+=The backup is corrupted too
+:config.json no encontrado
+=config.json not found
+:Unidad systemd registrada
+=systemd unit registered
+:Unidad existe pero con problemas — recargando daemon
+=The unit exists but has problems — reloading daemon
+:Servicio corriendo (active)
+=Service running (active)
+:Servicio detenido (inactive)
+=Service stopped (inactive)
+:¿Intentar iniciar? (s/n): 
+=Try to start it? (y/n): 
+:Servicio en estado fallido — intentando reiniciar
+=Service in failed state — trying to restart
+:Servicio recuperado
+=Service recovered
+:No se pudo recuperar
+=Could not be recovered
+:No aplica (no instalado)
+=Not applicable (not installed)
+:Errores detectados en el log:
+=Errors detected in the log:
+:Sin errores críticos en el log
+=No critical errors in the log
+:✓ Diagnóstico completado — sin problemas
+=✓ Diagnostics completed — no problems
+:Si persisten, usa Desinstalar y vuelve a instalar.
+=If they persist, use Uninstall and install again.
+:✗ Error al reiniciar — restaurando backup
+=✗ Error restarting — restoring backup
+:Configuración anterior restaurada
+=Previous configuration restored
+:(últimas 40 líneas)
+=(last 40 lines)
+: Logs 
+= Logs 
+:Recargando systemd...
+=Reloading systemd...
+:UDP CUSTOM MANAGER v
+=UDP CUSTOM MANAGER v
+:Uptime:
+=Uptime:
+:Diagnóstico y reparación
+=Diagnostics and repair
+:V2Ray reiniciado correctamente
+=V2Ray restarted successfully
+:Fallo al reiniciar V2Ray
+=Failure restarting V2Ray
+:Arquitectura no soportada: 
+=Unsupported architecture: 
+:Descargando V2Ray 
+=Downloading V2Ray 
+:Extrayendo archivos (prefijo: '
+=Extracting files (prefix: '
+:Binario extraído
+=Binary extracted
+:geoip.dat extraído
+=geoip.dat extracted
+:geoip.dat no encontrado
+=geoip.dat not found
+:geosite.dat extraído
+=geosite.dat extracted
+:geosite.dat no encontrado
+=geosite.dat not found
+:Permisos aplicados
+=Permissions applied
+:Todas las dependencias instaladas
+=All dependencies installed
+:SELinux deshabilitado
+=SELinux disabled
+:Instalando V2Ray Util...
+=Installing V2Ray Util...
+:Instalando V2Ray Core...
+=Installing V2Ray Core...
+:No se pudo obtener la versión de V2Ray
+=Could not get the V2Ray version
+:Error al descargar V2Ray
+=Error downloading V2Ray
+:⚠ Instalado pero el servicio puede necesitar reinicio
+=⚠ Installed but the service may need a restart
+:Verifica con: v2ray info
+=Check with: v2ray info
+:V2Ray ya está instalado
+=V2Ray is already installed
+:¿Reinstalar? (s/n): 
+=Reinstall? (y/n): 
+:Instalación falló
+=Installation failed
+:V2Ray no está instalado
+=V2Ray is not installed
+:Xray NO será afectado
+=Xray will NOT be affected
+:AlterId actual:
+=Current AlterId:
+:Nuevo alterId (0=cancelar): 
+=New alterId (0=cancel): 
+:Solo números
+=Numbers only
+:AlterId cambiado a 
+=AlterId changed to 
+:Address actual:
+=Current address:
+:Nuevo address (0=cancelar): 
+=New address (0=cancel): 
+:Address cambiado a 
+=Address changed to 
+:Path actual:
+=Current path:
+:Nuevo path (0=cancelar): 
+=New path (0=cancel): 
+:Path cambiado a 
+=Path changed to 
+:TLS configurado con certificado existente
+=TLS configured with the existing certificate
+:Ejecutando configuración TLS nativa...
+=Running native TLS configuration...
+:Comando v2ray no disponible
+=v2ray command unavailable
+:⚠ Esto restablecerá la configuración de V2Ray
+=⚠ This will reset the V2Ray configuration
+:  Los usuarios se mantendrán
+=  The users will be kept
+:Configuración restablecida
+=Configuration reset
+:Instalar / Reinstalar V2Ray
+=Install / Reinstall V2Ray
+:Desinstalar V2Ray
+=Uninstall V2Ray
+:Configurar AlterId
+=Configure AlterId
+:Configurar Address
+=Configure Address
+:Configurar Path
+=Configure Path
+:Protocolos V2Ray
+=V2Ray protocols
+:Configuración Nativa
+=Native configuration
+:Restablecer Ajustes
+=Reset settings
+:Instalar V2Ray
+=Install V2Ray
+:Dependencias instaladas
+=Dependencies installed
+:  Enter = usar este dominio | Escribe uno nuevo para cambiarlo
+=  Enter = use this domain | Type a new one to change it
+:TLS requiere un dominio real apuntando a esta IP.
+=TLS requires a real domain pointing to this IP.
+:(requiere DNS apuntando a esta IP)
+=(requires DNS pointing to this IP)
+:  Autofirmado    
+=  Self-signed    
+:Certificado autofirmado generado
+=Self-signed certificate generated
+:Certificado Let's Encrypt obtenido
+=Let's Encrypt certificate obtained
+:¿Usar autofirmado como alternativa? (s/n): 
+=Use a self-signed one instead? (y/n): 
+:(alterId configurable)
+=(configurable alterId)
+:(más moderno, sin alterId)
+=(more modern, no alterId)
+:Transport Network
+=Transport Network
+:  WebSocket (ws)     
+=  WebSocket (ws)     
+:⚠ gRPC deprecado en Xray v26+. Considera XHTTP.
+=⚠ gRPC deprecated in Xray v26+. Consider XHTTP.
+:Path
+=Path
+:Path [
+=Path [
+:⚠ No parece un dominio válido. Se usará la IP pública.
+=⚠ It does not look like a valid domain. The public IP will be used.
+:¿Usar TLS? (s/n) [n]: 
+=Use TLS? (y/n) [n]: 
+:Network:   
+=Network:   
+:Path:      
+=Path:      
+:Stats API: 
+=Stats API: 
+:⚠ Se eliminará Xray y toda su configuración
+=⚠ Xray and all its configuration will be removed
+:(más moderno y eficiente)
+=(more modern and efficient)
+:⚠ Cambiar protocolo regenerará el inbound.
+=⚠ Changing the protocol will regenerate the inbound.
+:  Los usuarios anteriores NO serán compatibles.
+=  Previous users will NOT be compatible.
+:⚠ AlterId solo aplica para VMess.
+=⚠ AlterId only applies to VMess.
+:AlterId actual: 
+=Current AlterId: 
+:  Recomendado: 0 (AEAD, más seguro)
+=  Recommended: 0 (AEAD, more secure)
+:Nuevo AlterId (0-65535, Enter=cancelar): 
+=New AlterId (0-65535, Enter=cancel): 
+:AlterId → 
+=AlterId → 
+:Address actual: 
+=Current address: 
+:  Este dominio aparece como address en los links generados.
+=  This domain appears as the address in the generated links.
+:⚠ Se desactivó TLS porque no hay dominio.
+=⚠ TLS was disabled because there is no domain.
+:Address → 
+=Address → 
+:Path actual: 
+=Current path: 
+:Nuevo path (ej: /proxy, 0=cancelar, vacío=default): 
+=New path (e.g. /proxy, 0=cancel, empty=default): 
+:Path → 
+=Path → 
+:¿Usar este certificado ahora? (s/n): 
+=Use this certificate now? (y/n): 
+:Let's Encrypt / Autofirmado (nuevo)
+=Let's Encrypt / Self-signed (new)
+:Ver certificados existentes
+=View existing certificates
+:[Autofirmado] 
+=[Self-signed] 
+:[Local /cert] 
+=[Local /cert] 
+:Opción (Enter=mantener): 
+=Option (Enter=keep): 
+:Manteniendo 
+=Keeping 
+:Dominio / Address
+=Domain / Address
+:Dominio (Enter=mantener, vacío=usar IP): 
+=Domain (Enter=keep, empty=use IP): 
+:⚠ No parece un dominio válido. Se mantiene el actual.
+=⚠ It does not look like a valid domain. The current one is kept.
+:⚠ Restablecerá toda la configuración de red
+=⚠ It will reset the whole network configuration
+:  Los usuarios se conservarán
+=  The users will be preserved
+:Restablecido (usuarios conservados)
+=Reset (users preserved)
+:Puerto destino (ej: 22, 80, 443): 
+=Target port (e.g. 22, 80, 443): 
+:Puerto websocket (escucha): 
+=Websocket port (listen): 
+:¿Desea continuar? [s/n]: 
+=Do you want to continue? [y/n]: 
+:✓ Bridge creado y activo en puerto 
+=✓ Bridge created and active on port 
+: Bridge puerto 
+= Bridge port 
+:✓ Bridge en puerto 
+=✓ Bridge on port 
+:Puerto de escucha inválido: 
+=Invalid listening port: 
+:Puerto de escucha fuera de rango: 
+=Listening port out of range: 
+:Error creando socket
+=Error creating socket
+:Error bind puerto 
+=Error binding port 
+:Error listen
+=Listen error
+:[INFO] Proxy en :
+=[INFO] Proxy on :
+:Bridges instalados:
+=Installed bridges:
+:No hay bridges instalados.
+=There are no installed bridges.
+:⚠ Interfaz no detectada, regla sin filtro de interfaz
+=⚠ Interface not detected, rule without interface filter
+:Fuente:
+=Source:
+:Total: 
+=Total: 
+:⚠ No hay usuarios SSH registrados.
+=⚠ There are no registered SSH users.
+:  Crea usuarios desde el módulo SSH primero.
+=  Create users from the SSH module first.
+:✓ ZIV VPN actualizado con 
+=✓ ZIV VPN updated with 
+:Interfaz externa:
+=External interface:
+:IP local:        
+=Local IP:        
+:Rango hopping:   
+=Hopping range:   
+:Contraseñas SSH en ZIV VPN: 
+=SSH passwords in ZIV VPN: 
+:Escucha en puerto 
+=Listening on port:
+:» AUTO INICIAR:
+=AUTO START:
+:[0] Volver:
+=[0] return
