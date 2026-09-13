@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SN PLUS — Wiki</title>
+<meta name="description" content="Guías de SN PLUS: bots de WhatsApp y Telegram, protocolos, usuarios y panel.">
+<meta property="og:title" content="SN PLUS — Wiki">
+<meta property="og:description" content="Guías paso a paso del panel SN PLUS.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#0B0711; --panel:#150E1F; --panel-2:#1D1429; --edge:#2E2140;
+  --violet:#A855F7; --violet-hi:#D8B4FE; --violet-dim:#6D28D9;
+  --red:#E5484D; --yellow:#F5C518; --cyan:#22D3EE; --green:#3DD68C;
+  --ink:#F2EDF9; --ash:#9289A6; --ash-2:#6B6280;
+  --display:'Chakra Petch',system-ui,sans-serif;
+  --body:'IBM Plex Sans',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --bar:58px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--void);color:var(--ink);font-family:var(--body);
+  font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(880px 480px at 86% -8%,rgba(168,85,247,.15),transparent 62%),
+             radial-gradient(640px 400px at 0% 100%,rgba(109,40,217,.10),transparent 60%);
+}
+a{color:var(--violet-hi);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--yellow);outline-offset:3px;border-radius:4px}
+
+/* ═══ BARRA ═══ */
+.top{position:sticky;top:0;z-index:60;height:var(--bar);
+  background:rgba(11,7,17,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--edge)}
+.top-in{max-width:1060px;margin:0 auto;padding:0 22px;height:100%;
+  display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:.06em;
+  line-height:1.15;color:var(--ink)}
+.brand:hover{text-decoration:none}
+.brand em{font-style:normal;color:var(--violet)}
+.brand small{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.24em;
+  color:var(--ash-2);font-weight:400}
+.tl{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;padding:7px 13px;
+  border:1px solid var(--violet);border-radius:4px;background:var(--violet-dim);color:#fff;transition:all .18s}
+.tl:hover{background:var(--violet);text-decoration:none}
+
+.wrap{max-width:1060px;margin:0 auto;padding:0 22px;position:relative;z-index:1}
+
+/* ═══ MIGAS ═══ */
+.crumb{display:flex;align-items:center;gap:9px;flex-wrap:wrap;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;
+  color:var(--ash-2);padding:22px 0 0}
+.crumb a{color:var(--ash)}
+.crumb .sep{color:var(--red);opacity:.6}
+.crumb .now{color:var(--violet-hi)}
+
+/* ═══ VISTAS ═══ */
+.view{display:none;padding:10px 0 90px}
+.view.on{display:block;animation:fade .3s ease}
+@keyframes fade{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+
+.rule{display:flex;align-items:center;gap:13px;font-family:var(--mono);
+  font-size:10.5px;letter-spacing:.22em;color:var(--red);margin:26px 0 0}
+.rule::before,.rule::after{content:'';height:1px;flex:1;
+  background:linear-gradient(90deg,transparent,var(--red),transparent);opacity:.45}
+.rule span{white-space:nowrap;opacity:.85}
+
+h1{font-family:var(--display);font-weight:700;font-size:clamp(32px,5.2vw,50px);
+  line-height:1.04;letter-spacing:-.01em;margin:16px 0 14px}
+h1 .glow{background:linear-gradient(180deg,var(--violet-hi),var(--violet));
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(22px,3.2vw,30px);margin:38px 0 12px}
+h3{font-family:var(--display);font-weight:600;font-size:18px;margin:28px 0 9px}
+p{color:var(--ash);margin-bottom:14px;max-width:70ch}
+p strong,li strong{color:var(--ink);font-weight:600}
+.lead{font-size:17px;max-width:60ch;margin-bottom:26px}
+
+ul{margin:0 0 16px;padding:0;list-style:none;max-width:70ch}
+li{color:var(--ash);margin-bottom:8px;padding-left:22px;position:relative}
+li::before{content:'▸';position:absolute;left:2px;color:var(--violet)}
+
+code{font-family:var(--mono);font-size:.885em;color:var(--yellow);
+  background:rgba(245,197,24,.08);padding:2px 6px;border-radius:3px}
+
+/* ═══ TARJETAS DE NAVEGACIÓN ═══ */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:13px;margin-bottom:8px}
+.card{display:block;background:var(--panel);border:1px solid var(--edge);border-radius:9px;
+  padding:22px 23px;color:var(--ink);transition:all .2s}
+.card:hover{border-color:var(--violet);background:var(--panel-2);
+  transform:translateY(-2px);text-decoration:none}
+.card .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;color:var(--red);display:block;margin-bottom:9px}
+.card h3{font-family:var(--display);font-size:19px;font-weight:600;margin:0 0 6px}
+.card p{font-size:14px;margin:0;color:var(--ash)}
+.card .go{font-family:var(--mono);font-size:12px;color:var(--violet);display:block;margin-top:13px}
+.card.wa:hover{border-color:var(--green)}
+.card.wa .k{color:var(--green)}
+.card.tg:hover{border-color:var(--cyan)}
+.card.tg .k{color:var(--cyan)}
+
+/* ═══ BLOQUE TERMINAL ═══ */
+.blk{background:#080510;border:1px solid var(--edge);border-radius:7px;margin:0 0 18px;overflow:hidden}
+.blk-h{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:8px 13px;background:var(--panel);border-bottom:1px solid var(--edge);
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;color:var(--ash-2)}
+.cp{background:transparent;border:1px solid var(--edge);color:var(--ash);
+  font-family:var(--mono);font-size:10px;letter-spacing:.1em;padding:3px 9px;
+  border-radius:3px;cursor:pointer;transition:all .16s}
+.cp:hover,.cp.ok{color:var(--green);border-color:var(--green)}
+.blk pre{font-family:var(--mono);font-size:12.5px;line-height:1.8;
+  padding:15px 16px;overflow-x:auto;color:var(--ink);white-space:pre}
+.blk .c{color:var(--cyan)} .blk .y{color:var(--yellow)}
+.blk .r{color:var(--red)}  .blk .g{color:var(--green)}
+.blk .d{color:var(--ash-2)} .blk .w{color:#fff;font-weight:700}
+
+/* ═══ CALLOUTS ═══ */
+.box{padding:16px 20px;border-radius:7px;margin:0 0 18px;background:var(--panel);
+  border:1px solid var(--edge);font-size:14.5px;color:var(--ash);max-width:74ch}
+.box strong{color:var(--ink)}
+.box .t{font-family:var(--display);font-size:14px;font-weight:600;display:block;margin-bottom:5px}
+.box.tip{border-left:3px solid var(--cyan)} .box.tip .t{color:var(--cyan)}
+.box.warn{border-left:3px solid var(--yellow);background:rgba(245,197,24,.045)} .box.warn .t{color:var(--yellow)}
+.box.stop{border-left:3px solid var(--red);background:rgba(229,72,77,.045)} .box.stop .t{color:var(--red)}
+
+/* ═══ PASOS ═══ */
+.steps{border:1px solid var(--edge);border-radius:8px;overflow:hidden;margin-bottom:20px}
+.stp{display:grid;grid-template-columns:54px 1fr;gap:16px;padding:19px 21px;
+  background:var(--panel);border-bottom:1px solid var(--edge)}
+.stp:last-child{border-bottom:none}
+.stp-n{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--red)}
+.stp-n i{font-style:normal;color:var(--yellow)}
+.stp h4{font-family:var(--display);font-size:16.5px;font-weight:600;margin-bottom:5px}
+.stp p{font-size:14px;margin-bottom:9px}
+.stp p:last-child,.stp .blk:last-child{margin-bottom:0}
+@media(max-width:560px){.stp{grid-template-columns:36px 1fr;gap:11px;padding:16px}}
+
+/* ═══ TABLA ═══ */
+.tbl{border:1px solid var(--edge);border-radius:8px;overflow:hidden;background:var(--panel);margin-bottom:18px}
+.tr{display:grid;grid-template-columns:172px 1fr 96px;gap:16px;padding:12px 19px;
+  border-bottom:1px solid var(--edge);align-items:center}
+.tr:last-child{border-bottom:none}
+.tr.h{background:var(--panel-2);font-family:var(--mono);font-size:10px;letter-spacing:.17em;color:var(--ash-2)}
+.tr code{font-size:13px} .tr p{font-size:13.5px;margin:0}
+.role{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;padding:3px 8px;
+  border-radius:3px;justify-self:start;white-space:nowrap}
+.role.all{background:rgba(34,211,238,.11);color:var(--cyan)}
+.role.adm{background:rgba(245,197,24,.11);color:var(--yellow)}
+@media(max-width:720px){.tr{grid-template-columns:1fr;gap:5px;padding:14px 16px}.tr.h{display:none}}
+
+/* ═══ AVISOS ═══ */
+.avisos{display:grid;gap:11px}
+.av{display:grid;grid-template-columns:92px 1fr;gap:18px;background:var(--panel);
+  border:1px solid var(--edge);border-radius:7px;padding:17px 20px}
+.av-d{font-family:var(--mono);font-size:11px;color:var(--ash-2);letter-spacing:.06em;padding-top:3px}
+.av h4{font-family:var(--display);font-size:16px;font-weight:600;margin-bottom:4px}
+.av p{font-size:14px;margin:0}
+.av.new{border-color:rgba(61,214,140,.32)} .av.new h4{color:var(--green)}
+.av.hot{border-color:rgba(245,197,24,.34)} .av.hot h4{color:var(--yellow)}
+@media(max-width:560px){.av{grid-template-columns:1fr;gap:5px}}
+
+/* ═══ PROTOCOLOS ═══ */
+.protos{display:grid;grid-template-columns:repeat(auto-fill,minmax(246px,1fr));gap:11px}
+.proto{background:var(--panel);border:1px solid var(--edge);border-radius:7px;padding:16px 18px}
+.proto-t{display:flex;align-items:baseline;justify-content:space-between;gap:9px;margin-bottom:6px}
+.proto h4{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--ink)}
+.tag{font-family:var(--mono);font-size:9px;letter-spacing:.13em;padding:3px 7px;
+  border-radius:3px;border:1px solid var(--edge);color:var(--ash-2)}
+.proto p{font-size:13.5px;line-height:1.55;margin:0}
+a.proto{color:var(--ink);transition:all .18s;display:block}
+a.proto:hover{border-color:var(--violet);background:var(--panel-2);text-decoration:none}
+a.proto .more{font-family:var(--mono);font-size:11px;color:var(--violet);display:block;margin-top:9px}
+
+/* ═══ ROLES / PLANES / LINKS ═══ */
+.roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(224px,1fr));gap:12px;margin-bottom:18px}
+.rl{background:var(--panel);border:1px solid var(--edge);border-radius:7px;padding:18px 20px}
+.rl h4{font-family:var(--display);font-size:15.5px;font-weight:600;margin-bottom:7px}
+.rl.a h4{color:var(--yellow)} .rl.b h4{color:var(--cyan)} .rl.c h4{color:var(--ash)}
+.rl p{font-size:13.5px;margin:0}
+
+.plans{display:grid;grid-template-columns:repeat(auto-fill,minmax(146px,1fr));gap:10px;margin-bottom:14px}
+.plan{background:var(--panel);border:1px solid var(--edge);border-radius:7px;padding:16px 13px;text-align:center}
+.plan.best{border-color:var(--violet);background:linear-gradient(180deg,rgba(168,85,247,.09),var(--panel))}
+.plan .n{font-family:var(--mono);font-size:10px;letter-spacing:.15em;color:var(--ash-2);margin-bottom:6px}
+.plan .v{font-family:var(--display);font-size:22px;font-weight:700;color:var(--ink)}
+.plan .dd{font-family:var(--mono);font-size:11.5px;color:var(--violet-hi);margin-top:4px}
+
+.links{display:grid;grid-template-columns:repeat(auto-fill,minmax(224px,1fr));gap:11px}
+.lnk{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--panel);
+  border:1px solid var(--edge);border-radius:7px;padding:16px 19px;color:var(--ink);transition:all .18s}
+.lnk:hover{border-color:var(--violet);background:var(--panel-2);text-decoration:none}
+.lnk .l{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--ash-2);display:block;margin-bottom:3px}
+.lnk .v{font-size:14.5px;font-weight:600}
+.lnk .ar{color:var(--violet);font-family:var(--mono)}
+
+.next{display:flex;gap:11px;flex-wrap:wrap;margin-top:34px;padding-top:24px;border-top:1px solid var(--edge)}
+.nx{font-family:var(--mono);font-size:12px;padding:10px 17px;border:1px solid var(--edge);
+  border-radius:5px;color:var(--ash);transition:all .18s}
+.nx:hover{color:var(--ink);border-color:var(--violet);text-decoration:none}
+
+footer{border-top:1px solid var(--edge);padding:28px 0;font-family:var(--mono);
+  font-size:11.5px;color:var(--ash-2);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="#/">SN<em>PLUS</em><small>WIKI</small></a>
+    <a class="tl" href="https://wa.me/5215629885039" target="_blank" rel="noopener">CONSEGUIR LICENCIA</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="crumb" id="crumb" aria-label="Ruta"></nav>
+
+  <!-- ═══════════════════════════════════════════════════
+       PORTADA
+       ═══════════════════════════════════════════════════ -->
+  <section class="view" id="v-home" data-title="Inicio">
+    <div class="rule"><span>DOCUMENTACIÓN</span></div>
+    <h1>Wiki de <span class="glow">SN PLUS</span></h1>
+    <p class="lead">
+      Panel de administración para VPS Linux. Levanta protocolos de túnel,
+      crea usuarios con límites de velocidad y consumo, y gestiona revendedores
+      desde la terminal o desde el celular.
+    </p>
+
+    <div class="blk" style="max-width:520px">
+      <div class="blk-h"><span>ABRIR EL PANEL</span><button class="cp">COPIAR</button></div>
+      <pre>sn</pre>
+    </div>
+
+    <div class="rule"><span>GUÍAS</span></div>
+    <h2 style="margin-top:16px">¿Qué necesitas hacer?</h2>
+
+    <div class="cards">
+      <a class="card" href="#/bots">
+        <span class="k">CATEGORÍA</span>
+        <h3>Bots</h3>
+        <p>Administra el VPS desde WhatsApp o Telegram. Instalación, configuración y comandos.</p>
+        <span class="go">2 guías →</span>
+      </a>
+      <a class="card" href="#/protocolos">
+        <span class="k">CATEGORÍA</span>
+        <h3>Protocolos</h3>
+        <p>SSH, SlowDNS, Hysteria, V2Ray, UDP y el resto. Cómo instalarlos y para qué sirve cada uno.</p>
+        <span class="go">16 protocolos →</span>
+      </a>
+      <a class="card" href="#/usuarios">
+        <span class="k">CATEGORÍA</span>
+        <h3>Usuarios</h3>
+        <p>Crear cuentas, poner límites de velocidad y consumo, cuentas de prueba y revendedores.</p>
+        <span class="go">Ver guía →</span>
+      </a>
+      <a class="card" href="#/panel">
+        <span class="k">CATEGORÍA</span>
+        <h3>El panel</h3>
+        <p>Recorrido por el menú principal y qué hace cada opción.</p>
+        <span class="go">Ver guía →</span>
+      </a>
+      <a class="card" href="#/avisos">
+        <span class="k">ESTADO</span>
+        <h3>Avisos</h3>
+        <p>Novedades, mantenimientos y problemas conocidos. Míralo antes de reportar un fallo.</p>
+        <span class="go">Ver avisos →</span>
+      </a>
+      <a class="card" href="#/licencias">
+        <span class="k">INFO</span>
+        <h3>Licencias y contacto</h3>
+        <p>Planes disponibles y por dónde escribirnos.</p>
+        <span class="go">Ver planes →</span>
+      </a>
+    </div>
+
+    <footer style="margin-top:50px">
+      <div>SN PLUS VPN SERVICES · Ubuntu / Debian</div>
+      <div>© 2026 @SIN_NOMBRE22</div>
+    </footer>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       CATEGORÍA · BOTS
+       ═══════════════════════════════════════════════════ -->
+  <section class="view" id="v-bots" data-title="Bots" data-parent="#/">
+    <div class="rule"><span>CATEGORÍA</span></div>
+    <h1>Bots</h1>
+    <p class="lead">
+      Los dos bots comparten la misma base de datos que el panel. Lo que creas
+      por WhatsApp lo ves en Telegram y en el VPS.
+    </p>
+
+    <div class="cards">
+      <a class="card wa" href="#/bots/whatsapp">
+        <span class="k">GUÍA COMPLETA</span>
+        <h3>Bot de WhatsApp</h3>
+        <p>Menú numerado y comandos de texto. Se vincula con QR o con código de 8 dígitos.</p>
+        <span class="go">Instalar, configurar y usar →</span>
+      </a>
+      <a class="card tg" href="#/bots/telegram">
+        <span class="k">GUÍA COMPLETA</span>
+        <h3>Bot de Telegram</h3>
+        <p>Menú con botones. Necesitas crear tu bot con BotFather, se hace una vez.</p>
+        <span class="go">Instalar, configurar y usar →</span>
+      </a>
+    </div>
+
+    <h2>¿Cuál elijo?</h2>
+    <p>
+      Los dos hacen lo mismo. Telegram es más cómodo porque tiene botones y no
+      tienes que escribir comandos. WhatsApp es más práctico si tus clientes ya
+      te escriben ahí y quieres todo en una sola app.
+    </p>
+    <p>
+      No tienes que elegir: puedes tener los dos corriendo a la vez sobre el
+      mismo servidor.
+    </p>
+
+    <div class="box tip">
+      <span class="t">Dónde están en el panel</span>
+      Escribe <code>sn</code>, entra a <strong>BOTS</strong> y ahí verás los dos con su
+      estado en vivo — si están activos y si tienen sesión.
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       GUÍA · BOT WHATSAPP
+       ═══════════════════════════════════════════════════ -->
+  <section class="view" id="v-bots-whatsapp" data-title="Bot de WhatsApp" data-parent="#/bots">
+    <div class="rule"><span>GUÍA · BOTS</span></div>
+    <h1>Bot de WhatsApp</h1>
+    <p class="lead">
+      De cero a bot corriendo. Unos 10 minutos, y casi todo es esperar a que descargue.
+    </p>
+
+    <div class="box warn">
+      <span class="t">Usa un número secundario</span>
+      WhatsApp no autoriza clientes no oficiales. Aunque el bot no envía spam, la
+      cuenta queda vinculada a un dispositivo automatizado. No uses tu número personal.
+    </div>
+
+    <h2>Instalar</h2>
+    <div class="steps">
+      <div class="stp">
+        <div class="stp-n">[<i>1</i>]</div>
+        <div>
+          <h4>Abre el panel</h4>
+          <p>Conéctate al VPS como root:</p>
+          <div class="blk">
+            <div class="blk-h"><span>TERMINAL</span><button class="cp">COPIAR</button></div>
+            <pre>sn</pre>
+          </div>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="stp-n">[<i>2</i>]</div>
+        <div>
+          <h4>BOTS → BOT WHATSAPP</h4>
+          <p>Verás el estado <strong>NO INSTALADO</strong> y una sola opción disponible.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="stp-n">[<i>3</i>]</div>
+        <div>
+          <h4>Instalar bot de WhatsApp</h4>
+          <p>Opción <code>1</code>. Instala Node.js, las dependencias del sistema y el motor. La primera vez tarda varios minutos — no lo interrumpas.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>Configurar</h2>
+    <div class="steps">
+      <div class="stp">
+        <div class="stp-n">[<i>4</i>]</div>
+        <div>
+          <h4>Número administrador</h4>
+          <p>Opción <code>1</code> → <strong>AGREGAR NÚMERO ADMIN</strong>. Con código de país y solo dígitos:</p>
+          <div class="blk">
+            <div class="blk-h"><span>FORMATO</span></div>
+            <pre><span class="d">Correcto   →</span> <span class="g">521234567890</span>
+<span class="d">Incorrecto →</span> <span class="r">+52 123 456 7890</span></pre>
+          </div>
+          <p>Puedes agregar varios. Todos reciben las alertas del bot.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="stp-n">[<i>5</i>]</div>
+        <div>
+          <h4>Prefijo de comandos (opcional)</h4>
+          <p>Opción <code>2</code>. Define cuál se muestra en las ayudas. Los cuatro — <code>.</code> <code>/</code> <code>!</code> <code>#</code> — funcionan siempre.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="stp-n">[<i>6</i>]</div>
+        <div>
+          <h4>Vincular la sesión</h4>
+          <p><strong>Opción 3 — QR:</strong> se dibuja en la terminal. En el teléfono del bot: WhatsApp → Dispositivos vinculados → Vincular dispositivo.</p>
+          <p><strong>Opción 4 — Código:</strong> te pide el número del bot y devuelve un código de 8 dígitos. En el teléfono: Vincular con número de teléfono.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="stp-n">[<i>7</i>]</div>
+        <div>
+          <h4>Espera a que diga CONECTADO</h4>
+          <p>Tras vincular, WhatsApp cierra la conexión una vez a propósito y el bot se reconecta solo para terminar el registro. Es normal.</p>
+          <div class="blk">
+            <div class="blk-h"><span>SALIDA ESPERADA</span></div>
+            <pre>    Version WA Web: 2.3000.1044015310
+    CODIGO DE VINCULACION: <span class="y">ABCD-EFGH</span>
+    Reiniciando socket para completar el registro...
+    <span class="g">CONECTADO.</span> Numero del bot: 521234567890
+    Vinculacion completada correctamente.</pre>
+          </div>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="stp-n">[<i>8</i>]</div>
+        <div>
+          <h4>Iniciar</h4>
+          <p>Opción <code>6</code>. Queda como servicio: arranca solo con el VPS y se reinicia si falla.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="box tip">
+      <span class="t">No cierres la pantalla durante la vinculación</span>
+      Si sales antes del mensaje <strong>CONECTADO</strong>, las credenciales quedan a
+      medias. El panel lo detecta y limpia solo en el siguiente intento, pero perderás
+      ese código.
+    </div>
+
+    <h2>Usar</h2>
+    <p>
+      Escríbele <code>.menu</code> desde tu número. Responde con el número de la opción,
+      o usa comandos directos. Si le mandas cualquier otra cosa, el bot no contesta —
+      así puedes usar el número para chatear normal.
+    </p>
+
+    <div class="tbl">
+      <div class="tr h"><div>COMANDO</div><div>QUÉ HACE</div><div>QUIÉN</div></div>
+      <div class="tr"><code>.menu</code><p>Abre el menú principal</p><span class="role all">TODOS</span></div>
+      <div class="tr"><code>.comandos</code><p>Muestra la lista completa de comandos</p><span class="role all">TODOS</span></div>
+      <div class="tr"><code>.crear</code><p>Crear un usuario SSH paso a paso</p><span class="role all">TODOS</span></div>
+      <div class="tr"><code>.eliminar</code><p>Eliminar un usuario</p><span class="role all">TODOS</span></div>
+      <div class="tr"><code>.online</code><p>Ver quién está conectado ahora mismo</p><span class="role all">TODOS</span></div>
+      <div class="tr"><code>.usuarios</code><p>Datos de todos tus usuarios</p><span class="role all">TODOS</span></div>
+      <div class="tr"><code>.pass</code><p>Cambiar la contraseña de un usuario</p><span class="role all">TODOS</span></div>
+      <div class="tr"><code>.limite</code><p>Cambiar el límite de conexiones</p><span class="role all">TODOS</span></div>
+      <div class="tr"><code>.fecha</code><p>Cambiar la fecha de vencimiento</p><span class="role all">TODOS</span></div>
+      <div class="tr"><code>.expirados</code><p>Eliminar los usuarios vencidos</p><span class="role all">TODOS</span></div>
+      <div class="tr"><code>.prueba</code><p>Crear una cuenta de prueba por horas</p><span class="role all">TODOS</span></div>
+      <div class="tr"><code>.info</code><p>Información del VPS: RAM, CPU, disco, uptime</p><span class="role all">TODOS</span></div>
+      <div class="tr"><code>.backup</code><p>Backup del sistema enviado al chat</p><span class="role adm">ADMIN</span></div>
+      <div class="tr"><code>.optimizar</code><p>Limpiar caché del servidor</p><span class="role adm">ADMIN</span></div>
+      <div class="tr"><code>.speed</code><p>Test de velocidad del VPS</p><span class="role adm">ADMIN</span></div>
+      <div class="tr"><code>.revendas</code><p>Agregar, listar y eliminar revendedores</p><span class="role adm">ADMIN</span></div>
+      <div class="tr"><code>.cancelar</code><p>Cancela la operación que tengas abierta</p><span class="role all">TODOS</span></div>
+    </div>
+
+    <div class="box tip">
+      <span class="t">Atajos</span>
+      Varios comandos aceptan el dato en la misma línea y se saltan el primer paso:
+      <code>.eliminar pedro</code>, <code>.pass pedro</code>, <code>.prueba 2</code>.
+      <br><br>
+      <strong>Dentro de un flujo</strong> los comandos globales solo funcionan con prefijo,
+      así puedes escribir <code>0</code> como «sin límite» sin cancelar la operación.
+    </div>
+
+    <h3>Chat contigo mismo</h3>
+    <p>
+      Si el número del bot es también tu número admin, puedes usar «Mensajes contigo
+      mismo» como consola. El bot responde ahí y no se responde a sí mismo.
+    </p>
+
+    <h2>Si algo falla</h2>
+
+    <h3>El bot no me responde</h3>
+    <p>
+      WhatsApp identifica a los usuarios con un <strong>LID</strong>, un número interno
+      distinto al teléfono. El bot aprende la equivalencia solo, pero si te contesta
+      <em>ACCESO DENEGADO</em>, la alerta que llega al admin trae la lista de ids
+      detectados: agrega cualquiera como número admin desde el panel.
+    </p>
+
+    <h3>Error 405 al vincular</h3>
+    <p>
+      WhatsApp rechaza la conexión antes de autenticar. No tiene que ver con tu número.
+      Dos causas:
+    </p>
+    <ul>
+      <li><strong>Versión de WhatsApp Web desactualizada.</strong> El bot la consulta solo, pero puedes fijarla escribiéndola en <code>/etc/SNPLUS/wa_version</code>.</li>
+      <li><strong>IP del VPS bloqueada.</strong> WhatsApp rechaza rangos de datacenter. Se resuelve con un proxy: instala <code>https-proxy-agent</code> en <code>/etc/SNPLUS/wa</code> y pon la URL en <code>/etc/SNPLUS/wa_proxy</code>.</li>
+    </ul>
+
+    <h3>Error 401 al vincular</h3>
+    <p>
+      Credenciales a medias de un intento anterior. El panel las borra solo antes de
+      cada vinculación, pero si aparece, entra otra vez a vincular y arrancará limpio.
+    </p>
+
+    <h3>Comprobaciones rápidas</h3>
+    <ul>
+      <li>Opción <code>9</code> del panel: servicio ACTIVO y sesión VINCULADA.</li>
+      <li>Opción <code>10</code>: los últimos errores del log.</li>
+      <li>Opción <code>7</code>: reiniciar.</li>
+    </ul>
+
+    <div class="next">
+      <a class="nx" href="#/bots/telegram">Bot de Telegram →</a>
+      <a class="nx" href="#/usuarios">Crear usuarios →</a>
+      <a class="nx" href="#/bots">← Volver a Bots</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       GUÍA · BOT TELEGRAM
+       ═══════════════════════════════════════════════════ -->
+  <section class="view" id="v-bots-telegram" data-title="Bot de Telegram" data-parent="#/bots">
+    <div class="rule"><span>GUÍA · BOTS</span></div>
+    <h1>Bot de Telegram</h1>
+    <p class="lead">
+      Necesitas crear tu propio bot en Telegram. Se hace una sola vez y es gratis.
+    </p>
+
+    <h2>Crear el bot en Telegram</h2>
+    <div class="steps">
+      <div class="stp">
+        <div class="stp-n">[<i>1</i>]</div>
+        <div>
+          <h4>Habla con BotFather</h4>
+          <p>Busca <strong>@BotFather</strong> en Telegram y envía <code>/newbot</code>.</p>
+          <p>Te pedirá un nombre (por ejemplo <em>Mi Panel VPS</em>) y un usuario, que debe terminar en <code>bot</code> — por ejemplo <code>mipanel_bot</code>.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="stp-n">[<i>2</i>]</div>
+        <div>
+          <h4>Guarda el TOKEN</h4>
+          <p>BotFather devuelve una cadena larga. Ese es el token: cópialo y no lo compartas, es la contraseña de tu bot.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="stp-n">[<i>3</i>]</div>
+        <div>
+          <h4>Obtén tu ID</h4>
+          <p>Busca <strong>@userinfobot</strong>, mándale cualquier mensaje y te responde con tu ID numérico. Es <em>tu</em> ID, no el del bot.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>Instalar en el servidor</h2>
+    <div class="steps">
+      <div class="stp">
+        <div class="stp-n">[<i>4</i>]</div>
+        <div>
+          <h4>Abre el panel</h4>
+          <div class="blk">
+            <div class="blk-h"><span>TERMINAL</span><button class="cp">COPIAR</button></div>
+            <pre>sn</pre>
+          </div>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="stp-n">[<i>5</i>]</div>
+        <div>
+          <h4>BOTS → BOT TELEGRAM → INICIAR BOT</h4>
+          <p>La primera vez te pide el <strong>token</strong> y tu <strong>ID</strong>. Pégalos cuando los solicite.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="stp-n">[<i>6</i>]</div>
+        <div>
+          <h4>Listo</h4>
+          <p>Queda instalado como servicio: arranca solo cuando el servidor reinicia y se recupera si falla.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>Usar</h2>
+    <p>Abre el bot en Telegram y envía <code>/menu</code>. A partir de ahí es todo con botones.</p>
+
+    <div class="tbl">
+      <div class="tr h"><div>COMANDO</div><div>QUÉ HACE</div><div>QUIÉN</div></div>
+      <div class="tr"><code>/menu</code><p>Abre el panel principal con todos los botones</p><span class="role all">TODOS</span></div>
+      <div class="tr"><code>/info</code><p>Información del servidor: IP, RAM, CPU, disco</p><span class="role all">TODOS</span></div>
+      <div class="tr"><code>/ayuda</code><p>Lista de comandos y funciones disponibles</p><span class="role all">TODOS</span></div>
+    </div>
+
+    <h3>Qué trae</h3>
+    <ul>
+      <li>Los usuarios de Telegram (<code>@usuario</code>) son tocables y llevan al perfil.</li>
+      <li>Los datos de conexión se copian con un toque desde el chat.</li>
+      <li>Alerta al administrador cuando alguien sin permiso intenta usarlo.</li>
+      <li>Los mensajes largos se dividen solos, sin cortarse.</li>
+    </ul>
+
+    <div class="box tip">
+      <span class="t">Si deja de responder</span>
+      <strong>BOTS → BOT TELEGRAM → REINICIAR BOT</strong>. Si sigue igual, usa
+      <strong>RECONFIGURAR</strong> para volver a ingresar el token y el ID.
+    </div>
+
+    <div class="next">
+      <a class="nx" href="#/bots/whatsapp">Bot de WhatsApp →</a>
+      <a class="nx" href="#/usuarios">Crear usuarios →</a>
+      <a class="nx" href="#/bots">← Volver a Bots</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       CATEGORÍA · PROTOCOLOS
+       ═══════════════════════════════════════════════════ -->
+  <section class="view" id="v-protocolos" data-title="Protocolos" data-parent="#/">
+    <div class="rule"><span>CATEGORÍA</span></div>
+    <h1>Protocolos</h1>
+    <p class="lead">
+      Cada protocolo trae su propio instalador dentro del panel. Se activan y
+      desactivan cuando quieras, y puedes tener varios a la vez.
+    </p>
+
+    <div class="cards">
+      <a class="card" href="#/protocolos/instalar">
+        <span class="k">EMPIEZA AQUÍ</span>
+        <h3>Cómo instalar un protocolo</h3>
+        <p>El procedimiento es el mismo para todos. Cinco pasos.</p>
+        <span class="go">Ver guía →</span>
+      </a>
+    </div>
+
+    <h2>Guías detalladas</h2>
+    <div class="protos">
+      <a class="proto" href="#/protocolos/slowdns">
+        <div class="proto-t"><h4>SlowDNS</h4><span class="tag">BYPASS</span></div>
+        <p>Túnel por DNS para redes restringidas. Necesita dominio NS.</p>
+        <span class="more">Ver guía →</span>
+      </a>
+      <a class="proto" href="#/protocolos/hysteria">
+        <div class="proto-t"><h4>Hysteria</h4><span class="tag">POWER</span></div>
+        <p>UDP agresivo para redes inestables. v1 y v2.</p>
+        <span class="more">Ver guía →</span>
+      </a>
+    </div>
+
+    <h2>Todos los protocolos</h2>
+    <p>Qué hace cada uno y cuándo conviene usarlo.</p>
+
+    <div class="protos">
+      <div class="proto"><div class="proto-t"><h4>SSH</h4><span class="tag">BASE</span></div><p>El túnel de siempre. Es la base: casi todos los demás protocolos transportan una conexión SSH por dentro.</p></div>
+      <div class="proto"><div class="proto-t"><h4>Dropbear</h4><span class="tag">LIGERO</span></div><p>Servidor SSH alternativo que consume mucha menos RAM. Útil en VPS pequeños.</p></div>
+      <div class="proto"><div class="proto-t"><h4>UDP-Custom</h4><span class="tag">GAMING</span></div><p>Baja latencia sobre UDP. Es el que quieres si tus clientes juegan.</p></div>
+      <div class="proto"><div class="proto-t"><h4>ZivVPN</h4><span class="tag">UDP</span></div><p>Otro túnel UDP con rango de puertos configurable. Se sincroniza solo con las contraseñas de tus usuarios.</p></div>
+      <div class="proto"><div class="proto-t"><h4>V2Ray / Xray</h4><span class="tag">STEALTH</span></div><p>Cifrado avanzado y difícil de identificar. Para redes que filtran por tipo de tráfico.</p></div>
+      <div class="proto"><div class="proto-t"><h4>Shadowsocks</h4><span class="tag">STEALTH</span></div><p>Proxy cifrado ligero. Más simple que V2Ray y suficiente en muchos casos.</p></div>
+      <div class="proto"><div class="proto-t"><h4>Websocket</h4><span class="tag">CDN</span></div><p>Envuelve la conexión en tráfico web normal. Pasa por Cloudflare y proxies.</p></div>
+      <div class="proto"><div class="proto-t"><h4>Nginx WS</h4><span class="tag">CDN</span></div><p>Lo mismo pero servido por Nginx, con soporte de dominio y rutas.</p></div>
+      <div class="proto"><div class="proto-t"><h4>Stunnel</h4><span class="tag">SSL/TLS</span></div><p>Envuelve cualquier puerto TCP en TLS. Se combina bien con SlowDNS.</p></div>
+      <div class="proto"><div class="proto-t"><h4>Squid</h4><span class="tag">PROXY</span></div><p>Proxy HTTP clásico, configurable por puertos.</p></div>
+      <div class="proto"><div class="proto-t"><h4>SOCKS</h4><span class="tag">PROXY</span></div><p>Proxy SOCKS con path y X-Pass configurables.</p></div>
+      <div class="proto"><div class="proto-t"><h4>BadVPN-UDPGW</h4><span class="tag">GAMING</span></div><p>No es un protocolo aparte: habilita el reenvío UDP que necesitan los juegos sobre SSH.</p></div>
+      <div class="proto"><div class="proto-t"><h4>HAProxy Mux</h4><span class="tag">ESTABILIDAD</span></div><p>Multiplexa varios protocolos en un mismo puerto. Útil cuando la red solo deja pasar 443.</p></div>
+      <div class="proto"><div class="proto-t"><h4>AdBlock</h4><span class="tag">FILTRO</span></div><p>Bloquea publicidad y rastreadores para todos los usuarios del servidor.</p></div>
+    </div>
+
+    <div class="box warn">
+      <span class="t">Cuidado con el orden de las reglas iptables</span>
+      Si instalaste otro panel antes que SN PLUS, puede quedar una regla catch-all en
+      PREROUTING que intercepte el tráfico antes de llegar a tus protocolos. Si uno no
+      responde pese a estar activo, revisa eso primero.
+    </div>
+  </section>
+
+  <!-- ─────── GUÍA · INSTALAR PROTOCOLO ─────── -->
+  <section class="view" id="v-protocolos-instalar" data-title="Cómo instalar un protocolo" data-parent="#/protocolos">
+    <div class="rule"><span>GUÍA · PROTOCOLOS</span></div>
+    <h1>Cómo instalar un protocolo</h1>
+    <p class="lead">El procedimiento es igual para todos. Cambia solo lo que te pregunte después.</p>
+
+    <div class="steps">
+      <div class="stp">
+        <div class="stp-n">[<i>1</i>]</div>
+        <div>
+          <h4>Abre el panel</h4>
+          <div class="blk">
+            <div class="blk-h"><span>TERMINAL</span><button class="cp">COPIAR</button></div>
+            <pre>sn</pre>
+          </div>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="stp-n">[<i>2</i>]</div>
+        <div>
+          <h4>Entra a INSTALADORES</h4>
+          <p>Arriba verás los <strong>SERVICIOS ACTIVOS</strong> con sus puertos, y abajo la lista de protocolos con su estado <code>[ON]</code> u <code>[OFF]</code>.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="stp-n">[<i>3</i>]</div>
+        <div>
+          <h4>Elige el número del protocolo</h4>
+          <p>Cada uno abre su propio administrador. Si no está instalado, la única opción disponible será instalarlo.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="stp-n">[<i>4</i>]</div>
+        <div>
+          <h4>Responde lo que te pida</h4>
+          <p>Normalmente son puertos, y en algunos casos un dominio. Si no sabes qué poner, acepta el valor por defecto.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="stp-n">[<i>5</i>]</div>
+        <div>
+          <h4>Verifica que quedó activo</h4>
+          <p>Vuelve al menú de INSTALADORES: el protocolo debe mostrar <code>[ON]</code> y su puerto debe aparecer arriba en SERVICIOS ACTIVOS.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="box tip">
+      <span class="t">Después de instalar</span>
+      Los usuarios que ya tenías siguen funcionando. Al crear uno nuevo, la tarjeta de
+      conexión incluirá automáticamente los datos del protocolo recién instalado.
+    </div>
+
+    <div class="next">
+      <a class="nx" href="#/protocolos/slowdns">SlowDNS →</a>
+      <a class="nx" href="#/protocolos/hysteria">Hysteria →</a>
+      <a class="nx" href="#/protocolos">← Volver a Protocolos</a>
+    </div>
+  </section>
+
+  <!-- ─────── GUÍA · SLOWDNS ─────── -->
+  <section class="view" id="v-protocolos-slowdns" data-title="SlowDNS" data-parent="#/protocolos">
+    <div class="rule"><span>GUÍA · PROTOCOLOS</span></div>
+    <h1>SlowDNS</h1>
+    <p class="lead">
+      Mete el tráfico dentro de consultas DNS. Es lento, pero pasa en redes donde
+      todo lo demás está bloqueado y aún funciona el DNS.
+    </p>
+
+    <h2>Qué necesitas antes</h2>
+    <ul>
+      <li>Un <strong>dominio propio</strong> con acceso a sus DNS.</li>
+      <li>Dos registros configurados en tu proveedor de dominio.</li>
+    </ul>
+
+    <h3>Los registros DNS</h3>
+    <p>En el panel de tu dominio crea:</p>
+    <div class="blk">
+      <div class="blk-h"><span>REGISTROS</span></div>
+      <pre><span class="d">Tipo   Nombre      Valor</span>
+<span class="c">A</span>      dns         <span class="y">IP_DE_TU_VPS</span>
+<span class="c">NS</span>     ns          <span class="y">dns.tudominio.com</span></pre>
+    </div>
+    <p>
+      El registro <code>NS</code> delega ese subdominio a tu servidor: es lo que hace que
+      las consultas lleguen al VPS. Puede tardar en propagar.
+    </p>
+
+    <h2>Instalar</h2>
+    <div class="steps">
+      <div class="stp">
+        <div class="stp-n">[<i>1</i>]</div>
+        <div>
+          <h4>INSTALADORES → SLOWDNS → INSTALAR</h4>
+          <p>Descarga el servidor y las llaves.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="stp-n">[<i>2</i>]</div>
+        <div>
+          <h4>Escribe tu dominio NS</h4>
+          <p>El que delegaste. En el ejemplo de arriba sería <code>ns.tudominio.com</code>.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="stp-n">[<i>3</i>]</div>
+        <div>
+          <h4>Indica el puerto SSH</h4>
+          <p>Al que SlowDNS va a entregar las conexiones. Normalmente el 22.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="stp-n">[<i>4</i>]</div>
+        <div>
+          <h4>Copia la clave pública</h4>
+          <p>Opción <strong>VER PUBLIC KEY</strong>. Tus clientes la necesitan junto con el dominio NS para conectarse.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="box tip">
+      <span class="t">Los datos van solos en la tarjeta</span>
+      Al crear un usuario, el NS y la KEY aparecen automáticamente en la tarjeta de
+      conexión que devuelve el bot. No tienes que mandarlos aparte.
+    </div>
+
+    <h2>Problemas comunes</h2>
+    <ul>
+      <li><strong>El servicio client-sldns aparece inactivo.</strong> Es normal y no afecta: el puerto ya lo tiene SSH.</li>
+      <li><strong>No conecta.</strong> Comprueba que el registro NS haya propagado. Puede tardar horas.</li>
+      <li><strong>La clave no coincide.</strong> Si reinstalaste, la clave puede haber cambiado. Vuelve a copiarla y pásala a tus clientes.</li>
+    </ul>
+
+    <div class="next">
+      <a class="nx" href="#/protocolos/hysteria">Hysteria →</a>
+      <a class="nx" href="#/protocolos">← Volver a Protocolos</a>
+    </div>
+  </section>
+
+  <!-- ─────── GUÍA · HYSTERIA ─────── -->
+  <section class="view" id="v-protocolos-hysteria" data-title="Hysteria" data-parent="#/protocolos">
+    <div class="rule"><span>GUÍA · PROTOCOLOS</span></div>
+    <h1>Hysteria</h1>
+    <p class="lead">
+      Protocolo UDP diseñado para redes malas: con pérdida de paquetes rinde mucho
+      mejor que TCP. Ideal para datos móviles inestables.
+    </p>
+
+    <h2>v1 o v2</h2>
+    <p>
+      El panel soporta las dos y puedes tener ambas. <strong>v1</strong> usa autenticación
+      por usuario y contraseña, y admite ofuscación. <strong>v2</strong> es más nueva, usa
+      QUIC y una contraseña única para el servidor.
+    </p>
+    <p>
+      Si tus clientes ya tienen apps que soportan v2, ve por v2. Si no estás seguro,
+      v1 tiene más compatibilidad con apps viejas.
+    </p>
+
+    <h2>Instalar</h2>
+    <div class="steps">
+      <div class="stp">
+        <div class="stp-n">[<i>1</i>]</div>
+        <div>
+          <h4>INSTALADORES → HYSTERIA</h4>
+          <p>Elige la versión que quieras instalar.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="stp-n">[<i>2</i>]</div>
+        <div>
+          <h4>Puerto de escucha</h4>
+          <p>El puerto UDP principal donde el servidor atiende.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="stp-n">[<i>3</i>]</div>
+        <div>
+          <h4>Rango de puertos</h4>
+          <p>Hysteria salta entre puertos para evitar bloqueos. El panel crea la regla de redirección para todo el rango.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="stp-n">[<i>4</i>]</div>
+        <div>
+          <h4>Verifica el estado</h4>
+          <p>El administrador de Hysteria tiene diagnóstico: comprueba que el servicio esté activo y que el puerto esté abierto.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="box warn">
+      <span class="t">El firewall importa</span>
+      Hysteria necesita el rango completo abierto en UDP, no solo el puerto principal.
+      Si tienes otro firewall encima del VPS — el del proveedor, por ejemplo — ábrelo
+      también ahí o no entrará tráfico.
+    </div>
+
+    <h2>Cómo lo reciben tus clientes</h2>
+    <p>
+      La tarjeta de conexión incluye el puerto, el rango, la ofuscación si la hay, y
+      una URI lista para pegar en la app:
+    </p>
+    <div class="blk">
+      <div class="blk-h"><span>EJEMPLO</span></div>
+      <pre><span class="d">v1:</span> hysteria://IP:PUERTO?auth=usuario%3Aclave&amp;...
+<span class="d">v2:</span> hysteria2://clave@IP:PUERTO/?insecure=1&amp;sni=IP</pre>
+    </div>
+
+    <div class="next">
+      <a class="nx" href="#/protocolos/slowdns">SlowDNS →</a>
+      <a class="nx" href="#/protocolos">← Volver a Protocolos</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       CATEGORÍA · USUARIOS
+       ═══════════════════════════════════════════════════ -->
+  <section class="view" id="v-usuarios" data-title="Usuarios" data-parent="#/">
+    <div class="rule"><span>GUÍA</span></div>
+    <h1>Usuarios</h1>
+    <p class="lead">
+      Cómo crear cuentas, ponerles límites y organizarlas entre revendedores.
+    </p>
+
+    <h2>Crear un usuario</h2>
+    <p>
+      Desde el panel (<strong>USUARIOS SSH</strong>) o desde cualquiera de los dos bots.
+      Los datos que pide son los mismos:
+    </p>
+
+    <div class="steps">
+      <div class="stp">
+        <div class="stp-n">[<i>1</i>]</div>
+        <div><h4>Nombre</h4><p>Sin espacios. Es el usuario que va a escribir el cliente.</p></div>
+      </div>
+      <div class="stp">
+        <div class="stp-n">[<i>2</i>]</div>
+        <div><h4>Contraseña</h4><p>La que quieras. En el bot de WhatsApp puedes escribir <code>auto</code> para que la genere.</p></div>
+      </div>
+      <div class="stp">
+        <div class="stp-n">[<i>3</i>]</div>
+        <div><h4>Límite de conexiones</h4><p>Cuántos dispositivos simultáneos permite. Con 1 impides que compartan la cuenta.</p></div>
+      </div>
+      <div class="stp">
+        <div class="stp-n">[<i>4</i>]</div>
+        <div><h4>Días de validez</h4><p>Al vencer, la cuenta deja de funcionar sola. Puedes borrar las vencidas de golpe.</p></div>
+      </div>
+      <div class="stp">
+        <div class="stp-n">[<i>5</i>]</div>
+        <div>
+          <h4>Límite de velocidad</h4>
+          <p>En KB/s. <code>512</code> son 512 KB/s, <code>1024</code> es 1 MB/s. Escribe <code>0</code> para sin límite.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="stp-n">[<i>6</i>]</div>
+        <div>
+          <h4>Límite de consumo</h4>
+          <p>En GB. Acepta decimales: <code>1.5</code> son 1.5 GB. <code>0</code> para sin límite.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="box tip">
+      <span class="t">La tarjeta de conexión</span>
+      Al terminar recibes todo junto: usuario, contraseña, límites, vencimiento, IP,
+      dominio, y los datos de cada protocolo activo con sus URIs. Se lo reenvías tal
+      cual al cliente.
+    </div>
+
+    <h2>Cuentas de prueba</h2>
+    <p>
+      Se crean con una duración en horas y se borran solas al vencer. El nombre se
+      genera automáticamente. Útil para que alguien pruebe el servicio antes de pagar.
+    </p>
+
+    <h2>Revendedores</h2>
+    <p>
+      Un revendedor gestiona solo sus propios usuarios: no ve ni puede tocar los de
+      los demás. Se agregan desde el bot, con su número o su ID según la plataforma,
+      y puedes darles acceso limitado en días o ilimitado.
+    </p>
+
+    <div class="roles">
+      <div class="rl a">
+        <h4>Administrador</h4>
+        <p>Todo: usuarios, backup, optimizar, test de velocidad y gestión de revendedores.</p>
+      </div>
+      <div class="rl b">
+        <h4>Revendedor</h4>
+        <p>Sus propios usuarios: crear, eliminar, ver online, cambiar contraseña, límite y fecha, y crear pruebas.</p>
+      </div>
+      <div class="rl c">
+        <h4>Subrevendedor</h4>
+        <p>Acceso básico en el bot de Telegram: crear y eliminar sus usuarios y cambiar datos básicos.</p>
+      </div>
+    </div>
+
+    <h2>Mantenimiento</h2>
+    <ul>
+      <li><strong>Ver online:</strong> quién está conectado ahora y cuántas sesiones tiene abiertas.</li>
+      <li><strong>Eliminar expirados:</strong> borra de una vez todas las cuentas vencidas.</li>
+      <li><strong>Cambiar fecha:</strong> renovar sin recrear la cuenta.</li>
+    </ul>
+
+    <div class="next">
+      <a class="nx" href="#/bots/whatsapp">Hacerlo desde WhatsApp →</a>
+      <a class="nx" href="#/">← Inicio</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       CATEGORÍA · PANEL
+       ═══════════════════════════════════════════════════ -->
+  <section class="view" id="v-panel" data-title="El panel" data-parent="#/">
+    <div class="rule"><span>GUÍA</span></div>
+    <h1>El panel</h1>
+    <p class="lead">Todo el script vive detrás de un comando de dos letras.</p>
+
+    <div class="blk" style="max-width:520px">
+      <div class="blk-h"><span>ABRIR</span><button class="cp">COPIAR</button></div>
+      <pre>sn</pre>
+    </div>
+
+    <h2>Qué ves al entrar</h2>
+    <p>
+      Arriba, el estado del servidor: sistema operativo, IP, zona horaria, RAM, disco,
+      CPU y el proceso que más consume. Debajo, los <strong>servicios activos</strong> con
+      los puertos que está usando cada uno. Y luego el menú.
+    </p>
+
+    <h2>El menú principal</h2>
+    <div class="blk">
+      <div class="blk-h"><span>MENU PRINCIPAL</span></div>
+      <pre>  <span class="r">[</span><span class="y">1</span><span class="r">]</span>  <span class="c">USUARIOS SSH</span>       <span class="r">[</span><span class="y">5</span><span class="r">]</span>  <span class="c">BANNER SSH</span>
+  <span class="r">[</span><span class="y">2</span><span class="r">]</span>  <span class="c">INSTALADORES</span>       <span class="r">[</span><span class="y">6</span><span class="r">]</span>  <span class="c">ADMINISTRAR PUERTOS</span>
+  <span class="r">[</span><span class="y">3</span><span class="r">]</span>  <span class="c">HERRAMIENTAS</span>       <span class="r">[</span><span class="y">7</span><span class="r">]</span>  <span class="c">SPEEDTEST</span>
+  <span class="r">[</span><span class="y">4</span><span class="r">]</span>  <span class="c">BOTS</span></pre>
+    </div>
+
+    <ul>
+      <li><strong>USUARIOS SSH</strong> — crear, eliminar y modificar cuentas.</li>
+      <li><strong>INSTALADORES</strong> — todos los protocolos con su estado y su administrador.</li>
+      <li><strong>HERRAMIENTAS</strong> — swap, optimizar, escaneo de subdominios, info de IP, zona horaria.</li>
+      <li><strong>BOTS</strong> — WhatsApp y Telegram.</li>
+      <li><strong>BANNER SSH</strong> — el mensaje que ven tus clientes al conectar.</li>
+      <li><strong>ADMINISTRAR PUERTOS</strong> — abrir, cerrar y revisar qué está escuchando.</li>
+    </ul>
+
+    <h3>Opciones de sistema</h3>
+    <ul>
+      <li><code>99</code> reiniciar el VPS</li>
+      <li><code>100</code> desinstalar el script</li>
+      <li><code>101</code> actualizar el script</li>
+      <li><code>102</code> cerrar la sesión SSH</li>
+      <li><code>0</code> salir del panel</li>
+    </ul>
+
+    <div class="box tip">
+      <span class="t">Mantenlo actualizado</span>
+      La opción <code>101</code> descarga la última versión. Si algo falla tras una
+      actualización del sistema, prueba esto antes de escribirnos.
+    </div>
+
+    <div class="next">
+      <a class="nx" href="#/protocolos/instalar">Instalar un protocolo →</a>
+      <a class="nx" href="#/">← Inicio</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       AVISOS
+       Nuevo aviso: copia un bloque .av y ponlo arriba.
+       Clases: .new (verde) · .hot (amarillo) · sin clase
+       ═══════════════════════════════════════════════════ -->
+  <section class="view" id="v-avisos" data-title="Avisos" data-parent="#/">
+    <div class="rule"><span>ESTADO</span></div>
+    <h1>Avisos</h1>
+    <p class="lead">Lo último primero. Revísalo antes de reportar un fallo.</p>
+
+    <div class="avisos">
+      <div class="av new">
+        <div class="av-d">NUEVO</div>
+        <div>
+          <h4>Bot de WhatsApp disponible</h4>
+          <p>Ya puedes administrar el VPS desde WhatsApp. Se instala desde <code>sn</code> → BOTS → BOT WHATSAPP y comparte base de datos con el bot de Telegram.</p>
+        </div>
+      </div>
+      <div class="av hot">
+        <div class="av-d">ACTIVO</div>
+        <div>
+          <h4>Migración a Ubuntu 24 y 26</h4>
+          <p>Ubuntu 22 está quedando obsoleto. Actualizamos módulo por módulo, así que algunas funciones pueden fallar temporalmente. Mantén el script al día con la opción 101.</p>
+        </div>
+      </div>
+      <div class="av">
+        <div class="av-d">NOTA</div>
+        <div>
+          <h4>Orden de reglas iptables</h4>
+          <p>Si instalaste otro panel antes que SN PLUS, puede haber una regla catch-all en PREROUTING interceptando el tráfico antes de llegar a los protocolos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       LICENCIAS
+       ═══════════════════════════════════════════════════ -->
+  <section class="view" id="v-licencias" data-title="Licencias y contacto" data-parent="#/">
+    <div class="rule"><span>INFO</span></div>
+    <h1>Licencias y contacto</h1>
+    <p class="lead">Una sola key, instalaciones ilimitadas durante el periodo contratado. Reinstala o cambia de VPS sin gastar tu licencia.</p>
+
+    <div class="plans">
+      <div class="plan"><div class="n">SEMANAL</div><div class="v">$2</div><div class="dd">7 días</div></div>
+      <div class="plan"><div class="n">MENSUAL</div><div class="v">$4</div><div class="dd">30 días</div></div>
+      <div class="plan"><div class="n">TRIMESTRAL</div><div class="v">$10</div><div class="dd">90 días</div></div>
+      <div class="plan"><div class="n">SEMESTRAL</div><div class="v">$18</div><div class="dd">180 días</div></div>
+      <div class="plan best"><div class="n">ANUAL</div><div class="v">$30</div><div class="dd">365 días</div></div>
+    </div>
+    <p style="font-family:var(--mono);font-size:12px;color:var(--ash-2)">Precios en USD. La entrega es inmediata.</p>
+
+    <h2>Contacto</h2>
+    <div class="links">
+      <a class="lnk" href="https://wa.me/5215629885039" target="_blank" rel="noopener">
+        <span><span class="l">WHATSAPP</span><span class="v">Chat directo</span></span><span class="ar">→</span></a>
+      <a class="lnk" href="https://chat.whatsapp.com/EcMClegA2DVBZRiudPqYqP" target="_blank" rel="noopener">
+        <span><span class="l">COMUNIDAD</span><span class="v">Grupo de WhatsApp</span></span><span class="ar">→</span></a>
+      <a class="lnk" href="https://t.me/SIN_NOMBRE22" target="_blank" rel="noopener">
+        <span><span class="l">TELEGRAM</span><span class="v">@SIN_NOMBRE22</span></span><span class="ar">→</span></a>
+      <a class="lnk" href="https://t.me/SN_PLUS" target="_blank" rel="noopener">
+        <span><span class="l">CANAL</span><span class="v">@SN_PLUS</span></span><span class="ar">→</span></a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+/* ═══ RUTAS ═══
+   Cada vista es una <section class="view"> con id "v-..."
+   La ruta #/bots/whatsapp abre la vista #v-bots-whatsapp    */
+var RUTAS = {
+  '#/':                      'v-home',
+  '#/bots':                  'v-bots',
+  '#/bots/whatsapp':         'v-bots-whatsapp',
+  '#/bots/telegram':         'v-bots-telegram',
+  '#/protocolos':            'v-protocolos',
+  '#/protocolos/instalar':   'v-protocolos-instalar',
+  '#/protocolos/slowdns':    'v-protocolos-slowdns',
+  '#/protocolos/hysteria':   'v-protocolos-hysteria',
+  '#/usuarios':              'v-usuarios',
+  '#/panel':                 'v-panel',
+  '#/avisos':                'v-avisos',
+  '#/licencias':             'v-licencias'
+};
+
+function rutaDe(id){
+  for (var r in RUTAS) if (RUTAS[r] === id) return r;
+  return '#/';
+}
+
+function migas(vista){
+  var c = document.getElementById('crumb');
+  c.innerHTML = '';
+  if (vista.id === 'v-home'){ return; }
+
+  var cadena = [], actual = vista;
+  while (actual){
+    cadena.unshift(actual);
+    var p = actual.getAttribute('data-parent');
+    actual = (p && RUTAS[p]) ? document.getElementById(RUTAS[p]) : null;
+  }
+
+  var inicio = document.createElement('a');
+  inicio.href = '#/'; inicio.textContent = 'INICIO';
+  c.appendChild(inicio);
+
+  cadena.forEach(function(v, i){
+    var s = document.createElement('span');
+    s.className = 'sep'; s.textContent = '/';
+    c.appendChild(s);
+    var t = (v.getAttribute('data-title') || '').toUpperCase();
+    if (i === cadena.length - 1){
+      var n = document.createElement('span');
+      n.className = 'now'; n.textContent = t;
+      c.appendChild(n);
+    } else {
+      var a = document.createElement('a');
+      a.href = rutaDe(v.id); a.textContent = t;
+      c.appendChild(a);
+    }
+  });
+}
+
+function router(){
+  var h = location.hash || '#/';
+  var id = RUTAS[h] || 'v-home';
+  var vista = document.getElementById(id);
+  if (!vista){ vista = document.getElementById('v-home'); }
+
+  document.querySelectorAll('.view').forEach(function(v){ v.classList.remove('on'); });
+  vista.classList.add('on');
+
+  migas(vista);
+
+  var t = vista.getAttribute('data-title');
+  document.title = (t && t !== 'Inicio') ? ('SN PLUS — ' + t) : 'SN PLUS — Wiki';
+
+  window.scrollTo(0, 0);
+}
+
+window.addEventListener('hashchange', router);
+router();
+
+/* ═══ COPIAR ═══ */
+document.addEventListener('click', function(e){
+  var btn = e.target.closest ? e.target.closest('.cp') : null;
+  if (!btn) return;
+  var blk = btn.closest('.blk');
+  var pre = blk ? blk.querySelector('pre') : null;
+  if (!pre || !navigator.clipboard) return;
+  navigator.clipboard.writeText(pre.innerText.trim()).then(function(){
+    var t = btn.textContent;
+    btn.textContent = 'COPIADO'; btn.classList.add('ok');
+    setTimeout(function(){ btn.textContent = t; btn.classList.remove('ok'); }, 1400);
+  });
+});
+</script>
+
+</body>
+</html>
