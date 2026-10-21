@@ -1,0 +1,136 @@
+# SN PLUS - Portugues (pt)
+# :texto original en espanol
+# =traducao
+# Nucleo da interface. O que nao aparece aqui se mostra em espanhol.
+
+:MENU PRINCIPAL
+=MENU PRINCIPAL
+
+:USUARIOS SSH
+=USUARIOS SSH
+
+:USUARIOS V2RAY
+=USUARIOS V2RAY
+
+:USUARIOS XRAY MOD
+=USUARIOS XRAY MOD
+
+:HERRAMIENTAS
+=FERRAMENTAS
+
+:INSTALADORES & PROTOCOLOS
+=INSTALADORES & PROTOCOLOS
+
+:PROTOCOLOS V2RAY
+=PROTOCOLOS V2RAY
+
+:Seleccione una opción
+=Selecione uma opcao
+
+:Seleccione una opción:
+=Selecione uma opcao:
+
+:Opción inválida.
+=Opcao invalida.
+
+:Opción inválida
+=Opcao invalida
+
+:Opcion invalida
+=Opcao invalida
+
+:Cancelar
+=Cancelar
+
+:Volver
+=Voltar
+
+:Reiniciar
+=Reiniciar
+
+:Desinstalar
+=Desinstalar
+
+:Instalar
+=Instalar
+
+:Iniciar
+=Iniciar
+
+:Detener
+=Parar
+
+:Aceptar
+=Aceitar
+
+:Continuar
+=Continuar
+
+:Presiona ENTER para continuar
+=Pressione ENTER para continuar
+
+:Presiona Enter para continuar...
+=Pressione Enter para continuar...
+
+:Presiona Enter para volver...
+=Pressione Enter para voltar...
+
+:Idioma actual
+=Idioma atual
+
+:activo
+=ativo
+
+:no instalado
+=nao instalado
+
+:textos
+=textos
+
+:Idioma cambiado a
+=Idioma alterado para
+
+:Otros catalogos encontrados
+=Outros catalogos encontrados
+
+:Escribe el codigo para usarlo
+=Digite o codigo para usar
+
+:Usuario
+=Usuario
+
+:Usuario ya existe
+=Usuario ja existe
+
+:No puede estar vacío
+=Nao pode estar vazio
+
+:No puede quedar vacio.
+=Nao pode ficar vazio.
+
+:Contraseña actualizada correctamente.
+=Senha atualizada com sucesso.
+
+:Instalar CloudFront + VPS
+=Instalar CloudFront + VPS
+
+:Desinstalar todo
+=Desinstalar tudo
+
+:Puerto invalido.
+=Porta invalida.
+
+:Puerto no encontrado.
+=Porta nao encontrada.
+
+:Puerto encontrado!
+=Porta encontrada!
+
+:Error al escribir config
+=Erro ao gravar a config
+
+:Error al ejecutar:
+=Erro ao executar:
+
+:Opción
+=Opcao
