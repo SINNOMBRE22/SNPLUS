@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>SN PLUS · Panel</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="/app.css">
+<script src="/app.js" defer></script>
+</head>
+<body>
+
+<!-- ============ LOGIN ============ -->
+<div id="vista-login" class="login oculto">
+  <form id="form-login" class="login-card" autocomplete="on">
+    <div class="login-marca">
+      <svg class="escudo-grande" viewBox="0 0 34 38" aria-hidden="true"><path d="M17 1.5 32 7v11.5C32 28 25.5 33.5 17 36.5 8.5 33.5 2 28 2 18.5V7Z"/><text x="17" y="23" text-anchor="middle">SN</text></svg>
+      <h1>SN <span class="acento">PLUS</span></h1>
+      <p class="tenue">Panel de administración de tu VPS</p>
+    </div>
+    <label class="campo">Usuario
+      <input id="login-usuario" name="usuario" type="text" autocomplete="username" required>
+    </label>
+    <label class="campo">Contraseña
+      <input id="login-clave" name="clave" type="password" autocomplete="current-password" required>
+    </label>
+    <p id="login-error" class="error oculto" role="alert"></p>
+    <button id="login-btn" class="btn btn-primario btn-ancho" type="submit">Entrar</button>
+    <p class="aviso-seguro">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+      Conexión cifrada · 5 intentos fallidos bloquean tu IP 15 min
+    </p>
+  </form>
+</div>
+
+<!-- ============ PANEL ============ -->
+<div id="vista-app" class="app oculto">
+  <nav class="lateral" aria-label="Menú principal">
+    <div class="marca">
+      <svg class="escudo" viewBox="0 0 34 38" aria-hidden="true"><path d="M17 1.5 32 7v11.5C32 28 25.5 33.5 17 36.5 8.5 33.5 2 28 2 18.5V7Z"/><text x="17" y="23" text-anchor="middle">SN</text></svg>
+      <div><span class="marca-nombre">SN <span class="acento">PLUS</span></span><span class="marca-sub">PANEL WEB</span></div>
+    </div>
+    <div class="nav-grupo">
+      <span class="nav-titulo">GENERAL</span>
+      <a class="nav-item" href="#/" data-vista="dashboard">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+        Dashboard</a>
+      <a class="nav-item" href="#/ssh" data-vista="ssh">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7"/><path d="M18 14.7c2 .7 3.2 2.4 3.6 5.3"/></svg>
+        Usuarios SSH<span class="nav-cuenta mono" id="nav-ssh"></span></a>
+      <a class="nav-item" href="#/vray" data-vista="vray">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h4l3-8 4 16 3-8h2"/></svg>
+        V2Ray / Xray<span class="nav-cuenta mono" id="nav-vray"></span></a>
+      <a class="nav-item" href="#/protos" data-vista="protos">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg>
+        Protocolos<span class="nav-cuenta mono" id="nav-protos"></span></a>
+      <a class="nav-item" href="#/terminal" data-vista="terminal">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 9 3 3-3 3M13 15h4"/></svg>
+        Terminal</a>
+      <a class="nav-item" href="#/respaldos" data-vista="resp">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/><path d="M12 8v4l3 2"/></svg>
+        Respaldos<span class="nav-cuenta mono" id="nav-resp"></span></a>
+    </div>
+    <div class="licencia">
+      <div class="fila-entre"><span class="tenue">Licencia</span><span id="lic-estado" class="pastilla">—</span></div>
+      <span>Reseller: <b id="lic-reseller">—</b></span>
+      <span class="tenue">Versión <span id="lic-version">—</span></span>
+    </div>
+    <button id="btn-salir" class="btn btn-borde btn-ancho" type="button">Cerrar sesión</button>
+  </nav>
+
+  <main class="contenido">
+  <div id="vista-dashboard" class="vista">
+    <header class="cabecera">
+      <div>
+        <h1>Dashboard</h1>
+        <div class="estado-linea">
+          <span class="en-linea"><span class="punto"></span>En línea</span>
+          <span class="mono" id="sys-ip">—</span>
+          <span id="sys-os">—</span>
+          <span id="sys-uptime">—</span>
+        </div>
+      </div>
+      <span class="tenue" id="actualizado">Actualizando…</span>
+    </header>
+
+    <section class="tarjetas" aria-label="Recursos">
+      <div class="tarjeta"><div class="fila-entre"><span class="tenue">CPU</span><span class="tenue" id="cpu-sub">—</span></div><span class="valor" id="cpu-val">—</span><div class="barra"><div class="barra-relleno cian" id="cpu-bar"></div></div></div>
+      <div class="tarjeta"><div class="fila-entre"><span class="tenue">RAM</span><span class="tenue" id="ram-sub">—</span></div><span class="valor" id="ram-val">—</span><div class="barra"><div class="barra-relleno violeta" id="ram-bar"></div></div></div>
+      <div class="tarjeta"><div class="fila-entre"><span class="tenue">Disco</span><span class="tenue" id="disco-sub">—</span></div><span class="valor" id="disco-val">—</span><div class="barra"><div class="barra-relleno verde" id="disco-bar"></div></div></div>
+      <div class="tarjeta"><div class="fila-entre"><span class="tenue">Red ahora</span><span class="tenue" id="conex-sub">—</span></div><span class="valor valor-chico" id="red-val">—</span><span class="tenue" id="red-sub">—</span></div>
+    </section>
+
+    <div class="fila">
+      <section class="panel crece-2" aria-label="Tráfico">
+        <div class="fila-entre envolver">
+          <h2>Tráfico de red</h2>
+          <div class="leyenda">
+            <span><i class="linea cian"></i>Bajada <b id="tr-rx">—</b></span>
+            <span><i class="linea violeta"></i>Subida <b id="tr-tx">—</b></span>
+          </div>
+        </div>
+        <div class="grafica-caja">
+          <svg id="grafica" class="grafica" viewBox="0 0 640 200" preserveAspectRatio="none" role="img" aria-label="Tráfico de las últimas horas"></svg>
+          <p id="grafica-vacia" class="grafica-vacia">Juntando datos… el primer punto aparece a los 5 minutos</p>
+        </div>
+        <p class="tenue chico" id="tr-nota">Se llena cada 5 minutos desde que inició el panel (hasta 24 h).</p>
+      </section>
+
+      <section class="panel crece-1" aria-label="Usuarios">
+        <h2>Usuarios</h2>
+        <div class="mini-grid">
+          <div class="mini"><span class="mini-val" id="us-total">—</span><span class="tenue">Total</span></div>
+          <div class="mini"><span class="mini-val rojo" id="us-venc">—</span><span class="tenue">Vencidos</span></div>
+          <div class="mini"><span class="mini-val ambar" id="us-pronto">—</span><span class="tenue">Vencen en 3 días</span></div>
+          <div class="mini"><span class="mini-val ambar" id="us-bloq">—</span><span class="tenue">Bloqueados</span></div>
+        </div>
+        <div class="lista-datos">
+          <div class="fila-entre"><span class="tenue">SSH</span><span class="mono" id="us-ssh">—</span></div>
+          <div class="fila-entre"><span class="tenue">V2Ray</span><span class="mono" id="us-v2">—</span></div>
+          <div class="fila-entre"><span class="tenue">Xray MOD</span><span class="mono" id="us-xr">—</span></div>
+        </div>
+      </section>
+    </div>
+
+    <section class="panel" aria-label="Servicios activos">
+      <div class="fila-entre envolver"><h2>Servicios activos</h2><span class="tenue" id="sv-cuenta">—</span></div>
+      <div class="servicios" id="servicios"></div>
+    </section>
+
+    <section class="panel" aria-label="Sistema">
+      <h2>Sistema</h2>
+      <div class="sistema">
+        <div><span class="tenue">Hostname</span><span id="sys-host">—</span></div>
+        <div><span class="tenue">Kernel</span><span class="mono" id="sys-kernel">—</span></div>
+        <div><span class="tenue">Arquitectura</span><span id="sys-arch">—</span></div>
+        <div><span class="tenue">Núcleos</span><span id="sys-nucleos">—</span></div>
+        <div><span class="tenue">Carga (1/5/15)</span><span class="mono" id="sys-carga">—</span></div>
+        <div><span class="tenue">Swap</span><span id="sys-swap">—</span></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ USUARIOS SSH ============ -->
+  <div id="vista-ssh" class="vista oculto">
+    <header class="cabecera">
+      <div>
+        <h1>Usuarios SSH</h1>
+        <p class="sub" id="ssh-resumen">Cargando…</p>
+      </div>
+      <button id="ssh-nuevo" class="btn btn-primario btn-icono" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Crear usuario</button>
+    </header>
+
+    <div class="barra-herr">
+      <label class="buscador">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <span class="solo-lector">Buscar usuario</span>
+        <input id="ssh-buscar" type="search" placeholder="Buscar usuario…" autocomplete="off">
+      </label>
+      <div class="filtros" role="group" aria-label="Filtrar usuarios" id="ssh-filtros"></div>
+    </div>
+
+    <section id="ssh-conectados" class="panel oculto" aria-labelledby="ssh-conex-titulo">
+      <div class="fila-entre">
+        <h2 id="ssh-conex-titulo" class="titulo-sec">Conectados ahora <span id="ssh-conex-n" class="pastilla"></span></h2>
+        <span class="chico-tenue">IP real del cliente, por dónde entró y cuánto lleva</span>
+      </div>
+      <div id="ssh-conex-lista" class="conex-lista"></div>
+    </section>
+
+    <section class="panel panel-tabla" aria-label="Lista de usuarios SSH">
+      <table class="tabla">
+        <thead><tr>
+          <th scope="col">Usuario</th><th scope="col">Estado</th><th scope="col">Vence</th>
+          <th scope="col">Conexiones</th><th scope="col">Consumo</th><th scope="col" class="der">Acciones</th>
+        </tr></thead>
+        <tbody id="ssh-filas"></tbody>
+      </table>
+      <p id="ssh-vacio" class="vacio oculto"></p>
+    </section>
+  </div>
+
+  <!-- ============ V2RAY / XRAY ============ -->
+  <div id="vista-vray" class="vista oculto">
+    <header class="cabecera">
+      <div>
+        <h1>V2Ray / Xray</h1>
+        <p class="sub" id="vr-resumen">Cargando…</p>
+      </div>
+      <button id="vr-nuevo" class="btn btn-primario btn-icono" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Crear usuario</button>
+    </header>
+
+    <div class="pestanas" role="tablist" aria-label="Servicio" id="vr-pestanas"></div>
+
+    <section class="panel oculto" id="vr-nada">
+      <p class="vacio">No hay V2Ray ni Xray MOD instalado en esta VPS. Instálalo desde <b>menu → Protocolos</b>.</p>
+    </section>
+
+    <div id="vr-contenido" class="vista oculto">
+      <div class="chips" id="vr-info"></div>
+      <div class="barra-herr">
+        <label class="buscador">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <span class="solo-lector">Buscar usuario</span>
+          <input id="vr-buscar" type="search" placeholder="Buscar usuario o UUID…" autocomplete="off">
+        </label>
+        <div class="filtros" role="group" aria-label="Filtrar usuarios" id="vr-filtros"></div>
+      </div>
+      <section class="panel panel-tabla" aria-label="Lista de usuarios">
+        <table class="tabla">
+          <thead><tr>
+            <th scope="col">Usuario</th><th scope="col">Estado</th><th scope="col">Vence</th>
+            <th scope="col" id="vr-th-consumo">Consumo</th><th scope="col" class="der">Acciones</th>
+          </tr></thead>
+          <tbody id="vr-filas"></tbody>
+        </table>
+        <p id="vr-vacio" class="vacio oculto"></p>
+      </section>
+    </div>
+  </div>
+
+  <!-- ============ PROTOCOLOS ============ -->
+  <div id="vista-protos" class="vista oculto">
+    <header class="cabecera">
+      <div>
+        <h1>Protocolos</h1>
+        <p class="sub" id="pr-resumen">Cargando…</p>
+      </div>
+      <button id="pr-menu" class="btn btn-borde btn-icono" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 9 3 3-3 3M13 15h4"/></svg>Menú SN PLUS</button>
+    </header>
+    <p class="nota">«Administrar» abre el mismo menú de cada protocolo en una consola en vivo: desde ahí instalas, desinstalas y cambias puertos. Iniciar, detener y reiniciar están a un clic.</p>
+    <div id="pr-grupos" class="vista"></div>
+  </div>
+
+  <!-- ============ TERMINAL ============ -->
+  <div id="vista-terminal" class="vista oculto">
+    <header class="cabecera">
+      <div>
+        <h1>Terminal</h1>
+        <p class="sub">Consola en vivo de tu VPS, desde el navegador.</p>
+      </div>
+    </header>
+    <div class="tm-grid">
+      <button id="tm-menu" class="tm-opcion" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h6M7 17h8"/></svg>
+        <span class="tm-titulo">Menú SN PLUS</span>
+        <span class="tenue">El menú completo del script, igual que al escribir <span class="mono">menu</span>.</span>
+      </button>
+      <button id="tm-bash" class="tm-opcion" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 9 3 3-3 3M13 15h4"/></svg>
+        <span class="tm-titulo">Terminal root</span>
+        <span class="tenue">Bash como root. Úsala con cuidado: todo lo que escribas se ejecuta en la VPS.</span>
+      </button>
+    </div>
+    <p class="nota">Sirve también cuando estás conectado por SSH/SSL a esta misma VPS y tu app de terminal no entra.</p>
+  </div>
+
+  <!-- ============ RESPALDOS ============ -->
+  <div id="vista-resp" class="vista oculto">
+    <header class="cabecera">
+      <div>
+        <h1>Respaldos</h1>
+        <p class="sub" id="rs-resumen">Cargando…</p>
+      </div>
+      <div class="botones">
+        <label class="btn btn-borde btn-icono" for="rs-archivo">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg>Subir respaldo</label>
+        <input id="rs-archivo" class="solo-lector" type="file" accept=".gz,.tgz,application/gzip,application/x-gzip">
+        <button id="rs-todo" class="btn btn-primario btn-icono" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Respaldar todo</button>
+      </div>
+    </header>
+    <p class="nota">Se guardan en <span class="mono">/root</span> (los mismos del menú) y no se borran si quitas el panel. Al restaurar solo se agregan los usuarios que faltan: los que ya existen no se tocan. <b>Para pasar usuarios a otra VPS:</b> descarga el respaldo aquí y súbelo en el panel de la otra.</p>
+    <div id="rs-tipos" class="vista"></div>
+  </div>
+  </main>
+</div>
+
+<!-- ============ CREAR / EDITAR ============ -->
+<dialog id="dlg-usuario" class="cajon" aria-labelledby="dlg-usuario-titulo">
+  <form id="form-usuario" method="dialog" novalidate>
+    <div class="fila-entre">
+      <h2 id="dlg-usuario-titulo">Nuevo usuario SSH</h2>
+      <button class="btn-cerrar" type="button" data-cerrar aria-label="Cerrar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="campo" id="f-tipo-campo">Tipo de cuenta
+      <div class="filtros" role="group" aria-label="Tipo de cuenta" id="f-tipo">
+        <button type="button" class="filtro" data-tipo="ssh" aria-pressed="true">Normal</button>
+        <button type="button" class="filtro" data-tipo="hwid" aria-pressed="false">HWID</button>
+        <button type="button" class="filtro" data-tipo="token" aria-pressed="false">Token</button>
+      </div>
+    </div>
+    <label class="campo oculto" id="f-nombre-campo">Nombre del cliente
+      <input id="f-nombre" type="text" maxlength="24" placeholder="ej. Carlos" autocomplete="off" spellcheck="false">
+      <span class="ayuda">Solo para que tú lo reconozcas en la lista.</span>
+    </label>
+    <label class="campo"><span id="f-usuario-et">Usuario</span>
+      <span class="con-boton">
+        <input id="f-usuario" class="mono" type="text" maxlength="20" placeholder="ej. carlos_mx" autocomplete="off" autocapitalize="off" spellcheck="false" required>
+        <button id="f-generar-id" class="btn btn-borde oculto" type="button">Generar</button>
+      </span>
+      <span class="ayuda" id="f-usuario-ayuda">2 a 20 caracteres: letras, números, punto, guion o guion bajo.</span>
+    </label>
+    <label class="campo" id="f-clave-campo">Contraseña
+      <span class="con-boton">
+        <input id="f-clave" class="mono" type="text" maxlength="20" placeholder="ej. clave123" autocomplete="off" autocapitalize="off" spellcheck="false" required>
+        <button id="f-generar" class="btn btn-borde" type="button">Generar</button>
+      </span>
+    </label>
+    <div class="rejilla-2">
+      <label class="campo"><span id="f-dias-et">Días</span>
+        <input id="f-dias" type="number" min="1" max="360" value="30" inputmode="numeric" required></label>
+      <label class="campo">Conexiones
+        <input id="f-limite" type="number" min="1" max="999" value="1" inputmode="numeric" required></label>
+      <label class="campo">Velocidad (KB/s)
+        <input id="f-kbps" type="number" min="0" placeholder="Sin límite" inputmode="numeric"></label>
+      <label class="campo">Consumo (GB)
+        <input id="f-consumo" type="number" min="0" step="0.5" placeholder="Sin límite" inputmode="decimal"></label>
+    </div>
+    <p class="nota nota-aviso oculto" id="f-agotado">Está bloqueado porque pasó su límite de consumo. Súbele el consumo (o déjalo vacío) y al guardar se desbloquea.</p>
+    <p class="nota" id="f-nota">Vence el <b id="f-vence">—</b>. Deja velocidad o consumo vacíos para no limitar.</p>
+    <p id="f-error" class="error oculto" role="alert"></p>
+    <div class="acciones-form">
+      <button class="btn btn-borde" type="button" data-cerrar>Cancelar</button>
+      <button id="f-guardar" class="btn btn-primario" type="submit">Crear usuario</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- ============ ESTADISTICAS DE UN USUARIO ============ -->
+<dialog id="dlg-estad" class="cajon cajon-ancho" aria-labelledby="e-titulo">
+  <div class="cajon-cont">
+    <div class="fila-entre">
+      <div class="usr">
+        <span id="e-avatar" class="avatar"></span>
+        <div class="usr-txt"><h2 id="e-titulo">Usuario</h2><span id="e-sub" class="chico-tenue"></span></div>
+      </div>
+      <button class="btn-cerrar" type="button" data-cerrar aria-label="Cerrar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <p id="e-cargando" class="tenue">Cargando…</p>
+    <div id="e-cuerpo" class="estad oculto">
+      <div class="mini-grid">
+        <div class="mini"><span class="tenue">Hoy</span><span id="e-hoy" class="mini-val">—</span></div>
+        <div class="mini"><span class="tenue">Últimos 7 días</span><span id="e-semana" class="mini-val">—</span></div>
+        <div class="mini"><span class="tenue">Últimos 30 días</span><span id="e-treinta" class="mini-val">—</span></div>
+        <div class="mini"><span class="tenue">Este mes</span><span id="e-mes" class="mini-val">—</span><span id="e-mes-lim" class="tenue"></span></div>
+      </div>
+      <div class="lista-datos estad-datos">
+        <div class="fila-entre"><span class="tenue">Última conexión</span><span id="e-ultima">—</span></div>
+        <div class="fila-entre"><span class="tenue">Máximo de conexiones hoy</span><span id="e-pico" class="mono">—</span></div>
+      </div>
+      <section class="estad-sec" aria-labelledby="e-g30-t">
+        <div class="fila-entre"><h3 id="e-g30-t">Consumo por día</h3><span class="chico-tenue">30 días</span></div>
+        <div id="e-g30" class="barras-caja"></div>
+      </section>
+      <section class="estad-sec" aria-labelledby="e-g24-t">
+        <div class="fila-entre"><h3 id="e-g24-t">Consumo por hora</h3><span class="chico-tenue">24 horas</span></div>
+        <div id="e-g24" class="barras-caja"></div>
+      </section>
+      <section class="estad-sec" aria-labelledby="e-cx-t">
+        <div class="fila-entre"><h3 id="e-cx-t">Conexiones abiertas</h3><span id="e-cx-n" class="pastilla"></span></div>
+        <div id="e-conex" class="conex-lista"></div>
+      </section>
+      <p id="e-nota" class="nota"></p>
+    </div>
+  </div>
+</dialog>
+
+<!-- ============ RENOVAR ============ -->
+<dialog id="dlg-renovar" class="modal" aria-labelledby="dlg-renovar-titulo">
+  <form id="form-renovar" method="dialog" novalidate>
+    <h2 id="dlg-renovar-titulo">Renovar usuario</h2>
+    <p class="tenue" id="r-actual"></p>
+    <div class="atajos" id="r-atajos"></div>
+    <label class="campo"><span id="r-dias-et">Días a partir de hoy</span>
+      <input id="r-dias" type="number" min="1" max="360" value="30" inputmode="numeric" required></label>
+    <p class="nota">Nueva fecha: <b id="r-vence">—</b></p>
+    <p id="r-error" class="error oculto" role="alert"></p>
+    <div class="acciones-form">
+      <button class="btn btn-borde" type="button" data-cerrar>Cancelar</button>
+      <button id="r-guardar" class="btn btn-primario" type="submit">Renovar</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- ============ CONFIRMAR ============ -->
+<dialog id="dlg-confirmar" class="modal" aria-labelledby="c-titulo">
+  <form id="form-confirmar" method="dialog">
+    <h2 id="c-titulo">¿Seguro?</h2>
+    <p class="tenue" id="c-texto"></p>
+    <div class="acciones-form">
+      <button class="btn btn-borde" type="button" data-cerrar>Cancelar</button>
+      <button id="c-ok" class="btn btn-peligro" type="submit">Eliminar</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- ============ TARJETA DE CUENTA ============ -->
+<dialog id="dlg-tarjeta" class="modal" aria-labelledby="t-titulo">
+  <form method="dialog">
+    <div class="fila-entre">
+      <h2 id="t-titulo">Cuenta lista</h2>
+      <button class="btn-cerrar" type="button" data-cerrar aria-label="Cerrar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <pre id="t-texto" class="tarjeta-cuenta"></pre>
+    <div class="acciones-form">
+      <button class="btn btn-borde" type="button" data-cerrar>Cerrar</button>
+      <button id="t-copiar" class="btn btn-primario" type="button">Copiar datos</button>
+    </div>
+  </form>
+</dialog>
+
+
+<!-- ============ NUEVO USUARIO V2RAY / XRAY ============ -->
+<dialog id="dlg-vray" class="cajon" aria-labelledby="v-titulo">
+  <form id="form-vray" method="dialog" novalidate>
+    <div class="fila-entre">
+      <h2 id="v-titulo">Nuevo usuario</h2>
+      <button class="btn-cerrar" type="button" data-cerrar aria-label="Cerrar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <label class="campo">Nombre
+      <input id="v-email" type="text" maxlength="32" placeholder="ej. carlos_mx" autocomplete="off" autocapitalize="off" spellcheck="false" required>
+      <span class="ayuda" id="v-email-ayuda">Letras, números y guion bajo.</span>
+    </label>
+    <label class="campo">Días
+      <input id="v-dias" type="number" min="0" max="3650" value="30" inputmode="numeric" required>
+      <span class="ayuda" id="v-dias-ayuda"></span>
+    </label>
+    <details class="avanzado">
+      <summary>UUID personalizado</summary>
+      <label class="campo">UUID
+        <input id="v-uuid" class="mono" type="text" maxlength="36" placeholder="Vacío = se genera solo" autocomplete="off" spellcheck="false"></label>
+    </details>
+    <p class="nota">Vence: <b id="v-vence">—</b></p>
+    <p id="v-error" class="error oculto" role="alert"></p>
+    <div class="acciones-form">
+      <button class="btn btn-borde" type="button" data-cerrar>Cancelar</button>
+      <button id="v-guardar" class="btn btn-primario" type="submit">Crear usuario</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- ============ LINK + QR ============ -->
+<dialog id="dlg-link" class="modal modal-ancho" aria-labelledby="l-titulo">
+  <form method="dialog">
+    <div class="fila-entre">
+      <h2 id="l-titulo">Usuario</h2>
+      <button class="btn-cerrar" type="button" data-cerrar aria-label="Cerrar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="link-cuerpo">
+      <div class="qr-caja"><canvas id="l-qr" aria-label="Código QR del link"></canvas></div>
+      <div class="link-datos">
+        <dl id="l-datos" class="datos"></dl>
+        <code id="l-texto" class="link-texto"></code>
+      </div>
+    </div>
+    <div class="acciones-form">
+      <button class="btn btn-borde" type="button" data-cerrar>Cerrar</button>
+      <button id="l-copiar" class="btn btn-primario" type="button">Copiar link</button>
+    </div>
+  </form>
+</dialog>
+
+
+<!-- ============ CONSOLA EN VIVO ============ -->
+<dialog id="dlg-consola" class="consola-dlg" data-sin-fondo aria-labelledby="k-titulo">
+  <div class="consola-cab">
+    <span id="k-punto" class="punto"></span>
+    <div class="consola-tit">
+      <h2 id="k-titulo">Consola</h2>
+      <span id="k-estado" class="tenue chico"></span>
+    </div>
+    <button id="k-reabrir" class="btn btn-borde btn-chico oculto" type="button">Volver a abrir</button>
+    <button id="k-cerrar" class="btn-cerrar" type="button" aria-label="Cerrar consola"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div id="k-term" class="term" tabindex="0" role="log" aria-live="off" aria-label="Salida de la consola"></div>
+  <div class="consola-pie">
+    <div class="teclas" role="group" aria-label="Teclas rápidas">
+      <button type="button" class="tecla" data-tecla="enter">Enter</button>
+      <button type="button" class="tecla" data-tecla="ctrlc">Ctrl+C</button>
+      <button type="button" class="tecla" data-tecla="esc">Esc</button>
+      <button type="button" class="tecla" data-tecla="tab">Tab</button>
+      <button type="button" class="tecla" data-tecla="arriba" aria-label="Flecha arriba">↑</button>
+      <button type="button" class="tecla" data-tecla="abajo" aria-label="Flecha abajo">↓</button>
+    </div>
+    <form id="k-form" class="consola-linea" autocomplete="off">
+      <input id="k-entrada" class="mono" type="text" placeholder="Escribe aquí y Enviar (o teclea directo en la consola)" autocapitalize="off" spellcheck="false" enterkeyhint="send">
+      <button class="btn btn-primario btn-chico" type="submit">Enviar</button>
+    </form>
+  </div>
+</dialog>
+
+<div id="avisos" class="avisos" aria-live="polite"></div>
+
+</body>
+</html>

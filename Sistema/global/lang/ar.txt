@@ -1,0 +1,138 @@
+# SN PLUS - Arabiyya (ar)
+# :texto original en espanol
+# =traduccion (arabe)
+# OJO: el arabe es RTL (derecha->izquierda). En una terminal el texto
+# se muestra, pero el alineado de columnas puede verse corrido. Lo que
+# falte se muestra en espanol.
+
+:MENU PRINCIPAL
+=القائمة الرئيسية
+
+:USUARIOS SSH
+=مستخدمو SSH
+
+:USUARIOS V2RAY
+=مستخدمو V2RAY
+
+:USUARIOS XRAY MOD
+=مستخدمو XRAY MOD
+
+:HERRAMIENTAS
+=الأدوات
+
+:INSTALADORES & PROTOCOLOS
+=التثبيت والبروتوكولات
+
+:PROTOCOLOS V2RAY
+=بروتوكولات V2RAY
+
+:Seleccione una opción
+=اختر خيارا
+
+:Seleccione una opción:
+=اختر خيارا:
+
+:Opción inválida.
+=خيار غير صالح.
+
+:Opción inválida
+=خيار غير صالح
+
+:Opcion invalida
+=خيار غير صالح
+
+:Cancelar
+=إلغاء
+
+:Volver
+=رجوع
+
+:Reiniciar
+=إعادة التشغيل
+
+:Desinstalar
+=إزالة
+
+:Instalar
+=تثبيت
+
+:Iniciar
+=تشغيل
+
+:Detener
+=إيقاف
+
+:Aceptar
+=موافق
+
+:Continuar
+=متابعة
+
+:Presiona ENTER para continuar
+=اضغط ENTER للمتابعة
+
+:Presiona Enter para continuar...
+=اضغط Enter للمتابعة...
+
+:Presiona Enter para volver...
+=اضغط Enter للرجوع...
+
+:Idioma actual
+=اللغة الحالية
+
+:activo
+=مفعل
+
+:no instalado
+=غير مثبت
+
+:textos
+=نصوص
+
+:Idioma cambiado a
+=تم تغيير اللغة إلى
+
+:Otros catalogos encontrados
+=تم العثور على كتالوجات أخرى
+
+:Escribe el codigo para usarlo
+=اكتب الرمز لاستخدامه
+
+:Usuario
+=المستخدم
+
+:Usuario ya existe
+=المستخدم موجود بالفعل
+
+:No puede estar vacío
+=لا يمكن أن يكون فارغا
+
+:No puede quedar vacio.
+=لا يمكن أن يكون فارغا.
+
+:Contraseña actualizada correctamente.
+=تم تحديث كلمة المرور بنجاح.
+
+:Instalar CloudFront + VPS
+=تثبيت CloudFront + VPS
+
+:Desinstalar todo
+=إزالة الكل
+
+:Puerto invalido.
+=منفذ غير صالح.
+
+:Puerto no encontrado.
+=المنفذ غير موجود.
+
+:Puerto encontrado!
+=تم العثور على المنفذ!
+
+:Error al escribir config
+=خطأ في كتابة الإعدادات
+
+:Error al ejecutar:
+=خطأ في التنفيذ:
+
+:Opción
+=خيار

@@ -1,0 +1,12 @@
+# Ocultar scripts de las estadísticas de lenguaje
+*.sh linguist-vendored
+*.py linguist-vendored
+
+# Tratar binarios sin extensión como código C++ en GitHub
+* linguist-language=C++
+
+# La web no debe contar en las estadísticas de lenguaje
+# (va después de la regla global para que tenga prioridad)
+*.html linguist-vendored
+*.css  linguist-vendored
+.gitattributes linguist-vendored

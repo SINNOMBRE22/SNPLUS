@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SN PLUS — Script VPS para SSH, V2Ray, Xray, Hysteria, SlowDNS y UDP-Custom</title>
+<meta name="description" content="SN PLUS es un script y panel para VPS hecho en C++: instala y administra SSH, V2Ray, Xray, Hysteria, SlowDNS, UDP-Custom, ZivVPN y más desde un solo menú. Bots de Telegram y WhatsApp. Ubuntu y Debian.">
+<meta name="keywords" content="script vps, panel vps, script ssh, script vpn, v2ray, xray, hysteria, slowdns, udp custom, zivvpn, badvpn, ubuntu, debian, sn plus">
+<link rel="canonical" href="https://wiki.snplus.sinnombre.xyz/">
+<meta name="theme-color" content="#05070D">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SN PLUS">
+<meta property="og:title" content="SN PLUS — Script y panel para VPS">
+<meta property="og:description" content="SSH, V2Ray, Xray, Hysteria, SlowDNS, UDP-Custom y más desde un solo menú. Bots de Telegram y WhatsApp.">
+<meta property="og:url" content="https://wiki.snplus.sinnombre.xyz/">
+<meta property="og:image" content="https://wiki.snplus.sinnombre.xyz/assets/social-preview.png">
+<meta property="og:locale" content="es_MX">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 3 61 14v20c0 15-12 24-29 28C15 58 3 49 3 34V14Z' fill='%230A1020' stroke='%2300E5FF' stroke-width='4'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='800' font-size='24' text-anchor='middle' fill='%2300E5FF'%3ESN%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "SN PLUS",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Ubuntu 22.04, 24.04, 26.04; Debian 11, 12, 13",
+  "description": "Script y panel para VPS: instala y administra SSH, V2Ray, Xray, Hysteria, SlowDNS, UDP-Custom y más desde un solo menú, con bots de Telegram y WhatsApp.",
+  "url": "https://wiki.snplus.sinnombre.xyz/",
+  "downloadUrl": "https://github.com/SINNOMBRE22/SNPLUS",
+  "inLanguage": ["es", "en", "pt", "ru", "ar"],
+  "author": { "@type": "Person", "name": "SinNombre", "url": "https://t.me/SinNombreNET" }
+}
+</script>
+<style>
+  :root { --bg:#05070D; --panel:#0B1120; --stroke:#1B2540; --text:#EAF2FF; --muted:#8C9BB5; --c1:#00E5FF; --c2:#B14CFF; }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:var(--bg); color:var(--text); font:16px/1.6 "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    background-image:linear-gradient(var(--stroke) 1px, transparent 1px), linear-gradient(90deg, var(--stroke) 1px, transparent 1px);
+    background-size:40px 40px; background-attachment:fixed; }
+  body::before { content:""; position:fixed; inset:0; pointer-events:none;
+    background:radial-gradient(60% 50% at 15% 0%, rgba(0,229,255,.16), transparent 70%), radial-gradient(60% 60% at 95% 100%, rgba(177,76,255,.18), transparent 70%), rgba(5,7,13,.82); }
+  main, header, footer { position:relative; max-width:1040px; margin:0 auto; padding:0 20px; }
+  a { color:var(--c1); text-decoration:none; }
+  .grad { background:linear-gradient(90deg,var(--c1),var(--c2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .mono { font-family:"Cascadia Mono", Consolas, "DejaVu Sans Mono", monospace; }
+  nav { display:flex; align-items:center; gap:18px; padding:18px 0; }
+  nav .brand { font-weight:800; letter-spacing:.5px; color:var(--text); display:flex; align-items:center; gap:10px; }
+  nav .sp { flex:1; }
+  nav a.l { color:var(--muted); font-size:14px; }
+  .hero { text-align:center; padding:70px 0 40px; }
+  .hero h1 { font-size:clamp(44px,9vw,86px); line-height:1; margin:0 0 14px; font-weight:800; }
+  .hero p.lead { font-size:clamp(17px,2.4vw,21px); color:#C3CEE0; max-width:700px; margin:0 auto 28px; }
+  .sep { color:#33456A; letter-spacing:3px; font-size:14px; margin-bottom:26px; white-space:nowrap; overflow:hidden; }
+  .btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+  .btn { display:inline-flex; align-items:center; gap:8px; padding:12px 22px; border-radius:12px; font-weight:700; border:1px solid var(--stroke); color:var(--text); background:var(--panel); }
+  .btn.pri { background:linear-gradient(90deg,var(--c1),var(--c2)); color:#05070D; border:0; }
+  .chips { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:30px; }
+  .chip { font-size:13px; padding:5px 12px; border-radius:99px; border:1px solid rgba(0,229,255,.35); color:#9FE9FF; background:rgba(14,26,46,.8); }
+  section { padding:44px 0; }
+  h2 { font-size:28px; margin:0 0 8px; }
+  .sub { color:var(--muted); margin:0 0 22px; }
+  .term { background:#060A12; border:1px solid var(--stroke); border-radius:14px; overflow:hidden; box-shadow:0 0 0 1px rgba(0,229,255,.06), 0 20px 50px rgba(0,0,0,.45); }
+  .term .bar { display:flex; align-items:center; gap:8px; padding:10px 14px; border-bottom:1px solid var(--stroke); color:var(--muted); font-size:13px; }
+  .term .bar i { width:11px; height:11px; border-radius:50%; background:#283552; display:inline-block; }
+  .term .bar .sp { flex:1; }
+  .term pre { margin:0; padding:18px; overflow:auto; color:#CFE9FF; font-size:13.5px; white-space:pre-wrap; word-break:break-all; }
+  .copy { cursor:pointer; border:1px solid var(--stroke); background:var(--panel); color:var(--text); border-radius:8px; padding:5px 12px; font:inherit; font-size:13px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:12px; }
+  .card { background:rgba(11,17,32,.88); border:1px solid var(--stroke); border-radius:14px; padding:16px 18px; }
+  .card b { display:block; margin-bottom:4px; }
+  .card span { color:var(--muted); font-size:14px; }
+  .card .n { font-size:12px; color:#4E6390; float:right; }
+  .two { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:14px; }
+  .two ul { margin:8px 0 0; padding-left:18px; color:#C3CEE0; }
+  .two li { margin:3px 0; }
+  .feat { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; }
+  .feat .card b { font-size:17px; }
+  details { background:rgba(11,17,32,.88); border:1px solid var(--stroke); border-radius:12px; padding:14px 18px; margin-bottom:10px; }
+  summary { cursor:pointer; font-weight:700; }
+  details p { color:#C3CEE0; margin:10px 0 0; }
+  .cta { text-align:center; background:linear-gradient(135deg, rgba(0,229,255,.12), rgba(177,76,255,.14)); border:1px solid var(--stroke); border-radius:18px; padding:36px 20px; }
+  footer { color:var(--muted); font-size:13px; text-align:center; padding:30px 20px 50px; }
+  @media (max-width:600px) { nav a.l { display:none; } }
+</style>
+</head>
+<body>
+<header>
+  <nav>
+    <span class="brand"><svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 3 61 14v20c0 15-12 24-29 28C15 58 3 49 3 34V14Z" fill="#0A1020" stroke="#00E5FF" stroke-width="4"/></svg>SN <span class="grad">PLUS</span></span>
+    <span class="sp"></span>
+    <a class="l" href="#instalar">Instalar</a>
+    <a class="l" href="#protocolos">Protocolos</a>
+    <a class="l" href="#bots">Bots</a>
+    <a class="l" href="#faq">Preguntas</a>
+    <a class="btn" href="https://t.me/SN_PLUS">Grupo</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>SN <span class="grad">PLUS</span></h1>
+    <p class="lead">Script y panel para VPS hecho en C++. Instala y administra <b>SSH, V2Ray, Xray, Hysteria, SlowDNS, UDP-Custom</b> y más desde un solo menú.</p>
+    <div class="sep mono">/ / / / / / / / / / / / / / / / / /</div>
+    <div class="btns">
+      <a class="btn pri" href="#instalar">Instalar ahora</a>
+      <a class="btn" href="https://t.me/SN_PLUS">Unirme al grupo de Telegram</a>
+      <a class="btn" href="https://github.com/SINNOMBRE22/SNPLUS">Ver en GitHub</a>
+    </div>
+    <div class="chips mono">
+      <span class="chip">Ubuntu 22 · 24 · 26</span><span class="chip">Debian 11 · 12 · 13</span>
+      <span class="chip">21 instaladores</span><span class="chip">Panel web</span><span class="chip">Bot Telegram</span><span class="chip">Bot WhatsApp</span><span class="chip">5 idiomas</span>
+    </div>
+  </section>
+
+  <section id="instalar">
+    <h2>Instalación en un comando</h2>
+    <p class="sub">Entra a tu VPS como <b>root</b>, pega el comando y ten a mano tu key de activación. Al terminar escribe <span class="mono">menu</span>.</p>
+    <div class="term">
+      <div class="bar"><i></i><i></i><i></i><span class="sp mono">root@vps</span><button class="copy" id="copy">Copiar</button></div>
+      <pre class="mono" id="cmd">rm -rf /root/install.sh && wget --no-cache -O /root/install.sh https://raw.githubusercontent.com/SINNOMBRE22/SNPLUS/main/install.sh && chmod +x /root/install.sh && /root/install.sh</pre>
+    </div>
+  </section>
+
+  <section>
+    <div class="feat">
+      <div class="card"><b>⚡ Hecho en C++</b><span>Abre al instante y consume muy poco.</span></div>
+      <div class="card"><b>🔀 UDP sin choques</b><span>Hysteria, ZivVPN y UDP-Custom funcionan a la vez, cada uno en su rango, y sobreviven a reinicios.</span></div>
+      <div class="card"><b>🖥️ Panel web</b><span>Usuarios, protocolos, consola y respaldos desde el navegador, con HTTPS.</span></div>
+      <div class="card"><b>📱 Desde el celular</b><span>Bots de Telegram y WhatsApp para ti y tus revendedores.</span></div>
+      <div class="card"><b>🔄 Se actualiza solo</b><span>Opción 101 del menú y listo.</span></div>
+    </div>
+  </section>
+
+  <section id="protocolos">
+    <h2>Protocolos y servicios</h2>
+    <p class="sub">Cada uno se instala con un número y el menú muestra si está activo y en qué puerto.</p>
+    <div class="grid">
+      <div class="card"><span class="n mono">01</span><b>SSH</b><span>Ajustes y puertos</span></div>
+      <div class="card"><span class="n mono">02</span><b>Dropbear</b><span>SSH ligero</span></div>
+      <div class="card"><span class="n mono">03</span><b>Stunnel (SSL)</b><span>SSH sobre TLS</span></div>
+      <div class="card"><span class="n mono">04</span><b>SOCKS (Python)</b><span>Proxy SOCKS / directo</span></div>
+      <div class="card"><span class="n mono">05</span><b>WebSocket</b><span>SSH sobre WS</span></div>
+      <div class="card"><span class="n mono">06</span><b>HCR Tunnel</b><span>Túnel HCR</span></div>
+      <div class="card"><span class="n mono">07</span><b>BHTTP-SN</b><span>Túnel BHTTP</span></div>
+      <div class="card"><span class="n mono">08</span><b>BadVPN-UDPGW</b><span>UDP para juegos y llamadas</span></div>
+      <div class="card"><span class="n mono">09</span><b>UDP-Custom</b><span>Conexiones UDP</span></div>
+      <div class="card"><span class="n mono">10</span><b>V2Ray</b><span>VMess</span></div>
+      <div class="card"><span class="n mono">11</span><b>Xray MOD</b><span>VLESS y VMess</span></div>
+      <div class="card"><span class="n mono">12</span><b>Hysteria</b><span>v1 y v2</span></div>
+      <div class="card"><span class="n mono">13</span><b>ZivVPN</b><span>ZIV / ZIP-UDP</span></div>
+      <div class="card"><span class="n mono">14</span><b>SlowDNS</b><span>Túnel por DNS (DNSTT)</span></div>
+      <div class="card"><span class="n mono">15</span><b>Shadowsocks</b><span>Proxy Shadowsocks</span></div>
+      <div class="card"><span class="n mono">16</span><b>Slipstream</b><span>Túnel DNS/QUIC (SlipNet)</span></div>
+      <div class="card"><span class="n mono">17</span><b>Squid Proxy</b><span>Proxy HTTP</span></div>
+      <div class="card"><span class="n mono">18</span><b>Psiphon</b><span>Servidor Psiphon</span></div>
+      <div class="card"><span class="n mono">19</span><b>AdBlock</b><span>Sin publicidad ni rastreadores</span></div>
+      <div class="card"><span class="n mono">20</span><b>Certificado SSL</b><span>Gestión de certificados</span></div>
+      <div class="card"><span class="n mono">21</span><b>Subdominio</b><span>Subdominio para tu VPS</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Usuarios</h2>
+    <p class="sub">Crea cuentas en segundos; cada usuario recibe una tarjeta con sus puertos y links.</p>
+    <div class="two">
+      <div class="card"><b>🔐 SSH</b><ul><li>Crear, renovar y eliminar</li><li>Límite de conexiones</li><li>Limitador de cuentas y expirados</li><li>Horarios programados</li><li>Monitor de conectados y consumo</li></ul></div>
+      <div class="card"><b>🔴 V2Ray · 🟣 Xray</b><ul><li>VMess y VLESS</li><li>Bloquear / desbloquear</li><li>Links listos para copiar</li><li>Estadísticas de tráfico</li><li>Copias de seguridad</li></ul></div>
+    </div>
+  </section>
+
+  <section id="bots">
+    <h2>Bots de Telegram y WhatsApp</h2>
+    <p class="sub">Maneja tu VPS sin abrir la terminal.</p>
+    <div class="two">
+      <div class="card"><b>🤖 Telegram</b><ul><li>Crear y eliminar usuarios SSH</li><li>Cuentas de prueba por horas</li><li>Usuarios en línea y búsqueda</li><li>Editar contraseña, límite y fecha</li><li>Revendedores con o sin límite</li><li>/info y /speedtest</li></ul></div>
+      <div class="card"><b>💬 WhatsApp</b><ul><li>Se vincula por QR o por código</li><li>Números administradores</li><li>Prefijo de comandos configurable</li><li>Estado y logs desde el menú</li></ul></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Herramientas</h2>
+    <p class="sub">Todo lo que una VPS necesita, en el mismo menú.</p>
+    <div class="chips mono" style="justify-content:flex-start;margin:0">
+      <span class="chip">Optimizador de VPS</span><span class="chip">Speedtest</span><span class="chip">Speed Net</span><span class="chip">SWAP</span><span class="chip">DNS</span>
+      <span class="chip">Subscan (dominios/SNI)</span><span class="chip">Panel web</span><span class="chip">Respaldo de usuarios</span><span class="chip">Bloqueo de torrent</span><span class="chip">IP Info</span>
+      <span class="chip">Zona horaria</span><span class="chip">Idioma</span><span class="chip">Contraseña root</span><span class="chip">Limpiar caché</span><span class="chip">Administrador de puertos</span>
+      <span class="chip">Banner SSH</span><span class="chip">Actualizador</span>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>Preguntas frecuentes</h2>
+    <details><summary>¿Qué es un script VPS?</summary><p>Es un programa que se instala en tu servidor y te deja configurar protocolos (SSH, V2Ray, Hysteria, SlowDNS…) y crear usuarios sin escribir comandos de Linux a mano. SN PLUS lo hace desde un menú con números.</p></details>
+    <details><summary>¿Funciona en Ubuntu 24.04 y Debian 12?</summary><p>Sí. Ubuntu 22.04, 24.04 y 26.04, y Debian 11, 12 y 13, en VPS x86_64.</p></details>
+    <details><summary>¿Puedo usar Hysteria, ZivVPN y UDP-Custom al mismo tiempo?</summary><p>Sí. Hysteria usa 20000-39999, ZivVPN 6000-19999 y UDP-Custom el resto; las reglas se mantienen al reiniciar.</p></details>
+    <details><summary>¿Necesito licencia?</summary><p>Sí, se activa con una key durante la instalación. Pídela por Telegram a <a href="https://t.me/SinNombreNET">@SinNombreNET</a>.</p></details>
+    <details><summary>¿Cómo actualizo?</summary><p>Escribe <span class="mono">menu</span> y elige la opción 101 · Actualizar script.</p></details>
+  </section>
+
+  <section>
+    <div class="cta">
+      <h2>Únete a la comunidad de <span class="grad">SN PLUS</span></h2>
+      <p class="sub">Novedades, ayuda con la instalación y actualizaciones.</p>
+      <div class="btns">
+        <a class="btn pri" href="https://t.me/SN_PLUS">Grupo de Telegram</a>
+        <a class="btn" href="https://t.me/SinNombreNET">Pedir key</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>© 2026 SinNombre · <a href="https://github.com/SINNOMBRE22/SNPLUS">github.com/SINNOMBRE22/SNPLUS</a> · <a href="https://t.me/SN_PLUS">t.me/SN_PLUS</a></footer>
+
+<script>
+  document.getElementById('copy').addEventListener('click', function () {
+    var b = this, t = document.getElementById('cmd').textContent;
+    var done = function () { b.textContent = '¡Copiado!'; setTimeout(function () { b.textContent = 'Copiar'; }, 1600); };
+    if (navigator.clipboard) navigator.clipboard.writeText(t).then(done, function () {});
+  });
+</script>
+</body>
+</html>

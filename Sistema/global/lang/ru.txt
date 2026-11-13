@@ -1,0 +1,136 @@
+# SN PLUS - Russkiy (ru)
+# :texto original en espanol
+# =traduccion (ruso)
+# Nucleo de la interfaz. Lo que falta se muestra en espanol.
+
+:MENU PRINCIPAL
+=ГЛАВНОЕ МЕНЮ
+
+:USUARIOS SSH
+=ПОЛЬЗОВАТЕЛИ SSH
+
+:USUARIOS V2RAY
+=ПОЛЬЗОВАТЕЛИ V2RAY
+
+:USUARIOS XRAY MOD
+=ПОЛЬЗОВАТЕЛИ XRAY MOD
+
+:HERRAMIENTAS
+=ИНСТРУМЕНТЫ
+
+:INSTALADORES & PROTOCOLOS
+=УСТАНОВКА И ПРОТОКОЛЫ
+
+:PROTOCOLOS V2RAY
+=ПРОТОКОЛЫ V2RAY
+
+:Seleccione una opción
+=Выберите опцию
+
+:Seleccione una opción:
+=Выберите опцию:
+
+:Opción inválida.
+=Неверный выбор.
+
+:Opción inválida
+=Неверный выбор
+
+:Opcion invalida
+=Неверный выбор
+
+:Cancelar
+=Отмена
+
+:Volver
+=Назад
+
+:Reiniciar
+=Перезапустить
+
+:Desinstalar
+=Удалить
+
+:Instalar
+=Установить
+
+:Iniciar
+=Запустить
+
+:Detener
+=Остановить
+
+:Aceptar
+=Принять
+
+:Continuar
+=Продолжить
+
+:Presiona ENTER para continuar
+=Нажмите ENTER для продолжения
+
+:Presiona Enter para continuar...
+=Нажмите Enter для продолжения...
+
+:Presiona Enter para volver...
+=Нажмите Enter чтобы вернуться...
+
+:Idioma actual
+=Текущий язык
+
+:activo
+=активен
+
+:no instalado
+=не установлен
+
+:textos
+=строк
+
+:Idioma cambiado a
+=Язык изменён на
+
+:Otros catalogos encontrados
+=Найдены другие каталоги
+
+:Escribe el codigo para usarlo
+=Введите код чтобы использовать
+
+:Usuario
+=Пользователь
+
+:Usuario ya existe
+=Пользователь уже существует
+
+:No puede estar vacío
+=Не может быть пустым
+
+:No puede quedar vacio.
+=Не может быть пустым.
+
+:Contraseña actualizada correctamente.
+=Пароль успешно обновлён.
+
+:Instalar CloudFront + VPS
+=Установить CloudFront + VPS
+
+:Desinstalar todo
+=Удалить всё
+
+:Puerto invalido.
+=Неверный порт.
+
+:Puerto no encontrado.
+=Порт не найден.
+
+:Puerto encontrado!
+=Порт найден!
+
+:Error al escribir config
+=Ошибка записи конфигурации
+
+:Error al ejecutar:
+=Ошибка выполнения:
+
+:Opción
+=Опция
